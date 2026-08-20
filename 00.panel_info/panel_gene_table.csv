@@ -1,0 +1,375 @@
+gene,ensembl,source,annotation_breast,annotation_io,programs,cell_lineages,program_states,marker_states,top_major,top3_majors,n_programs,pct_expressing,mean_lognorm,mean_counts,top_compartment,mean_Cancer,mean_Epithelial,mean_Immune,mean_Stroma
+ABCC11,ENSG00000121270,Breast,Breast cancer,,,,,,Myoepithelial,"Myoepithelial(2.216), Tumor(2.164), Macrophage_Mono(0.118)",0,12.4,0.529,0.702,Epithelial,2.164,2.216,0.07,0.071
+ACTA2,ENSG00000107796,Breast+IO,Smooth muscle cells,Stromal Cell,Tumor:myoepithelial; Endothelial:pericyte_mural; CAF/Adipo:myCAF; CAF/Adipo:pericyte_mural,CAF/Adipo; Endothelial; Tumor,myCAF; myoepithelial; pericyte_mural,myoepithelial; myCAF; Pericyte/mural,Myoepithelial,"Myoepithelial(4.005), Pericyte(3.947), Endothelial(3.667)",4,42.8,2.062,1.974,Epithelial,2.88,4.005,1.311,2.705
+ACTG2,ENSG00000163017,Breast,Breast myoepithelial cells,,Tumor:myoepithelial,Tumor,myoepithelial,myoepithelial,Myoepithelial,"Myoepithelial(3.124), Tumor(2.065), Endothelial(0.958)",1,24.9,1.042,0.666,Epithelial,2.065,3.124,0.791,0.657
+ADAM9,ENSG00000168615,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.89), Tumor(2.878), Macrophage_Mono(2.454)",0,35.9,1.541,0.982,Epithelial,2.878,2.89,1.02,1.441
+ADGRE5,ENSG00000123146,Breast,Dendritic cells,,,,,,Macrophage_Mono,"Macrophage_Mono(1.506), T_NK(1.472), Dendritic(1.425)",0,21.8,0.939,0.331,Immune,0.416,0.382,1.35,0.66
+ADH1B,ENSG00000196616,Breast,Adipocytes,,CAF/Adipo:adipocyte,CAF/Adipo,adipocyte,adipocyte,Adipocyte,"Adipocyte(1.764), CAF_Fibroblast(0.439), Pericyte(0.343)",1,6.4,0.277,0.116,Stroma,0.152,0.158,0.189,0.528
+ADIPOQ,ENSG00000181092,Breast,Adipocytes,,CAF/Adipo:adipocyte,CAF/Adipo,adipocyte,adipocyte,Adipocyte,"Adipocyte(0.938), Macrophage_Mono(0.088), Myoepithelial(0.084)",1,2.1,0.092,0.049,Stroma,0.072,0.084,0.068,0.151
+AGR3,ENSG00000173467,Breast,Breast glandular cells,,Tumor:luminal_mature; Tumor:cancer_specific,Tumor,cancer_specific; luminal_mature,,Myoepithelial,"Myoepithelial(1.799), Tumor(1.527), Macrophage_Mono(0.084)",2,9.3,0.383,0.45,Epithelial,1.527,1.799,0.058,0.059
+AIF1,ENSG00000204472,Breast+IO,Macrophages,Macrophage,Myeloid/DC:core_macrophage,Myeloid/DC,core_macrophage,,Macrophage_Mono,"Macrophage_Mono(3.142), Dendritic(2.626), T_NK(1.038)",1,22.5,1.011,0.442,Immune,0.503,0.464,1.457,0.665
+AKR1C1,ENSG00000187134,Breast,Smooth muscle cells,,,,,,Adipocyte,"Adipocyte(0.704), Myoepithelial(0.585), Tumor(0.569)",0,8.5,0.332,0.185,Epithelial,0.569,0.585,0.171,0.43
+AKR1C3,ENSG00000196139,Breast,Endothelial cells,,,,,,Endothelial,"Endothelial(0.509), Tumor(0.355), Myoepithelial(0.345)",0,5.6,0.206,0.08,Cancer,0.355,0.345,0.084,0.303
+ALDH1A3,ENSG00000184254,Breast,Breast glandular cells,,Tumor:luminal_progenitor,Tumor,luminal_progenitor,,Tumor,"Tumor(0.719), Adipocyte(0.69), CAF_Fibroblast(0.646)",1,11.0,0.436,0.205,Cancer,0.719,0.497,0.239,0.575
+ANGPT2,ENSG00000091879,Breast,Endothelial cells,,Endothelial:tip_sprouting,Endothelial,tip_sprouting,Tip/sprouting,Endothelial,"Endothelial(1.36), Pericyte(0.513), Myoepithelial(0.231)",1,6.3,0.262,0.11,Stroma,0.195,0.231,0.096,0.598
+ANKRD28,ENSG00000206560,Breast,B cells,,,,,,Myoepithelial,"Myoepithelial(1.146), Plasma(1.112), Tumor(1.048)",0,18.1,0.699,0.269,Epithelial,1.048,1.146,0.497,0.79
+ANKRD29,ENSG00000154065,Breast,Adipocytes,,,,,,Endothelial,"Endothelial(1.398), Pericyte(1.153), Myoepithelial(0.355)",0,7.5,0.307,0.105,Stroma,0.245,0.355,0.154,0.617
+ANKRD30A,ENSG00000148513,Breast,Epithelial cells,,Tumor:luminal_mature,Tumor,luminal_mature,,Tumor,"Tumor(2.893), Myoepithelial(2.881), Macrophage_Mono(0.238)",1,16.4,0.77,1.435,Cancer,2.893,2.881,0.164,0.195
+APOBEC3A,ENSG00000128383,Breast,B cells,,,,,,Macrophage_Mono,"Macrophage_Mono(0.321), Dendritic(0.186), Myoepithelial(0.172)",0,3.6,0.136,0.047,Epithelial,0.16,0.172,0.15,0.094
+APOBEC3B,ENSG00000179750,Breast,Breast cancer,,,,,,B_cell,"B_cell(0.545), Plasma(0.5), T_NK(0.413)",0,8.4,0.322,0.103,Cancer,0.412,0.402,0.39,0.145
+APOC1,ENSG00000130208,Breast,Macrophages,,,,,,Macrophage_Mono,"Macrophage_Mono(1.654), Dendritic(0.599), T_NK(0.37)",0,9.5,0.416,0.263,Immune,0.356,0.278,0.56,0.229
+AQP1,ENSG00000240583,Breast,Endothelial cells,,Endothelial:capillary,Endothelial,capillary,Capillary,Endothelial,"Endothelial(4.618), Pericyte(4.193), Myoepithelial(1.324)",1,24.5,1.197,1.074,Stroma,0.939,1.324,0.612,2.39
+AQP3,ENSG00000165272,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(0.984), Tumor(0.916), Plasma(0.573)",0,10.3,0.399,0.223,Epithelial,0.916,0.984,0.331,0.125
+AR,ENSG00000169083,Breast,Breast cancer,,,,,,Myoepithelial,"Myoepithelial(1.52), Tumor(1.423), Adipocyte(0.235)",0,10.8,0.39,0.229,Epithelial,1.423,1.52,0.07,0.151
+AREG,ENSG00000109321,IO,,Mast Cell,Tumor:luminal_mature; Mast:effector_activation,Mast; Tumor,effector_activation; luminal_mature,,Myoepithelial,"Myoepithelial(2.108), Tumor(1.858), Mast(0.98)",2,13.6,0.601,0.91,Epithelial,1.858,2.108,0.291,0.17
+ARG1,ENSG00000118520,IO,,Myeloid Derived Suppressor Cell,Myeloid/DC:macrophage_M2,Myeloid/DC,macrophage_M2,macrophage_M2,Tumor,"Tumor(0.09), Myoepithelial(0.086), Macrophage_Mono(0.079)",1,1.6,0.059,0.018,Cancer,0.09,0.086,0.053,0.045
+AVPR1A,ENSG00000166148,Breast,Smooth muscle cells,,,,,,Endothelial,"Endothelial(0.674), Pericyte(0.66), Adipocyte(0.074)",0,2.9,0.121,0.041,Stroma,0.055,0.073,0.045,0.3
+BACE2,ENSG00000182240,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.005), Tumor(1.989), Endothelial(1.361)",0,20.9,0.839,0.489,Epithelial,1.989,2.005,0.341,0.827
+BANK1,ENSG00000153064,Breast+IO,B cells,B Cell,B/Plasma:pan_B,B/Plasma,pan_B,,B_cell,"B_cell(3.356), Plasma(1.648), Dendritic(0.516)",1,12.5,0.609,0.264,Immune,0.132,0.143,1.103,0.147
+BASP1,ENSG00000176788,Breast,Macrophages,,,,,,B_cell,"B_cell(2.18), Dendritic(1.971), Plasma(1.906)",0,29.2,1.306,0.548,Immune,0.568,0.585,1.647,1.318
+BCL2,ENSG00000171791,IO,,Apoptosis,Tumor:luminal_mature,Tumor,luminal_mature,,B_cell,"B_cell(1.352), Plasma(1.177), T_NK(1.104)",1,19.7,0.831,0.305,Immune,0.77,0.932,1.038,0.537
+C15orf48,ENSG00000166920,Breast,Breast glandular cells,,,,,,Macrophage_Mono,"Macrophage_Mono(0.74), Tumor(0.54), Dendritic(0.469)",0,7.3,0.278,0.133,Cancer,0.54,0.408,0.271,0.101
+C1QA,ENSG00000173372,Breast,Macrophages,,Myeloid/DC:core_macrophage,Myeloid/DC,core_macrophage,,Macrophage_Mono,"Macrophage_Mono(2.505), Dendritic(1.02), T_NK(0.527)",1,12.6,0.554,0.226,Immune,0.22,0.19,0.846,0.329
+C1QC,ENSG00000159189,Breast,Macrophages,,Myeloid/DC:core_macrophage,Myeloid/DC,core_macrophage,,Macrophage_Mono,"Macrophage_Mono(2.384), Dendritic(0.883), T_NK(0.461)",1,11.8,0.515,0.217,Immune,0.28,0.262,0.764,0.285
+C1R,ENSG00000159403,IO,,Tumor;Complement,CAF/Adipo:complement_caf,CAF/Adipo,complement_caf,complement_caf,Adipocyte,"Adipocyte(4.174), CAF_Fibroblast(3.761), Endothelial(2.714)",1,44.8,2.201,1.556,Stroma,1.374,1.703,1.895,3.393
+C1S,ENSG00000182326,IO,,Tumor;Complement,CAF/Adipo:complement_caf,CAF/Adipo,complement_caf,complement_caf,Adipocyte,"Adipocyte(4.061), CAF_Fibroblast(3.682), Endothelial(2.373)",1,43.2,2.117,1.368,Stroma,1.031,1.256,1.987,3.211
+C2orf42,ENSG00000115998,Breast,B cells,,,,,,Myoepithelial,"Myoepithelial(0.386), Tumor(0.345), Plasma(0.217)",0,5.8,0.209,0.065,Epithelial,0.345,0.386,0.178,0.16
+C5orf46,ENSG00000178776,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(0.488), Tumor(0.408), CAF_Fibroblast(0.081)",0,3.5,0.128,0.055,Epithelial,0.408,0.488,0.038,0.066
+C6orf132,ENSG00000188112,Breast,Breast myoepithelial cells,,,,,,Myoepithelial,"Myoepithelial(1.152), Tumor(1.079), Adipocyte(0.109)",0,8.5,0.284,0.133,Epithelial,1.079,1.152,0.05,0.079
+CAV1,ENSG00000105974,Breast,Breast cancer,,CAF/Adipo:pericyte_mural,CAF/Adipo,pericyte_mural,Pericyte/mural,Endothelial,"Endothelial(3.838), Pericyte(3.511), Adipocyte(1.577)",1,22.7,1.04,0.544,Stroma,0.759,1.357,0.515,2.141
+CAVIN2,ENSG00000168497,Breast,Adipocytes,,,,,,Endothelial,"Endothelial(0.823), Pericyte(0.703), Mast(0.448)",0,3.7,0.154,0.05,Stroma,0.072,0.128,0.072,0.357
+CCDC6,ENSG00000108091,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(3.575), Tumor(3.457), Dendritic(1.382)",0,36.7,1.601,1.155,Epithelial,3.457,3.575,1.108,1.054
+CCDC80,ENSG00000091986,Breast,Fibroblasts,,CAF/Adipo:pan_CAF,CAF/Adipo,pan_CAF,,Adipocyte,"Adipocyte(4.294), CAF_Fibroblast(3.995), Mast(2.524)",1,38.8,1.972,1.429,Stroma,0.515,0.529,1.828,3.366
+CCL13,ENSG00000181374,IO,,Cytokines & Growth Factors;Chemokine Ligand;Cytokine-Cytokine-Receptor Interaction,,,,,Macrophage_Mono,"Macrophage_Mono(0.283), Pericyte(0.195), Endothelial(0.188)",0,2.6,0.106,0.036,Stroma,0.061,0.068,0.117,0.122
+CCL19,ENSG00000172724,IO,,Cytokines & Growth Factors;Chemokine Ligand;Cytokine-Cytokine-Receptor Interaction,Endothelial:hev_like; Myeloid/DC:mregDC,Endothelial; Myeloid/DC,hev_like; mregDC,mregDC; HEV-like,T_NK,"T_NK(1.639), B_cell(1.252), Pericyte(1.248)",2,17.0,0.848,0.505,Immune,0.111,0.112,1.223,0.791
+CCL21,ENSG00000137077,IO,,Cytokines & Growth Factors;Chemokine Ligand;Cytokine-Cytokine-Receptor Interaction,Endothelial:hev_like,Endothelial,hev_like,HEV-like,Pericyte,"Pericyte(1.276), Endothelial(1.069), T_NK(0.572)",1,7.5,0.385,0.324,Stroma,0.058,0.059,0.422,0.577
+CCL5,ENSG00000271503,Breast+IO,T cells,T Cell;Effector Memory;Resident Memory;Activated;Cytokines & Growth Factors;Chemokine Ligand;Cytokine-Cytokine-Receptor Interaction,Mast:effector_activation,Mast,effector_activation,,T_NK,"T_NK(1.96), Dendritic(0.674), Macrophage_Mono(0.604)",1,15.2,0.701,0.284,Immune,0.222,0.231,1.163,0.296
+CCL7,ENSG00000108688,IO,,Cytokines & Growth Factors;Chemokine Ligand;Cytokine-Cytokine-Receptor Interaction,,,,,Macrophage_Mono,"Macrophage_Mono(0.13), Tumor(0.083), Myoepithelial(0.082)",0,1.6,0.061,0.021,Cancer,0.083,0.082,0.057,0.05
+CCL8,ENSG00000108700,Breast+IO,Smooth muscle cells,Cytokines & Growth Factors;Chemokine Ligand;Cytokine-Cytokine-Receptor Interaction,,,,,Macrophage_Mono,"Macrophage_Mono(0.835), Endothelial(0.573), Pericyte(0.546)",0,6.6,0.292,0.131,Stroma,0.105,0.095,0.329,0.376
+CCND1,ENSG00000110092,Breast+IO,Breast cancer,Epithelial Cell,,,,,Myoepithelial,"Myoepithelial(4.06), Tumor(3.894), Endothelial(1.993)",0,33.3,1.55,1.921,Epithelial,3.894,4.06,0.669,1.287
+CCPG1,ENSG00000260916,Breast,B cells,,,,,,Plasma,"Plasma(1.938), Myoepithelial(1.797), Tumor(1.643)",0,29.3,1.181,0.479,Epithelial,1.643,1.797,1.017,1.129
+CCR1,ENSG00000163823,IO,,C-C Motif Chemokine Receptor;M1;Macrophage;Cytokine Receptor;CD Molecule;Cytokine-Cytokine-Receptor Interaction,,,,,Macrophage_Mono,"Macrophage_Mono(2.015), Dendritic(1.245), T_NK(0.375)",0,11.0,0.466,0.179,Immune,0.205,0.2,0.718,0.247
+CCR4,ENSG00000183813,IO,,C-C Motif Chemokine Receptor;M1;Macrophage;Cytokine Receptor;CD Molecule;Cytokine-Cytokine-Receptor Interaction,T/NK:treg; T/NK:th2,T/NK,th2; treg,Treg,T_NK,"T_NK(1.375), Dendritic(0.294), B_cell(0.286)",2,8.8,0.405,0.14,Immune,0.077,0.076,0.727,0.117
+CCR5,ENSG00000160791,IO,,C-C Motif Chemokine Receptor;M1;Macrophage;Cytokine Receptor;CD Molecule;Cytokine-Cytokine-Receptor Interaction,,,,,Dendritic,"Dendritic(0.836), T_NK(0.721), Macrophage_Mono(0.689)",0,8.6,0.357,0.113,Immune,0.16,0.168,0.588,0.122
+CCR7,ENSG00000126353,Breast+IO,T cells,T Cell;Naive;C-C Motif Chemokine Receptor;M1;Macrophage;Cytokine Receptor;CD Molecule;Cytokine-Cytokine-Receptor Interaction,T/NK:naive_memory; Myeloid/DC:mregDC,Myeloid/DC; T/NK,mregDC; naive_memory,naive_memory; mregDC,T_NK,"T_NK(1.712), B_cell(1.236), Dendritic(0.761)",2,13.9,0.646,0.241,Immune,0.153,0.162,1.161,0.161
+CD14,ENSG00000170458,Breast+IO,Monocytes,Monocyte;Macrophage;M1;CD Molecule,Myeloid/DC:core_macrophage; Myeloid/DC:monocyte,Myeloid/DC,core_macrophage; monocyte,monocyte,Macrophage_Mono,"Macrophage_Mono(3.286), Dendritic(1.446), Tumor(0.634)",2,18.4,0.81,0.406,Immune,0.634,0.621,1.068,0.522
+CD163,ENSG00000177575,Breast+IO,Macrophages,Macrophage;M2;CD Molecule,Myeloid/DC:macrophage_M2,Myeloid/DC,macrophage_M2,macrophage_M2,Macrophage_Mono,"Macrophage_Mono(3.19), Dendritic(1.461), T_NK(0.639)",1,14.7,0.684,0.34,Immune,0.166,0.135,1.077,0.426
+CD19,ENSG00000177455,Breast+IO,B cells,B Cell;Proliferative;CD Molecule,B/Plasma:pan_B,B/Plasma,pan_B,,B_cell,"B_cell(1.939), Plasma(1.212), T_NK(0.118)",1,6.5,0.297,0.098,Immune,0.041,0.05,0.565,0.043
+CD1A,ENSG00000158477,IO,,CD Molecule;Antigen Presentation;Dendritic Cell,Myeloid/DC:langerhans,Myeloid/DC,langerhans,langerhans,Dendritic,"Dendritic(0.262), B_cell(0.109), Tumor(0.08)",1,1.7,0.065,0.02,Cancer,0.08,0.069,0.079,0.032
+CD1C,ENSG00000158481,IO,,CD Molecule;Antigen Presentation;Dendritic Cell,Myeloid/DC:cDC2,Myeloid/DC,cDC2,cDC2,Dendritic,"Dendritic(1.928), B_cell(0.764), Macrophage_Mono(0.575)",1,8.2,0.379,0.188,Immune,0.113,0.1,0.629,0.162
+CD247,ENSG00000198821,Breast+IO,NK cells,Natural Killer Cell;CD Molecule,,,,,T_NK,"T_NK(2.165), B_cell(0.518), Dendritic(0.415)",0,13.8,0.636,0.215,Immune,0.139,0.149,1.146,0.161
+CD27,ENSG00000139193,Breast+IO,B cells,B Cell;CD Molecule,T/NK:naive_memory; B/Plasma:memory_B,B/Plasma; T/NK,memory_B; naive_memory,naive_memory; memory_B,Plasma,"Plasma(1.003), B_cell(0.81), T_NK(0.788)",2,7.9,0.345,0.101,Immune,0.066,0.062,0.624,0.092
+CD274,ENSG00000120217,Breast+IO,T cells,CD Molecule;Tumor;Checkpoint Inhibitor Target;Don't Eat Me,,,,,Mast,"Mast(0.424), Macrophage_Mono(0.41), Dendritic(0.324)",0,5.9,0.229,0.079,Immune,0.223,0.251,0.29,0.132
+CD28,ENSG00000178562,IO,,T Cell;CD Molecule,T/NK:naive_memory,T/NK,naive_memory,naive_memory,T_NK,"T_NK(1.87), Macrophage_Mono(0.548), B_cell(0.402)",1,12.7,0.575,0.185,Immune,0.108,0.101,1.035,0.165
+CD38,ENSG00000004468,IO,,Plasma Cell;CD Molecule,B/Plasma:plasma,B/Plasma,plasma,plasma,Plasma,"Plasma(2.031), B_cell(0.684), Dendritic(0.555)",1,8.2,0.347,0.133,Immune,0.112,0.094,0.599,0.108
+CD3D,ENSG00000167286,IO,,T Cell;CD8+;Effector;CD Molecule,,,,,T_NK,"T_NK(1.984), B_cell(0.533), Plasma(0.432)",0,13.2,0.6,0.191,Immune,0.13,0.111,1.078,0.16
+CD3E,ENSG00000198851,Breast+IO,T cells,CD Molecule;T Cell,,,,,T_NK,"T_NK(4.297), B_cell(1.565), Dendritic(1.343)",0,29.9,1.481,0.702,Immune,0.362,0.335,2.543,0.563
+CD3G,ENSG00000160654,Breast,T cells,,,,,,T_NK,"T_NK(2.05), B_cell(0.566), Dendritic(0.457)",0,14.1,0.639,0.205,Immune,0.159,0.165,1.127,0.191
+CD4,ENSG00000010610,Breast+IO,T cells,T Cell;CD4+;CD Molecule,T/NK:th1; T/NK:cd4_lineage,T/NK,cd4_lineage; th1,th1,Macrophage_Mono,"Macrophage_Mono(4.089), Dendritic(4.021), T_NK(2.855)",2,37.2,1.775,0.91,Immune,0.655,0.557,2.723,1.06
+CD40LG,ENSG00000102245,IO,,CD Molecule;Immune Checkpoint,,,,,T_NK,"T_NK(0.512), B_cell(0.163), Plasma(0.121)",0,3.8,0.165,0.047,Immune,0.057,0.063,0.284,0.049
+CD68,ENSG00000129226,Breast+IO,Macrophages,Macrophage;CD Molecule,Myeloid/DC:core_macrophage,Myeloid/DC,core_macrophage,,Macrophage_Mono,"Macrophage_Mono(3.653), Dendritic(2.09), T_NK(0.954)",1,23.1,1.035,0.512,Immune,0.522,0.411,1.468,0.719
+CD69,ENSG00000110848,Breast,T cells,,T/NK:tissue_resident; Mast:effector_activation,Mast; T/NK,effector_activation; tissue_resident,tissue_resident,T_NK,"T_NK(1.262), Mast(1.022), B_cell(0.916)",2,11.3,0.508,0.166,Immune,0.105,0.101,0.912,0.14
+CD79A,ENSG00000105369,Breast+IO,B cells,B Cell;Proliferative;Plasma Cell;CD Molecule,B/Plasma:pan_B,B/Plasma,pan_B,,B_cell,"B_cell(2.792), Plasma(2.786), T_NK(0.391)",1,11.5,0.541,0.204,Immune,0.045,0.041,1.015,0.127
+CD79B,ENSG00000007312,Breast+IO,B cells,B Cell;Proliferative;CD Molecule,B/Plasma:pan_B,B/Plasma,pan_B,,B_cell,"B_cell(1.758), Plasma(1.039), T_NK(0.229)",1,7.3,0.327,0.1,Immune,0.071,0.084,0.573,0.111
+CD80,ENSG00000121594,Breast+IO,Macrophages,Dendritic Cell;Myeloid;CD Molecule,Myeloid/DC:macrophage_M1,Myeloid/DC,macrophage_M1,macrophage_M1,Macrophage_Mono,"Macrophage_Mono(0.457), B_cell(0.2), T_NK(0.142)",1,3.0,0.12,0.039,Immune,0.059,0.05,0.198,0.038
+CD83,ENSG00000112149,Breast+IO,Dendritic cells,B Cell;CD Molecule,B/Plasma:memory_B,B/Plasma,memory_B,memory_B,Macrophage_Mono,"Macrophage_Mono(1.688), B_cell(1.642), Dendritic(1.337)",1,16.3,0.734,0.341,Immune,0.342,0.331,1.196,0.26
+CD86,ENSG00000114013,Breast+IO,Macrophages,Macrophage;M1;CD Molecule,Myeloid/DC:macrophage_M1,Myeloid/DC,macrophage_M1,macrophage_M1,Macrophage_Mono,"Macrophage_Mono(1.714), Dendritic(1.637), B_cell(0.553)",1,11.5,0.486,0.175,Immune,0.215,0.181,0.786,0.196
+CD8A,ENSG00000153563,Breast+IO,T cells,T Cell;CD8+;Lineage Marker;CD Molecule,T/NK:cd8_lineage,T/NK,cd8_lineage,cd8_lineage,T_NK,"T_NK(1.997), Dendritic(0.707), Plasma(0.589)",1,15.1,0.717,0.358,Immune,0.268,0.294,1.174,0.298
+CD8B,ENSG00000172116,IO,,T Cell;CD Molecule,T/NK:cd8_lineage,T/NK,cd8_lineage,cd8_lineage,T_NK,"T_NK(0.506), Myoepithelial(0.161), Dendritic(0.156)",1,4.8,0.199,0.058,Immune,0.132,0.161,0.292,0.092
+CD9,ENSG00000010278,Breast,Breast glandular cells,,CAF/Adipo:preadipo; Mast:mast_core,CAF/Adipo; Mast,mast_core; preadipo,mast_core; preadipo,Myoepithelial,"Myoepithelial(3.217), Tumor(3.161), Adipocyte(1.934)",2,25.8,1.083,0.86,Epithelial,3.161,3.217,0.38,0.714
+CD93,ENSG00000125810,Breast,Endothelial cells,,,,,,Endothelial,"Endothelial(4.104), Pericyte(3.204), Macrophage_Mono(1.554)",0,19.8,0.95,0.574,Stroma,0.29,0.278,0.734,1.838
+CDC42EP1,ENSG00000128283,Breast,Breast glandular cells,,,,,,Tumor,"Tumor(0.783), Myoepithelial(0.694), Endothelial(0.374)",0,8.4,0.292,0.115,Cancer,0.783,0.694,0.091,0.271
+CDH1,ENSG00000039068,Breast,Breast cancer,,Tumor:pan_epithelial,Tumor,pan_epithelial,,Myoepithelial,"Myoepithelial(4.143), Tumor(3.952), Macrophage_Mono(0.403)",1,22.7,1.058,1.593,Epithelial,3.952,4.143,0.263,0.218
+CDKN1A,ENSG00000124762,IO,,Macrophage;Phagocytosis;Immune Escape;Tumorigenesis,Tumor:stress_g1arrest,Tumor,stress_g1arrest,,Endothelial,"Endothelial(1.845), Dendritic(1.548), Pericyte(1.54)",1,27.4,1.184,0.568,Stroma,1.354,1.207,0.965,1.459
+CEACAM6,ENSG00000086548,Breast+IO,Breast cancer,Epithelial Cell,Tumor:cancer_specific,Tumor,cancer_specific,,Tumor,"Tumor(2.848), Myoepithelial(2.773), Macrophage_Mono(0.286)",1,16.2,0.766,1.949,Cancer,2.848,2.773,0.179,0.198
+CEACAM8,ENSG00000124469,Breast+IO,Neutrophils,Tumor,,,,,Myoepithelial,"Myoepithelial(0.078), Tumor(0.061), Plasma(0.039)",0,1.1,0.041,0.012,Epithelial,0.061,0.078,0.036,0.031
+CENPF,ENSG00000117724,Breast+IO,Breast cancer,Cell Cycle Progression,Tumor:proliferating; Myeloid/DC:proliferating; B/Plasma:proliferating; CAF/Adipo:proliferating; Mast:proliferating,B/Plasma; CAF/Adipo; Mast; Myeloid/DC; Tumor,proliferating,proliferating; Proliferating,Myoepithelial,"Myoepithelial(0.901), Tumor(0.778), Macrophage_Mono(0.203)",5,7.1,0.258,0.159,Epithelial,0.778,0.901,0.125,0.086
+CHIT1,ENSG00000133063,IO,,Dendritic Cell,,,,,Macrophage_Mono,"Macrophage_Mono(0.672), Dendritic(0.206), Plasma(0.178)",0,3.5,0.151,0.128,Immune,0.11,0.111,0.221,0.065
+CLEC10A,ENSG00000132514,IO,,Dendritic Cell;Myeloid,Myeloid/DC:cDC2,Myeloid/DC,cDC2,cDC2,Dendritic,"Dendritic(2.067), Macrophage_Mono(1.11), T_NK(0.318)",1,8.4,0.374,0.165,Immune,0.107,0.115,0.607,0.189
+CLEC14A,ENSG00000176435,Breast,Adipocytes,,,,,,Endothelial,"Endothelial(2.35), Pericyte(1.445), Adipocyte(0.16)",0,8.0,0.363,0.171,Stroma,0.104,0.136,0.135,0.955
+CLEC9A,ENSG00000197992,Breast,Dendritic cells,,Myeloid/DC:cDC1,Myeloid/DC,cDC1,cDC1,Dendritic,"Dendritic(0.496), Macrophage_Mono(0.116), Myoepithelial(0.081)",1,2.1,0.084,0.029,Immune,0.062,0.081,0.12,0.042
+CLECL1,ENSG00000184293,Breast,B cells,,,,,,B_cell,"B_cell(0.613), Plasma(0.397), Dendritic(0.368)",0,4.9,0.201,0.057,Immune,0.101,0.11,0.33,0.059
+CLIC6,ENSG00000159212,Breast,Breast glandular cells,,,,,,Tumor,"Tumor(0.321), Myoepithelial(0.259), Adipocyte(0.179)",0,4.3,0.158,0.061,Cancer,0.321,0.259,0.1,0.141
+CMKLR1,ENSG00000174600,IO,,Angiogenesis,,,,,Macrophage_Mono,"Macrophage_Mono(0.986), Dendritic(0.565), Adipocyte(0.255)",0,5.8,0.239,0.077,Immune,0.089,0.071,0.324,0.216
+CPA3,ENSG00000163751,Breast+IO,Mast cells,Mast Cell,Mast:mast_core,Mast,mast_core,mast_core,Mast,"Mast(4.772), Myoepithelial(0.259), Tumor(0.198)",1,4.5,0.2,0.132,Epithelial,0.198,0.259,0.255,0.107
+CRISPLD2,ENSG00000103196,Breast,Smooth muscle cells,,,,,,Adipocyte,"Adipocyte(2.411), CAF_Fibroblast(2.232), Endothelial(1.874)",0,21.9,0.992,0.562,Stroma,0.465,0.542,0.581,2.108
+CSF1,ENSG00000184371,IO,,Monocyte;Macrophage,Mast:effector_activation,Mast,effector_activation,,Mast,"Mast(1.031), Adipocyte(0.97), Endothelial(0.811)",1,13.2,0.533,0.197,Stroma,0.515,0.627,0.397,0.786
+CSF1R,ENSG00000182578,IO,,Monocyte;Macrophage,Myeloid/DC:core_macrophage,Myeloid/DC,core_macrophage,,Macrophage_Mono,"Macrophage_Mono(2.826), Dendritic(1.814), T_NK(0.41)",1,13.4,0.59,0.248,Immune,0.24,0.207,0.92,0.313
+CTH,ENSG00000116761,Breast,Smooth muscle cells,,,,,,Myoepithelial,"Myoepithelial(0.217), Tumor(0.194), Plasma(0.15)",0,2.9,0.102,0.033,Epithelial,0.194,0.217,0.073,0.082
+CTLA4,ENSG00000163599,Breast+IO,T cells,T Cell;Regulatory;Exhausted;Checkpoint,T/NK:exhausted; T/NK:treg,T/NK,exhausted; treg,exhausted; Treg,T_NK,"T_NK(1.525), Dendritic(0.399), Macrophage_Mono(0.316)",2,10.1,0.47,0.203,Immune,0.11,0.112,0.819,0.161
+CTSG,ENSG00000100448,Breast,Mast cells,,Mast:mast_core,Mast,mast_core,mast_core,Mast,"Mast(3.001), Plasma(0.064), Macrophage_Mono(0.064)",1,1.8,0.084,0.046,Immune,0.034,0.044,0.134,0.037
+CTSL,ENSG00000135047,IO,,Metastasis,,,,,Macrophage_Mono,"Macrophage_Mono(2.708), Adipocyte(1.424), Dendritic(1.116)",0,23.3,0.982,0.519,Stroma,0.988,0.886,0.967,1.028
+CTSS,ENSG00000163131,IO,,Tumor,Myeloid/DC:core_macrophage,Myeloid/DC,core_macrophage,,Macrophage_Mono,"Macrophage_Mono(3.94), Dendritic(3.296), Plasma(2.609)",1,37.6,1.747,0.906,Immune,0.795,0.642,2.575,1.111
+CTTN,ENSG00000085733,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(3.607), Tumor(3.427), Endothelial(2.47)",0,36.7,1.616,1.182,Epithelial,3.427,3.607,0.58,2.025
+CX3CR1,ENSG00000168329,Breast+IO,Macrophages,T Cell;Cancer Stemness,,,,,Dendritic,"Dendritic(0.749), Macrophage_Mono(0.509), Myoepithelial(0.277)",0,5.5,0.222,0.074,Immune,0.211,0.277,0.283,0.126
+CXCL1,ENSG00000163739,IO,,Macrophage,,,,,Adipocyte,"Adipocyte(0.509), CAF_Fibroblast(0.486), Tumor(0.458)",0,7.8,0.331,0.235,Cancer,0.458,0.386,0.254,0.376
+CXCL11,ENSG00000169248,IO,,Immune Cell Migration,,,,,Tumor,"Tumor(0.383), Macrophage_Mono(0.377), Myoepithelial(0.35)",0,6.7,0.274,0.179,Cancer,0.383,0.35,0.291,0.169
+CXCL12,ENSG00000107562,Breast+IO,Breast cancer,Tumor Suppression;Growth;Evasion,Endothelial:activated_inflam; CAF/Adipo:iCAF,CAF/Adipo; Endothelial,activated_inflam; iCAF,iCAF,Adipocyte,"Adipocyte(4.349), Pericyte(4.035), CAF_Fibroblast(3.87)",2,47.5,2.478,1.996,Stroma,0.634,0.745,2.489,3.919
+CXCL13,ENSG00000156234,IO,,T Cell;Regulatory;Chemokine,CAF/Adipo:iCAF,CAF/Adipo,iCAF,iCAF,B_cell,"B_cell(2.805), Plasma(1.432), T_NK(1.16)",1,15.7,0.804,0.708,Immune,0.328,0.452,1.326,0.292
+CXCL16,ENSG00000161921,Breast+IO,Macrophages,Immune Cell Migration;Natural Killer T Cell,,,,,Macrophage_Mono,"Macrophage_Mono(1.964), Dendritic(1.503), Tumor(1.095)",0,18.3,0.73,0.308,Cancer,1.095,1.053,0.785,0.378
+CXCL5,ENSG00000163735,Breast+IO,Macrophages,Macrophage;Chemokine,,,,,Myoepithelial,"Myoepithelial(0.115), Tumor(0.101), Macrophage_Mono(0.061)",0,1.7,0.062,0.021,Epithelial,0.101,0.115,0.05,0.053
+CXCR4,ENSG00000121966,Breast+IO,T cells,Immune Cell Migration,Endothelial:tip_sprouting,Endothelial,tip_sprouting,Tip/sprouting,B_cell,"B_cell(4.131), T_NK(3.493), Plasma(2.879)",1,39.9,1.952,1.062,Immune,0.938,0.987,3.167,0.692
+CXCR5,ENSG00000160683,IO,,Immune Cell Migration;Chemokine,B/Plasma:germinal_center,B/Plasma,germinal_center,germinal_center,B_cell,"B_cell(1.123), T_NK(0.273), Plasma(0.204)",1,4.6,0.209,0.059,Immune,0.039,0.034,0.386,0.044
+CXCR6,ENSG00000172215,IO,,T Cell;CD8+;Effector Memory;Resident Memory,,,,,T_NK,"T_NK(0.517), Dendritic(0.126), Macrophage_Mono(0.119)",0,4.1,0.174,0.054,Immune,0.085,0.087,0.281,0.063
+CYTIP,ENSG00000115165,Breast,T cells,,,,,,Plasma,"Plasma(2.588), T_NK(2.383), B_cell(2.216)",0,26.9,1.216,0.464,Immune,0.5,0.507,2.065,0.342
+DAPK3,ENSG00000167657,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(0.768), Tumor(0.713), Endothelial(0.409)",0,8.5,0.301,0.122,Epithelial,0.713,0.768,0.122,0.294
+DMKN,ENSG00000161249,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(0.695), Tumor(0.562), Adipocyte(0.109)",0,5.2,0.182,0.072,Epithelial,0.562,0.695,0.072,0.078
+DNAAF1,ENSG00000154099,Breast,B cells,,,,,,Myoepithelial,"Myoepithelial(0.246), Tumor(0.216), Plasma(0.049)",0,2.4,0.08,0.028,Epithelial,0.216,0.246,0.043,0.037
+DNTTIP1,ENSG00000101457,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(1.505), Tumor(1.329), Macrophage_Mono(0.61)",0,17.0,0.633,0.259,Epithelial,1.329,1.505,0.445,0.426
+DPT,ENSG00000143196,Breast,Fibroblasts,,CAF/Adipo:pan_CAF; CAF/Adipo:complement_caf,CAF/Adipo,complement_caf; pan_CAF,complement_caf,CAF_Fibroblast,"CAF_Fibroblast(0.879), Adipocyte(0.791), Mast(0.433)",2,8.4,0.363,0.124,Stroma,0.09,0.124,0.333,0.632
+DSC2,ENSG00000134755,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.895), Tumor(2.856), Macrophage_Mono(0.891)",0,20.9,0.863,0.697,Epithelial,2.856,2.895,0.362,0.212
+DSP,ENSG00000096696,Breast,Breast myoepithelial cells,,,,,,Myoepithelial,"Myoepithelial(4.147), Tumor(3.985), Endothelial(0.577)",0,24.1,1.109,1.468,Epithelial,3.985,4.147,0.263,0.371
+DST,ENSG00000151914,Breast,Breast myoepithelial cells,,,,,,Myoepithelial,"Myoepithelial(4.583), Tumor(3.79), Endothelial(2.563)",0,40.7,1.874,1.669,Epithelial,3.79,4.583,0.891,2.085
+DUSP2,ENSG00000158050,Breast+IO,T cells,Tumorigenesis,,,,,T_NK,"T_NK(0.88), Mast(0.387), B_cell(0.384)",0,9.3,0.392,0.141,Immune,0.327,0.381,0.581,0.126
+DUSP5,ENSG00000138166,Breast,B cells,,,,,,Myoepithelial,"Myoepithelial(1.27), Plasma(1.212), Tumor(1.136)",0,18.0,0.704,0.313,Epithelial,1.136,1.27,0.614,0.537
+EGFL7,ENSG00000172889,Breast,Adipocytes,,,,,,Endothelial,"Endothelial(0.915), Pericyte(0.478), Macrophage_Mono(0.083)",0,3.2,0.132,0.046,Stroma,0.058,0.072,0.036,0.356
+EGFR,ENSG00000146648,Breast+IO,Breast cancer,Epithelial Cell;Oncogene,Tumor:basal_triple_neg,Tumor,basal_triple_neg,basal_triple_neg,Adipocyte,"Adipocyte(1.577), Myoepithelial(1.162), CAF_Fibroblast(1.11)",1,15.2,0.616,0.257,Epithelial,0.972,1.162,0.266,0.944
+EGR3,ENSG00000179388,IO,,Metastasis,,,,,Adipocyte,"Adipocyte(1.411), Myoepithelial(1.328), Endothelial(1.217)",0,19.2,0.841,0.423,Epithelial,0.979,1.328,0.575,1.19
+EIF4EBP1,ENSG00000187840,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(1.839), Tumor(1.683), Macrophage_Mono(0.431)",0,14.9,0.559,0.338,Epithelial,1.683,1.839,0.25,0.232
+ENAH,ENSG00000154380,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(4.015), Tumor(4.002), Endothelial(1.816)",0,33.8,1.554,1.667,Epithelial,4.002,4.015,0.518,1.479
+EPCAM,ENSG00000119888,Breast+IO,Epithelial cells,Tumorigenesis,Tumor:pan_epithelial,Tumor,pan_epithelial,,Myoepithelial,"Myoepithelial(4.49), Tumor(4.481), Macrophage_Mono(0.567)",1,25.6,1.266,2.441,Epithelial,4.481,4.49,0.353,0.393
+ERBB2,ENSG00000141736,Breast+IO,Breast cancer,Oncogene,Tumor:her2,Tumor,her2,her2,Tumor,"Tumor(6.105), Myoepithelial(5.859), Adipocyte(1.415)",1,36.8,2.088,11.21,Cancer,6.105,5.859,0.787,1.271
+ERBB3,ENSG00000065361,IO,,Oncogene,,,,,Myoepithelial,"Myoepithelial(2.503), Tumor(2.495), Macrophage_Mono(0.14)",0,15.7,0.622,0.506,Epithelial,2.495,2.503,0.102,0.091
+ERN1,ENSG00000178607,Breast,B cells,,,,,,Plasma,"Plasma(2.065), Myoepithelial(2.021), Tumor(1.914)",0,29.2,1.229,0.66,Epithelial,1.914,2.021,1.223,0.737
+ESM1,ENSG00000164283,Breast,Endothelial cells,,Endothelial:tip_sprouting,Endothelial,tip_sprouting,Tip/sprouting,Endothelial,"Endothelial(0.304), Myoepithelial(0.094), Tumor(0.082)",1,2.0,0.081,0.034,Stroma,0.082,0.094,0.05,0.134
+ESR1,ENSG00000091831,Breast+IO,Breast cancer,Oncogene,Tumor:luminal_mature,Tumor,luminal_mature,,Myoepithelial,"Myoepithelial(0.967), Tumor(0.877), Plasma(0.33)",1,8.0,0.311,0.206,Epithelial,0.877,0.967,0.144,0.166
+FADD,ENSG00000168040,IO,,Apoptosis;Tumorigenesis,,,,,Myoepithelial,"Myoepithelial(1.637), Tumor(1.428), Endothelial(0.551)",0,17.1,0.643,0.277,Epithelial,1.428,1.637,0.417,0.432
+FAM107B,ENSG00000065809,Breast,B cells,,,,,,B_cell,"B_cell(2.832), T_NK(2.777), Myoepithelial(2.475)",0,45.7,2.061,1.117,Epithelial,2.468,2.475,2.447,1.139
+FAM49A,ENSG00000197872,Breast,Macrophages,,,,,,Macrophage_Mono,"Macrophage_Mono(0.863), Dendritic(0.85), Plasma(0.617)",0,10.6,0.427,0.136,Immune,0.277,0.308,0.555,0.332
+FAS,ENSG00000026103,IO,,T Cell,,,,,Adipocyte,"Adipocyte(1.398), T_NK(1.24), CAF_Fibroblast(1.174)",0,21.5,0.907,0.329,Stroma,0.667,0.799,0.933,1.059
+FASLG,ENSG00000117560,IO,,T Cell,,,,,T_NK,"T_NK(0.268), Myoepithelial(0.085), Mast(0.085)",0,2.5,0.101,0.03,Immune,0.078,0.085,0.149,0.038
+FASN,ENSG00000169710,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(3.089), Tumor(3.016), Adipocyte(0.637)",0,20.8,0.914,1.607,Epithelial,3.016,3.089,0.287,0.392
+FBLN1,ENSG00000077942,Breast,Fibroblasts,,CAF/Adipo:pan_CAF; CAF/Adipo:complement_caf,CAF/Adipo,complement_caf; pan_CAF,complement_caf,Adipocyte,"Adipocyte(2.934), CAF_Fibroblast(2.521), Mast(1.051)",2,23.0,1.035,0.52,Stroma,0.543,0.664,0.773,1.877
+FCER1A,ENSG00000179639,Breast+IO,Dendritic cells,Dendritic Cell;Myeloid,Myeloid/DC:cDC2; Mast:mast_core,Mast; Myeloid/DC,cDC2; mast_core,cDC2; mast_core,Dendritic,"Dendritic(1.984), Mast(0.594), Macrophage_Mono(0.54)",2,6.7,0.31,0.164,Immune,0.092,0.092,0.478,0.198
+FCER1G,ENSG00000158869,Breast,NK cells,,Myeloid/DC:core_macrophage,Myeloid/DC,core_macrophage,,Macrophage_Mono,"Macrophage_Mono(4.374), Dendritic(3.679), Mast(1.743)",1,29.6,1.384,0.838,Immune,0.846,0.735,1.945,0.875
+FCER2,ENSG00000104921,IO,,TLS,B/Plasma:naive_B,B/Plasma,naive_B,naive_B,B_cell,"B_cell(1.553), Plasma(0.768), Macrophage_Mono(0.191)",1,5.5,0.258,0.089,Immune,0.048,0.06,0.474,0.055
+FCGR1A,ENSG00000150337,IO,,Macrophage,,,,,Macrophage_Mono,"Macrophage_Mono(1.34), Dendritic(0.67), Myoepithelial(0.237)",0,7.8,0.315,0.108,Immune,0.235,0.237,0.431,0.185
+FCGR2A,ENSG00000143226,IO,,,,,,,Macrophage_Mono,"Macrophage_Mono(3.364), Dendritic(2.5), Plasma(1.039)",0,19.6,0.888,0.422,Immune,0.394,0.347,1.338,0.519
+FCGR3A,ENSG00000203747,Breast+IO,Monocytes,Monocyte,T/NK:nk_like,T/NK,nk_like,nk_like,Macrophage_Mono,"Macrophage_Mono(1.464), Dendritic(0.575), Endothelial(0.293)",1,8.7,0.359,0.144,Immune,0.292,0.267,0.468,0.233
+FCMR,ENSG00000162894,IO,,B Cell,,,,,B_cell,"B_cell(3.923), T_NK(2.808), Plasma(2.048)",0,28.4,1.372,0.612,Immune,0.502,0.503,2.375,0.362
+FEZ1,ENSG00000149557,IO,,Tumor Supression,,,,,Endothelial,"Endothelial(0.336), Myoepithelial(0.329), Pericyte(0.298)",0,4.9,0.19,0.06,Epithelial,0.247,0.329,0.117,0.269
+FGL2,ENSG00000127951,Breast,Macrophages,,,,,,Dendritic,"Dendritic(3.405), Macrophage_Mono(3.165), T_NK(1.352)",0,28.1,1.296,0.645,Immune,0.436,0.436,1.787,1.142
+FLNB,ENSG00000136068,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(3.458), Tumor(3.28), Endothelial(2.583)",0,34.8,1.533,1.112,Epithelial,3.28,3.458,0.763,1.536
+FLT3LG,ENSG00000090554,IO,,Dendritic Cell,,,,,Pericyte,"Pericyte(7.451), Endothelial(7.398), B_cell(7.361)",0,99.4,7.272,32.272,Stroma,7.101,6.939,7.295,7.334
+FN1,ENSG00000115414,IO,,Fibroblast;Lineage Marker,Tumor:emt; Endothelial:endmt; CAF/Adipo:matrix_remodel; CAF/Adipo:emt,CAF/Adipo; Endothelial; Tumor,emt; endmt; matrix_remodel,emt; matrix_remodel; EndMT,CAF_Fibroblast,"CAF_Fibroblast(4.451), Adipocyte(4.337), Endothelial(3.764)",4,52.3,2.78,4.363,Stroma,2.461,2.219,2.147,4.158
+FOXA1,ENSG00000129514,Breast,Breast cancer,,Tumor:luminal_mature,Tumor,luminal_mature,,Myoepithelial,"Myoepithelial(3.464), Tumor(3.436), Macrophage_Mono(0.217)",1,18.6,0.843,1.16,Epithelial,3.436,3.464,0.112,0.127
+FOXC2,ENSG00000176692,Breast,Smooth muscle cells,,,,,,Myoepithelial,"Myoepithelial(0.415), Tumor(0.299), Endothelial(0.283)",0,3.7,0.14,0.05,Epithelial,0.299,0.415,0.056,0.157
+FOXP3,ENSG00000049768,Breast+IO,T cells,T Cell;Regulatory,T/NK:treg,T/NK,treg,Treg,T_NK,"T_NK(0.687), Macrophage_Mono(0.162), Dendritic(0.154)",1,5.6,0.24,0.088,Immune,0.151,0.149,0.375,0.082
+FSTL3,ENSG00000070404,Breast,Smooth muscle cells,,,,,,Adipocyte,"Adipocyte(1.054), CAF_Fibroblast(0.789), Myoepithelial(0.769)",0,11.2,0.428,0.166,Epithelial,0.63,0.769,0.196,0.673
+GATA2,ENSG00000179348,IO,,Oncogene,Mast:mast_core,Mast,mast_core,mast_core,Mast,"Mast(2.067), Endothelial(0.463), Pericyte(0.258)",1,4.3,0.162,0.063,Epithelial,0.233,0.256,0.111,0.198
+GATA3,ENSG00000107485,Breast+IO,Breast cancer,T Cell;Innate Lymphoid Cell;ILC2;Naive,Tumor:luminal_mature; T/NK:th2,T/NK; Tumor,luminal_mature; th2,,Myoepithelial,"Myoepithelial(4.043), Tumor(3.77), T_NK(1.243)",2,27.0,1.274,2.007,Epithelial,3.77,4.043,0.738,0.296
+GJB2,ENSG00000165474,Breast,Macrophages,,,,,,CAF_Fibroblast,"CAF_Fibroblast(0.477), Adipocyte(0.388), Tumor(0.253)",0,5.4,0.215,0.102,Stroma,0.253,0.191,0.128,0.339
+GLIPR1,ENSG00000139278,Breast,Breast myoepithelial cells,,,,,,Dendritic,"Dendritic(2.594), Macrophage_Mono(2.275), B_cell(1.739)",0,30.5,1.338,0.517,Immune,0.818,1.014,1.801,0.971
+GNLY,ENSG00000115523,Breast+IO,NK cells,T Cell;CD8+;Effector;Cytotoxic,T/NK:cytotoxic_effector,T/NK,cytotoxic_effector,cytotoxic_effector,T_NK,"T_NK(0.314), Endothelial(0.085), Dendritic(0.071)",1,2.4,0.108,0.05,Immune,0.048,0.061,0.166,0.055
+GPR183,ENSG00000169508,Breast+IO,T cells,T Cell,,,,,Dendritic,"Dendritic(2.567), T_NK(2.409), Macrophage_Mono(2.273)",0,27.2,1.273,0.565,Immune,0.332,0.295,2.145,0.533
+GPR34,ENSG00000171659,IO,,Dendritic Cell,,,,,Macrophage_Mono,"Macrophage_Mono(1.262), Dendritic(0.575), Mast(0.32)",0,7.3,0.305,0.099,Immune,0.169,0.169,0.44,0.186
+GZMA,ENSG00000145649,Breast+IO,T cells,T Cell;Naive;CD8+,T/NK:cytotoxic_effector,T/NK,cytotoxic_effector,cytotoxic_effector,T_NK,"T_NK(1.464), Dendritic(0.41), Plasma(0.335)",1,10.3,0.473,0.177,Immune,0.128,0.131,0.807,0.178
+GZMK,ENSG00000113088,Breast+IO,T cells,T Cell;Effector;CD8+;Exhausted,T/NK:cytotoxic_effector,T/NK,cytotoxic_effector,cytotoxic_effector,T_NK,"T_NK(0.106), B_cell(0.024), Plasma(0.023)",1,0.7,0.031,0.007,Immune,0.004,0.002,0.057,0.009
+HAVCR2,ENSG00000135077,Breast+IO,T cells,T Cell;Exhausted,T/NK:exhausted,T/NK,exhausted,exhausted,Macrophage_Mono,"Macrophage_Mono(2.134), Dendritic(1.638), T_NK(0.577)",1,13.1,0.553,0.223,Immune,0.317,0.263,0.86,0.225
+HMGA1,ENSG00000137309,Breast,Breast glandular cells,,Tumor:proliferating; B/Plasma:proliferating; Mast:proliferating,B/Plasma; Mast; Tumor,proliferating,proliferating; Proliferating,Myoepithelial,"Myoepithelial(2.852), Tumor(2.765), B_cell(1.525)",3,33.0,1.401,0.826,Epithelial,2.765,2.852,1.298,0.561
+HOOK2,ENSG00000095066,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(1.223), Tumor(1.084), Adipocyte(0.295)",0,10.1,0.349,0.151,Epithelial,1.084,1.223,0.122,0.174
+HOXD8,ENSG00000175879,Breast,Adipocytes,,,,,,Endothelial,"Endothelial(1.344), Pericyte(0.956), Adipocyte(0.512)",0,9.4,0.371,0.13,Stroma,0.358,0.406,0.153,0.759
+HOXD9,ENSG00000128709,Breast,Adipocytes,,,,,,Endothelial,"Endothelial(1.01), Pericyte(0.592), Myoepithelial(0.11)",0,4.2,0.173,0.063,Stroma,0.094,0.11,0.061,0.427
+HPX,ENSG00000110169,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(0.79), Tumor(0.763), Macrophage_Mono(0.099)",0,6.4,0.225,0.127,Epithelial,0.763,0.79,0.074,0.076
+IDO1,ENSG00000131203,IO,,Myeloid Cell;Suppression,,,,,Dendritic,"Dendritic(0.76), T_NK(0.567), Macrophage_Mono(0.439)",0,7.2,0.315,0.181,Immune,0.256,0.199,0.453,0.135
+IFIT2,ENSG00000119922,IO,,Tumorigenesis;Metastasis,,,,,Macrophage_Mono,"Macrophage_Mono(0.609), Endothelial(0.45), Tumor(0.432)",0,8.8,0.365,0.212,Cancer,0.432,0.397,0.371,0.312
+IFIT3,ENSG00000119917,IO,,Tumorigenesis;Metastasis,Myeloid/DC:ifn_response; Mast:ifn_response,Mast; Myeloid/DC,ifn_response,ifn_response,Macrophage_Mono,"Macrophage_Mono(1.301), Endothelial(1.214), Tumor(0.976)",2,19.2,0.837,0.561,Cancer,0.976,0.934,0.769,0.866
+IFNL1,ENSG00000182393,IO,,Immune Signalling,,,,,Myoepithelial,"Myoepithelial(0.03), Tumor(0.028), T_NK(0.026)",0,0.6,0.021,0.006,Epithelial,0.028,0.03,0.022,0.013
+IGF1,ENSG00000017427,Breast,Fibroblasts,,,,,,Adipocyte,"Adipocyte(1.744), CAF_Fibroblast(1.291), Macrophage_Mono(0.819)",0,12.8,0.568,0.221,Stroma,0.135,0.167,0.514,1.001
+IGHG1,ENSG00000211896,IO,,Plasma Cell,B/Plasma:igG,B/Plasma,igG,,Plasma,"Plasma(5.276), B_cell(3.065), T_NK(1.63)",1,27.3,1.455,2.731,Immune,0.575,0.538,2.137,0.988
+IGHM,ENSG00000211899,IO,,B Cell;Naive;Plasma Cell;Plasmablast,B/Plasma:igM,B/Plasma,igM,,B_cell,"B_cell(4.029), Plasma(3.409), T_NK(1.11)",1,21.0,1.088,0.938,Immune,0.287,0.278,1.806,0.498
+IGSF6,ENSG00000140749,Breast,Macrophages,,,,,,Macrophage_Mono,"Macrophage_Mono(2.171), Dendritic(1.523), T_NK(0.518)",0,13.0,0.557,0.227,Immune,0.301,0.253,0.849,0.272
+IL10,ENSG00000136634,IO,,Immune Cell Regulation,Myeloid/DC:macrophage_M2,Myeloid/DC,macrophage_M2,macrophage_M2,Macrophage_Mono,"Macrophage_Mono(0.559), T_NK(0.162), Adipocyte(0.133)",1,3.6,0.144,0.046,Immune,0.099,0.099,0.191,0.1
+IL12B,ENSG00000113302,IO,,Immune Cell Regulation,,,,,T_NK,"T_NK(0.059), Dendritic(0.048), B_cell(0.042)",0,1.0,0.039,0.012,Immune,0.037,0.041,0.048,0.025
+IL12RB2,ENSG00000081985,IO,,Immune Cell Regulation,,,,,T_NK,"T_NK(0.394), Macrophage_Mono(0.202), Tumor(0.183)",0,4.5,0.177,0.058,Immune,0.183,0.177,0.239,0.072
+IL13,ENSG00000169194,IO,,Immune Cell Regulation;ILC2,T/NK:th2; Mast:effector_activation,Mast; T/NK,effector_activation; th2,,Mast,"Mast(0.248), Myoepithelial(0.065), Tumor(0.048)",2,1.1,0.041,0.013,Epithelial,0.048,0.065,0.044,0.031
+IL15,ENSG00000164136,IO,,Immune Cell Regulation,,,,,Endothelial,"Endothelial(0.669), Dendritic(0.468), Macrophage_Mono(0.452)",0,9.2,0.361,0.121,Stroma,0.343,0.363,0.361,0.381
+IL15RA,ENSG00000134470,IO,,Immune Cell Regulation,,,,,Adipocyte,"Adipocyte(0.599), Plasma(0.563), CAF_Fibroblast(0.505)",0,9.6,0.382,0.118,Stroma,0.256,0.237,0.372,0.505
+IL18,ENSG00000150782,IO,,Immune Checkpoint,,,,,Macrophage_Mono,"Macrophage_Mono(1.208), Dendritic(1.015), Tumor(0.344)",0,9.4,0.373,0.138,Immune,0.344,0.342,0.529,0.14
+IL1A,ENSG00000115008,IO,,Immune Cell Regulation,,,,,Myoepithelial,"Myoepithelial(0.068), Macrophage_Mono(0.067), Tumor(0.056)",0,1.2,0.045,0.013,Epithelial,0.056,0.068,0.047,0.033
+IL1B,ENSG00000125538,IO,,Immune Cell Regulation;Epithelial Cell,Myeloid/DC:macrophage_M1,Myeloid/DC,macrophage_M1,macrophage_M1,Dendritic,"Dendritic(0.64), Macrophage_Mono(0.558), Endothelial(0.185)",1,4.5,0.192,0.09,Immune,0.147,0.133,0.247,0.139
+IL23A,ENSG00000110944,IO,,Dendritic Cell;Tissue Repair,,,,,T_NK,"T_NK(0.145), B_cell(0.128), Plasma(0.107)",0,2.3,0.089,0.025,Immune,0.09,0.089,0.115,0.046
+IL2RA,ENSG00000134460,Breast+IO,T cells,T Cell;Regulatory,T/NK:treg,T/NK,treg,Treg,T_NK,"T_NK(0.398), Macrophage_Mono(0.341), B_cell(0.214)",1,4.1,0.176,0.057,Immune,0.053,0.05,0.302,0.061
+IL2RG,ENSG00000147168,Breast+IO,Dendritic cells,Immune Cell Regulation;T Cell,,,,,T_NK,"T_NK(2.759), B_cell(2.207), Plasma(2.076)",0,27.0,1.25,0.478,Immune,0.255,0.198,2.217,0.397
+IL3RA,ENSG00000185291,Breast,Dendritic cells,,,,,,Endothelial,"Endothelial(1.15), Dendritic(0.815), Pericyte(0.613)",0,6.4,0.275,0.103,Stroma,0.067,0.07,0.254,0.476
+IL4,ENSG00000113520,IO,,Macrophage;Neutrophil;Polarization;T Cell;Mast Cell;Basophil,T/NK:th2; Mast:effector_activation,Mast; T/NK,effector_activation; th2,,Myoepithelial,"Myoepithelial(0.067), Tumor(0.056), Plasma(0.051)",2,1.2,0.043,0.012,Epithelial,0.056,0.067,0.041,0.037
+IL5,ENSG00000113525,IO,,Innate Lymphoid Cell;ILC2,T/NK:th2,T/NK,th2,,Mast,"Mast(0.086), Myoepithelial(0.078), Tumor(0.059)",1,1.2,0.046,0.013,Epithelial,0.059,0.078,0.048,0.034
+IL6,ENSG00000136244,IO,,Immune Cell Regulation;Neutrophil,CAF/Adipo:iCAF; Mast:effector_activation,CAF/Adipo; Mast,effector_activation; iCAF,iCAF,Endothelial,"Endothelial(1.089), Pericyte(0.942), CAF_Fibroblast(0.546)",2,8.1,0.365,0.207,Stroma,0.145,0.142,0.247,0.741
+IL7R,ENSG00000168685,Breast+IO,T cells,T Cell;Survival;Memory,T/NK:naive_memory,T/NK,naive_memory,naive_memory,T_NK,"T_NK(3.625), Dendritic(1.388), B_cell(1.112)",1,24.3,1.225,0.639,Immune,0.19,0.168,2.152,0.464
+IRF1,ENSG00000125347,IO,,,Myeloid/DC:ifn_response; Mast:ifn_response,Mast; Myeloid/DC,ifn_response,ifn_response,T_NK,"T_NK(1.999), Plasma(1.9), Dendritic(1.576)",2,32.0,1.386,0.666,Immune,1.374,1.394,1.737,0.829
+IRF4,ENSG00000137265,IO,,T Cell;Regulatory,Myeloid/DC:cDC2; B/Plasma:plasma,B/Plasma; Myeloid/DC,cDC2; plasma,plasma; cDC2,Plasma,"Plasma(2.757), Dendritic(0.916), T_NK(0.52)",2,8.6,0.378,0.142,Immune,0.07,0.066,0.669,0.126
+IRF8,ENSG00000140968,IO,,Dendritic Cell;Plasmacytoid,Myeloid/DC:pDC; Myeloid/DC:cDC1,Myeloid/DC,cDC1; pDC,pDC; cDC1,B_cell,"B_cell(2.659), Dendritic(2.474), Macrophage_Mono(1.82)",2,21.3,0.993,0.497,Immune,0.273,0.243,1.641,0.465
+ITGAM,ENSG00000169896,Breast+IO,Myeloid cells,Monocyte;Granulocyte;Macrophage;Natural Killer Cell;T Cell,Myeloid/DC:core_macrophage,Myeloid/DC,core_macrophage,,Macrophage_Mono,"Macrophage_Mono(1.318), Dendritic(0.837), Mast(0.477)",1,9.0,0.369,0.148,Immune,0.332,0.422,0.527,0.133
+ITGAX,ENSG00000140678,Breast+IO,Dendritic cells,,B/Plasma:atypical_B,B/Plasma,atypical_B,atypical_B,Dendritic,"Dendritic(3.008), Macrophage_Mono(2.96), Mast(0.99)",1,16.3,0.766,0.488,Immune,0.285,0.209,1.243,0.333
+ITM2C,ENSG00000135916,Breast,B cells,,Myeloid/DC:pDC,Myeloid/DC,pDC,pDC,Plasma,"Plasma(3.538), Dendritic(1.681), B_cell(1.378)",1,26.0,1.141,0.57,Immune,0.91,1.008,1.408,0.882
+JUN,ENSG00000177606,IO,,Proto-Oncogene,,,,,Myoepithelial,"Myoepithelial(3.559), Tumor(3.35), Endothelial(2.716)",0,44.2,2.061,1.709,Epithelial,3.35,3.559,1.328,2.358
+JUP,ENSG00000173801,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.446), Tumor(2.283), Endothelial(0.515)",0,17.9,0.695,0.472,Epithelial,2.283,2.446,0.203,0.327
+KARS,ENSG00000065427,Breast,Breast myoepithelial cells,,,,,,Myoepithelial,"Myoepithelial(1.537), Tumor(1.4), Endothelial(0.682)",0,19.3,0.727,0.279,Epithelial,1.4,1.537,0.572,0.486
+KDR,ENSG00000128052,Breast,Adipocytes,,Endothelial:pan_endothelial,Endothelial,pan_endothelial,,Endothelial,"Endothelial(1.638), Pericyte(1.216), Myoepithelial(0.219)",1,6.8,0.292,0.129,Stroma,0.185,0.219,0.111,0.685
+KIT,ENSG00000157404,Breast+IO,Breast cancer,Proto-Oncogene,Tumor:luminal_progenitor; Mast:mast_core,Mast; Tumor,luminal_progenitor; mast_core,mast_core,Mast,"Mast(3.097), Tumor(0.858), Myoepithelial(0.653)",2,8.7,0.359,0.223,Cancer,0.858,0.653,0.256,0.171
+KLF5,ENSG00000102554,Breast,Breast myoepithelial cells,,,,,,Tumor,"Tumor(1.103), Myoepithelial(1.061), Adipocyte(0.194)",0,9.4,0.333,0.157,Cancer,1.103,1.061,0.114,0.129
+KLRB1,ENSG00000111796,Breast+IO,T cells,T Cell;CD8+;Naive;Natural Killer Cell,T/NK:th17,T/NK,th17,th17,T_NK,"T_NK(1.53), B_cell(0.571), Dendritic(0.54)",1,11.8,0.55,0.212,Immune,0.146,0.154,0.924,0.232
+KLRC1,ENSG00000134545,Breast+IO,T cells,,T/NK:nk_like,T/NK,nk_like,nk_like,T_NK,"T_NK(0.387), Tumor(0.127), Myoepithelial(0.122)",1,3.7,0.152,0.052,Immune,0.127,0.122,0.217,0.063
+KLRD1,ENSG00000134539,Breast+IO,NK cells,Natural Killer Cell,T/NK:nk_like,T/NK,nk_like,nk_like,T_NK,"T_NK(0.426), Dendritic(0.117), Myoepithelial(0.106)",1,3.7,0.157,0.055,Immune,0.093,0.106,0.235,0.077
+KLRF1,ENSG00000150045,Breast+IO,NK cells,,T/NK:nk_like,T/NK,nk_like,nk_like,T_NK,"T_NK(0.278), Myoepithelial(0.199), Tumor(0.191)",1,4.2,0.168,0.061,Immune,0.191,0.199,0.206,0.09
+KRT14,ENSG00000186847,Breast,Epithelial cells,,Tumor:basal_triple_neg,Tumor,basal_triple_neg,basal_triple_neg,Myoepithelial,"Myoepithelial(3.252), Tumor(2.394), Macrophage_Mono(0.355)",1,15.3,0.706,0.86,Epithelial,2.394,3.252,0.182,0.28
+KRT23,ENSG00000108244,Breast,Breast glandular cells,,Tumor:luminal_progenitor,Tumor,luminal_progenitor,,Tumor,"Tumor(1.388), Myoepithelial(1.045), Macrophage_Mono(0.194)",1,9.6,0.386,0.415,Cancer,1.388,1.045,0.108,0.117
+KRT5,ENSG00000186081,Breast,Breast myoepithelial cells,,Tumor:basal_triple_neg,Tumor,basal_triple_neg,basal_triple_neg,Myoepithelial,"Myoepithelial(2.614), Tumor(1.941), Macrophage_Mono(0.298)",1,13.1,0.58,0.544,Epithelial,1.941,2.614,0.172,0.215
+KRT6B,ENSG00000185479,Breast,Breast myoepithelial cells,,Tumor:basal_triple_neg,Tumor,basal_triple_neg,basal_triple_neg,Myoepithelial,"Myoepithelial(1.754), Tumor(1.552), Macrophage_Mono(0.211)",1,10.5,0.443,0.411,Epithelial,1.552,1.754,0.122,0.143
+KRT7,ENSG00000135480,Breast,Breast cancer,,Tumor:pan_epithelial,Tumor,pan_epithelial,,Myoepithelial,"Myoepithelial(4.93), Tumor(4.904), Macrophage_Mono(0.647)",1,26.9,1.375,3.093,Epithelial,4.904,4.93,0.358,0.436
+KRT8,ENSG00000170421,Breast,Epithelial cells,,Tumor:pan_epithelial,Tumor,pan_epithelial,,Myoepithelial,"Myoepithelial(4.01), Tumor(3.947), Endothelial(0.905)",1,31.0,1.407,1.655,Epithelial,3.947,4.01,0.673,0.742
+LAG3,ENSG00000089692,Breast+IO,T cells,T Cell;Exhaustion;Immune Checkpoint,T/NK:exhausted,T/NK,exhausted,exhausted,T_NK,"T_NK(0.331), Macrophage_Mono(0.142), Plasma(0.132)",1,3.7,0.145,0.044,Immune,0.109,0.126,0.205,0.074
+LAMP2,ENSG00000005893,IO,,Autophagy,,,,,Myoepithelial,"Myoepithelial(3.998), Tumor(3.794), Macrophage_Mono(2.584)",0,46.6,2.111,1.644,Epithelial,3.794,3.998,1.609,1.718
+LAMP3,ENSG00000078081,IO,,,Myeloid/DC:mregDC,Myeloid/DC,mregDC,mregDC,T_NK,"T_NK(0.912), Dendritic(0.787), Plasma(0.394)",1,9.7,0.426,0.199,Immune,0.318,0.37,0.616,0.189
+LARS,ENSG00000133706,Breast,Smooth muscle cells,,,,,,Myoepithelial,"Myoepithelial(2.51), Tumor(2.275), Endothelial(1.325)",0,30.3,1.235,0.606,Epithelial,2.275,2.51,0.941,0.958
+LDHB,ENSG00000111716,Breast,Breast cancer,,,,,,Myoepithelial,"Myoepithelial(2.545), Tumor(2.226), T_NK(2.201)",0,39.8,1.747,0.932,Epithelial,2.226,2.545,1.837,1.253
+LGALSL,ENSG00000119862,Breast,B cells,,,,,,Myoepithelial,"Myoepithelial(0.943), Tumor(0.83), Endothelial(0.499)",0,9.1,0.322,0.135,Epithelial,0.83,0.943,0.116,0.287
+LILRA4,ENSG00000239961,Breast+IO,Dendritic cells,Dendritic Cell;Plasmacytoid,Myeloid/DC:pDC,Myeloid/DC,pDC,pDC,Dendritic,"Dendritic(0.924), Macrophage_Mono(0.272), B_cell(0.195)",1,3.4,0.151,0.062,Immune,0.052,0.055,0.258,0.049
+LPL,ENSG00000175445,Breast,Adipocytes,,CAF/Adipo:adipocyte,CAF/Adipo,adipocyte,adipocyte,Adipocyte,"Adipocyte(1.279), Endothelial(0.472), Macrophage_Mono(0.417)",1,5.6,0.235,0.102,Stroma,0.174,0.129,0.159,0.419
+LPXN,ENSG00000110031,Breast,Macrophages,,,,,,B_cell,"B_cell(1.793), T_NK(1.7), Dendritic(1.646)",0,24.8,1.059,0.377,Immune,0.623,0.606,1.649,0.415
+LRRC15,ENSG00000172061,Breast,Breast cancer,,CAF/Adipo:myCAF,CAF/Adipo,myCAF,myCAF,CAF_Fibroblast,"CAF_Fibroblast(0.57), Adipocyte(0.408), Macrophage_Mono(0.17)",1,4.6,0.189,0.069,Stroma,0.072,0.083,0.13,0.386
+LTB,ENSG00000227507,Breast+IO,T cells,TNF Superfamily,,,,,B_cell,"B_cell(1.847), T_NK(1.232), Plasma(0.985)",0,12.9,0.597,0.187,Immune,0.072,0.077,1.097,0.159
+LUM,ENSG00000139329,Breast+IO,Fibroblasts,Fibroblast,CAF/Adipo:pan_CAF,CAF/Adipo,pan_CAF,,Adipocyte,"Adipocyte(4.554), CAF_Fibroblast(4.542), Mast(2.819)",1,44.1,2.327,2.32,Stroma,0.806,0.807,2.265,3.653
+LY6E,ENSG00000160932,IO,,,,,,,Myoepithelial,"Myoepithelial(3.083), Tumor(3.063), Macrophage_Mono(1.703)",0,38.5,1.707,1.409,Epithelial,3.063,3.083,1.291,1.417
+LY86,ENSG00000112799,Breast,Macrophages,,,,,,B_cell,"B_cell(0.616), Macrophage_Mono(0.594), Dendritic(0.451)",0,5.4,0.221,0.061,Immune,0.081,0.078,0.366,0.086
+LYPD3,ENSG00000124466,Breast,Breast glandular cells,,,,,,Tumor,"Tumor(1.469), Myoepithelial(1.443), T_NK(0.188)",0,11.8,0.433,0.232,Cancer,1.469,1.443,0.157,0.122
+LYZ,ENSG00000090382,Breast,Macrophages,,Myeloid/DC:core_macrophage,Myeloid/DC,core_macrophage,,Dendritic,"Dendritic(5.058), Macrophage_Mono(4.768), T_NK(2.729)",1,41.2,2.119,2.269,Immune,0.994,0.853,3.032,1.477
+MAP3K8,ENSG00000107968,Breast,Macrophages,,,,,,Tumor,"Tumor(1.412), Myoepithelial(1.389), Macrophage_Mono(1.251)",0,24.2,0.979,0.446,Cancer,1.412,1.389,0.854,0.884
+MARCO,ENSG00000019169,IO,,Macrophage,Myeloid/DC:macrophage_M2,Myeloid/DC,macrophage_M2,macrophage_M2,Macrophage_Mono,"Macrophage_Mono(0.514), Dendritic(0.083), Tumor(0.064)",1,2.1,0.084,0.037,Immune,0.064,0.049,0.119,0.042
+MDM2,ENSG00000135679,Breast,Breast cancer,,,,,,Myoepithelial,"Myoepithelial(3.146), Tumor(3.01), Plasma(1.853)",0,41.8,1.815,1.091,Epithelial,3.01,3.146,1.48,1.509
+MKI67,ENSG00000148773,Breast+IO,Breast cancer,B Cell;Proliferation,Tumor:proliferating; T/NK:proliferating; Endothelial:proliferating; Myeloid/DC:proliferating; B/Plasma:proliferating; CAF/Adipo:proliferating; Mast:proliferating,B/Plasma; CAF/Adipo; Endothelial; Mast; Myeloid/DC; T/NK; Tumor,proliferating,proliferating; Proliferating,Myoepithelial,"Myoepithelial(0.641), Tumor(0.595), Macrophage_Mono(0.248)",7,6.2,0.23,0.121,Epithelial,0.595,0.641,0.156,0.079
+MLPH,ENSG00000115648,Breast,Breast glandular cells,,Tumor:luminal_mature; Tumor:cancer_specific,Tumor,cancer_specific; luminal_mature,,Myoepithelial,"Myoepithelial(3.082), Tumor(3.065), Mast(0.649)",2,17.8,0.785,1.059,Epithelial,3.065,3.082,0.125,0.185
+MMP1,ENSG00000196611,Breast,Fibroblasts,,,,,,Tumor,"Tumor(0.134), Macrophage_Mono(0.115), Myoepithelial(0.108)",0,2.0,0.078,0.051,Cancer,0.134,0.108,0.057,0.075
+MMP12,ENSG00000262406,Breast+IO,Fibroblasts,Dendritic Cell;Myeloid,,,,,Macrophage_Mono,"Macrophage_Mono(0.481), Tumor(0.219), Dendritic(0.189)",0,3.5,0.145,0.114,Cancer,0.219,0.146,0.155,0.076
+MMP2,ENSG00000087245,Breast,Fibroblasts,,CAF/Adipo:matrix_remodel,CAF/Adipo,matrix_remodel,matrix_remodel,Adipocyte,"Adipocyte(3.291), CAF_Fibroblast(2.865), Endothelial(1.496)",1,26.7,1.258,0.763,Stroma,0.444,0.555,0.992,2.358
+MMRN2,ENSG00000173269,Breast,Adipocytes,,,,,,Endothelial,"Endothelial(2.181), Pericyte(1.484), Myoepithelial(0.229)",0,8.2,0.358,0.15,Stroma,0.18,0.229,0.129,0.889
+MNDA,ENSG00000163563,Breast,Macrophages,,Myeloid/DC:monocyte,Myeloid/DC,monocyte,monocyte,Dendritic,"Dendritic(1.643), Macrophage_Mono(1.503), Pericyte(0.481)",1,11.4,0.49,0.186,Immune,0.216,0.18,0.714,0.329
+MRC1,ENSG00000260314,Breast,Macrophages,,Myeloid/DC:macrophage_M2,Myeloid/DC,macrophage_M2,macrophage_M2,Macrophage_Mono,"Macrophage_Mono(2.406), Dendritic(1.828), Mast(0.526)",1,12.5,0.574,0.274,Immune,0.123,0.141,0.868,0.427
+MS4A1,ENSG00000156738,Breast+IO,B cells,B Cell;Lineage Marker;Proliferation,B/Plasma:pan_B,B/Plasma,pan_B,,B_cell,"B_cell(4.71), Plasma(2.156), T_NK(0.692)",1,15.0,0.811,0.558,Immune,0.078,0.062,1.527,0.17
+MUC6,ENSG00000184956,Breast,Epithelial cells,,,,,,Tumor,"Tumor(1.363), Myoepithelial(1.248), Macrophage_Mono(0.184)",0,8.7,0.398,0.84,Cancer,1.363,1.248,0.127,0.137
+MX1,ENSG00000157601,IO,,,Myeloid/DC:ifn_response; Mast:ifn_response,Mast; Myeloid/DC,ifn_response,ifn_response,Macrophage_Mono,"Macrophage_Mono(1.809), Tumor(1.7), Myoepithelial(1.674)",2,29.6,1.302,0.933,Cancer,1.7,1.674,1.393,0.878
+MYBPC1,ENSG00000196091,Breast,Epithelial cells,,,,,,Myoepithelial,"Myoepithelial(0.361), Tumor(0.245), B_cell(0.066)",0,2.5,0.092,0.043,Epithelial,0.245,0.361,0.054,0.035
+MYH11,ENSG00000133392,Breast,Smooth muscle cells,,Tumor:myoepithelial; Endothelial:pericyte_mural; CAF/Adipo:myCAF; CAF/Adipo:pericyte_mural,CAF/Adipo; Endothelial; Tumor,myCAF; myoepithelial; pericyte_mural,myoepithelial; myCAF; Pericyte/mural,Myoepithelial,"Myoepithelial(2.139), Endothelial(1.266), Pericyte(1.259)",4,12.4,0.564,0.414,Epithelial,1.184,2.139,0.192,0.687
+MYLK,ENSG00000065534,Breast,Breast myoepithelial cells,,Tumor:myoepithelial; CAF/Adipo:myCAF; CAF/Adipo:pericyte_mural,CAF/Adipo; Tumor,myCAF; myoepithelial; pericyte_mural,myoepithelial; myCAF; Pericyte/mural,Myoepithelial,"Myoepithelial(3.478), Endothelial(2.944), Pericyte(2.671)",3,29.3,1.389,1.307,Epithelial,2.387,3.478,0.645,1.869
+MYO5B,ENSG00000167306,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.309), Tumor(2.255), Plasma(0.345)",0,17.8,0.691,0.436,Epithelial,2.255,2.309,0.274,0.218
+MZB1,ENSG00000170476,Breast+IO,B cells,Plasma Cell;Plasmablast,B/Plasma:plasma,B/Plasma,plasma,plasma,Plasma,"Plasma(3.149), B_cell(0.874), Myoepithelial(0.533)",1,10.9,0.464,0.277,Immune,0.475,0.533,0.641,0.165
+NARS,ENSG00000134440,Breast,Breast myoepithelial cells,,,,,,Myoepithelial,"Myoepithelial(3.004), Tumor(2.798), Macrophage_Mono(1.607)",0,36.6,1.548,0.863,Epithelial,2.798,3.004,1.231,1.158
+NCAM1,ENSG00000149294,Breast+IO,NK cells,,T/NK:nk_like,T/NK,nk_like,nk_like,Myoepithelial,"Myoepithelial(0.183), Tumor(0.157), T_NK(0.092)",1,2.2,0.084,0.032,Epithelial,0.157,0.183,0.066,0.059
+NDUFA4L2,ENSG00000185633,Breast,Adipocytes,,,,,,Endothelial,"Endothelial(0.289), Pericyte(0.203), Tumor(0.099)",0,2.2,0.08,0.025,Stroma,0.099,0.099,0.041,0.134
+NKG7,ENSG00000105374,Breast+IO,NK cells,Natural Killer Cell,T/NK:cytotoxic_effector,T/NK,cytotoxic_effector,cytotoxic_effector,T_NK,"T_NK(0.776), Dendritic(0.21), Macrophage_Mono(0.195)",1,5.6,0.248,0.082,Immune,0.067,0.065,0.427,0.088
+NOSTRIN,ENSG00000163072,Breast,Adipocytes,,,,,,Endothelial,"Endothelial(1.427), Myoepithelial(1.054), Tumor(0.979)",0,11.5,0.436,0.203,Epithelial,0.979,1.054,0.105,0.591
+OCIAD2,ENSG00000145247,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.005), Tumor(1.902), T_NK(0.678)",0,19.7,0.771,0.404,Epithelial,1.902,2.005,0.547,0.302
+OPRPN,ENSG00000171199,Breast,Breast glandular cells,,,,,,Tumor,"Tumor(0.157), Myoepithelial(0.091), Adipocyte(0.03)",0,1.4,0.054,0.043,Cancer,0.157,0.091,0.027,0.026
+OXTR,ENSG00000180914,Breast,Breast myoepithelial cells,,Tumor:myoepithelial,Tumor,myoepithelial,myoepithelial,Myoepithelial,"Myoepithelial(3.421), Tumor(0.245), Endothelial(0.152)",1,4.2,0.149,0.065,Epithelial,0.245,3.421,0.043,0.096
+PCLAF,ENSG00000166803,Breast,Breast cancer,,,,,,Myoepithelial,"Myoepithelial(0.751), Tumor(0.577), B_cell(0.176)",0,6.2,0.221,0.107,Epithelial,0.577,0.751,0.141,0.083
+PDCD1,ENSG00000188389,Breast+IO,T cells,T Cell;Exhausted,T/NK:exhausted,T/NK,exhausted,exhausted,T_NK,"T_NK(0.078), B_cell(0.029), Plasma(0.022)",1,0.7,0.03,0.008,Immune,0.017,0.014,0.047,0.011
+PDCD1LG2,ENSG00000197646,Breast+IO,Adipocytes,Immune Checkpoint,,,,,Macrophage_Mono,"Macrophage_Mono(0.52), Dendritic(0.359), T_NK(0.236)",0,5.0,0.201,0.06,Immune,0.089,0.106,0.275,0.163
+PDE4A,ENSG00000065989,Breast,Adipocytes,,,,,,Dendritic,"Dendritic(0.74), Macrophage_Mono(0.675), Mast(0.444)",0,9.5,0.377,0.119,Immune,0.289,0.247,0.431,0.362
+PDGFRA,ENSG00000134853,Breast+IO,Fibroblasts,Stromal Cell,CAF/Adipo:pan_CAF; CAF/Adipo:preadipo,CAF/Adipo,pan_CAF; preadipo,preadipo,Adipocyte,"Adipocyte(2.084), CAF_Fibroblast(1.825), Mast(0.669)",2,17.1,0.753,0.349,Stroma,0.554,0.64,0.506,1.34
+PDGFRB,ENSG00000113721,Breast,Smooth muscle cells,,Endothelial:pericyte_mural; CAF/Adipo:pan_CAF; CAF/Adipo:pericyte_mural,CAF/Adipo; Endothelial,pan_CAF; pericyte_mural,Pericyte/mural,Adipocyte,"Adipocyte(2.51), Endothelial(2.393), Pericyte(2.391)",3,21.5,1.0,0.535,Stroma,0.326,0.36,0.559,2.288
+PDK4,ENSG00000004799,Breast,Smooth muscle cells,,,,,,Endothelial,"Endothelial(1.032), Pericyte(0.924), Adipocyte(0.899)",0,11.5,0.472,0.192,Stroma,0.52,0.49,0.323,0.7
+PECAM1,ENSG00000261371,Breast,Endothelial cells,,Endothelial:pan_endothelial,Endothelial,pan_endothelial,,Endothelial,"Endothelial(4.715), Pericyte(2.772), Macrophage_Mono(2.343)",1,30.8,1.461,0.937,Stroma,0.633,0.532,1.454,2.141
+PELI1,ENSG00000197329,Breast,B cells,,,,,,Myoepithelial,"Myoepithelial(1.372), Tumor(1.185), Endothelial(1.176)",0,20.1,0.789,0.304,Epithelial,1.185,1.372,0.668,0.698
+PGR,ENSG00000082175,Breast,Breast cancer,,Tumor:luminal_mature,Tumor,luminal_mature,,Myoepithelial,"Myoepithelial(0.533), Tumor(0.399), Adipocyte(0.258)",1,4.8,0.183,0.072,Epithelial,0.399,0.533,0.074,0.202
+PIGR,ENSG00000162896,Breast,Breast glandular cells,,,,,,Tumor,"Tumor(1.037), Myoepithelial(0.871), Macrophage_Mono(0.141)",0,6.9,0.291,0.393,Cancer,1.037,0.871,0.094,0.069
+PIM1,ENSG00000137193,Breast,Fibroblasts,,,,,,Adipocyte,"Adipocyte(1.521), T_NK(1.321), CAF_Fibroblast(1.245)",0,21.5,0.931,0.363,Stroma,0.43,0.433,1.059,1.118
+PLA2G7,ENSG00000146070,IO,,Dendritic Cell,,,,,Macrophage_Mono,"Macrophage_Mono(1.635), Dendritic(0.67), T_NK(0.275)",0,8.2,0.343,0.157,Immune,0.25,0.229,0.506,0.146
+PLD4,ENSG00000166428,Breast+IO,Macrophages,Dendritic Cell;Lineage Marker,Myeloid/DC:pDC,Myeloid/DC,pDC,pDC,Dendritic,"Dendritic(0.87), B_cell(0.347), Macrophage_Mono(0.32)",1,4.4,0.181,0.056,Immune,0.093,0.087,0.289,0.068
+POSTN,ENSG00000133110,Breast,Fibroblasts,,Tumor:emt; CAF/Adipo:myCAF; CAF/Adipo:matrix_remodel,CAF/Adipo; Tumor,emt; matrix_remodel; myCAF,emt; matrix_remodel; myCAF,CAF_Fibroblast,"CAF_Fibroblast(2.993), Adipocyte(2.652), Endothelial(1.841)",3,29.4,1.506,1.917,Stroma,1.021,1.467,1.148,2.496
+PPARG,ENSG00000132170,Breast,Macrophages,,CAF/Adipo:adipocyte,CAF/Adipo,adipocyte,adipocyte,Adipocyte,"Adipocyte(1.187), Endothelial(1.163), Pericyte(0.829)",1,10.3,0.415,0.147,Stroma,0.378,0.375,0.276,0.689
+PRDM1,ENSG00000057657,Breast,T cells,,B/Plasma:plasma,B/Plasma,plasma,plasma,Plasma,"Plasma(2.077), T_NK(1.377), Endothelial(0.931)",1,18.1,0.795,0.302,Immune,0.276,0.297,1.112,0.667
+PRF1,ENSG00000180644,Breast+IO,NK cells,T cell;EMRA,T/NK:cytotoxic_effector,T/NK,cytotoxic_effector,cytotoxic_effector,T_NK,"T_NK(0.867), Dendritic(0.181), Macrophage_Mono(0.162)",1,6.1,0.267,0.089,Immune,0.078,0.09,0.454,0.099
+PTGDS,ENSG00000107317,Breast,Breast cancer,,,,,,B_cell,"B_cell(2.177), Dendritic(2.095), T_NK(1.756)",0,25.7,1.271,0.744,Immune,0.139,0.146,1.768,1.316
+PTN,ENSG00000105894,Breast,Breast myoepithelial cells,,,,,,Myoepithelial,"Myoepithelial(1.874), Tumor(1.569), Adipocyte(0.581)",0,14.0,0.6,0.5,Epithelial,1.569,1.874,0.209,0.524
+PTPRC,ENSG00000081237,Breast+IO,Immune cells,,,,,,T_NK,"T_NK(5.094), B_cell(4.357), Dendritic(4.144)",0,49.6,2.601,1.739,Immune,0.695,0.625,4.406,1.044
+PTRHD1,ENSG00000184924,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(0.933), Tumor(0.885), Dendritic(0.435)",0,11.4,0.412,0.153,Epithelial,0.885,0.933,0.313,0.226
+QARS,ENSG00000172053,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.373), Tumor(2.174), Endothelial(1.219)",0,30.5,1.23,0.545,Epithelial,2.174,2.373,1.005,0.911
+RAB30,ENSG00000137502,Breast,B cells,,,,,,Plasma,"Plasma(1.812), B_cell(1.197), Myoepithelial(0.962)",0,16.2,0.64,0.238,Epithelial,0.804,0.962,0.703,0.413
+RAMP2,ENSG00000131477,Breast,Adipocytes,,Endothelial:capillary,Endothelial,capillary,Capillary,Endothelial,"Endothelial(2.263), Pericyte(1.343), Adipocyte(0.295)",1,9.1,0.399,0.171,Stroma,0.166,0.234,0.172,0.966
+RAPGEF3,ENSG00000079337,Breast,Adipocytes,,,,,,Endothelial,"Endothelial(1.129), Pericyte(0.656), Myoepithelial(0.329)",0,6.0,0.234,0.085,Stroma,0.277,0.329,0.08,0.468
+RGS1,ENSG00000090104,IO,,,,,,,T_NK,"T_NK(2.41), Macrophage_Mono(2.344), Dendritic(1.854)",0,27.2,1.29,0.803,Immune,0.775,0.661,1.989,0.524
+RHOH,ENSG00000168421,Breast,T cells,,,,,,B_cell,"B_cell(1.315), Plasma(1.08), T_NK(1.039)",0,15.8,0.643,0.237,Epithelial,0.782,0.895,0.894,0.122
+RORC,ENSG00000143365,Breast+IO,T cells,,T/NK:th17,T/NK,th17,th17,Tumor,"Tumor(0.932), Myoepithelial(0.914), T_NK(0.138)",1,7.6,0.261,0.123,Cancer,0.932,0.914,0.091,0.045
+RTKN2,ENSG00000182010,Breast,T cells,,,,,,Myoepithelial,"Myoepithelial(0.919), Tumor(0.822), T_NK(0.586)",0,11.0,0.42,0.186,Epithelial,0.822,0.919,0.377,0.189
+RUNX1,ENSG00000159216,Breast,Breast cancer,,,,,,Myoepithelial,"Myoepithelial(3.648), Tumor(3.333), Macrophage_Mono(2.379)",0,45.0,2.034,1.351,Epithelial,3.333,3.648,1.581,1.847
+S100A14,ENSG00000189334,Breast,Breast glandular cells,,,,,,Tumor,"Tumor(2.911), Myoepithelial(2.893), Macrophage_Mono(0.271)",0,17.4,0.76,0.897,Cancer,2.911,2.893,0.157,0.162
+S100A4,ENSG00000196154,Breast,Breast cancer,,Tumor:emt; Endothelial:endmt; CAF/Adipo:emt,CAF/Adipo; Endothelial; Tumor,emt; endmt,emt; EndMT,Pericyte,"Pericyte(1.945), T_NK(1.475), Macrophage_Mono(1.356)",3,21.9,0.946,0.329,Immune,0.449,0.014,1.206,0.927
+S100A8,ENSG00000143546,Breast,Monocytes,,Myeloid/DC:monocyte,Myeloid/DC,monocyte,monocyte,Tumor,"Tumor(1.517), Myoepithelial(1.014), Macrophage_Mono(0.554)",1,10.9,0.491,0.983,Cancer,1.517,1.014,0.191,0.249
+SCD,ENSG00000099194,Breast,Breast cancer,,,,,,Tumor,"Tumor(3.188), Myoepithelial(2.973), Macrophage_Mono(1.227)",0,23.1,1.046,1.533,Cancer,3.188,2.973,0.477,0.41
+SCGB2A1,ENSG00000124939,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(0.563), Tumor(0.481), Macrophage_Mono(0.049)",0,3.8,0.136,0.078,Epithelial,0.481,0.563,0.039,0.036
+SDC4,ENSG00000124145,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.919), Tumor(2.742), Adipocyte(0.818)",0,22.3,0.904,0.641,Epithelial,2.742,2.919,0.331,0.488
+SEC11C,ENSG00000166562,Breast,B cells,,,,,,Plasma,"Plasma(3.047), Myoepithelial(2.043), Tumor(1.966)",0,26.6,1.093,0.565,Epithelial,1.966,2.043,1.077,0.475
+SEC24A,ENSG00000113615,Breast,Macrophages,,,,,,Myoepithelial,"Myoepithelial(1.745), Tumor(1.654), Plasma(1.651)",0,22.6,0.876,0.386,Epithelial,1.654,1.745,0.667,0.654
+SELL,ENSG00000188404,Breast+IO,T cells,B Cell,T/NK:naive_memory; B/Plasma:naive_B,B/Plasma; T/NK,naive_B; naive_memory,naive_memory; naive_B,B_cell,"B_cell(2.779), T_NK(2.311), Dendritic(1.606)",2,24.0,1.148,0.454,Immune,0.211,0.211,1.995,0.448
+SERHL2,ENSG00000183569,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.003), Tumor(2.002), Macrophage_Mono(0.183)",0,12.8,0.547,0.922,Epithelial,2.002,2.003,0.135,0.15
+SERPINA3,ENSG00000196136,Breast,Breast glandular cells,,,,,,Tumor,"Tumor(3.205), Myoepithelial(2.903), Endothelial(0.787)",0,21.5,1.011,1.572,Cancer,3.205,2.903,0.286,0.609
+SERPINB9,ENSG00000170542,Breast,Macrophages,,,,,,Dendritic,"Dendritic(1.606), Macrophage_Mono(1.416), B_cell(1.403)",0,22.4,0.976,0.37,Immune,0.4,0.351,1.385,0.745
+SFRP1,ENSG00000104332,Breast,Breast cancer,,Tumor:luminal_progenitor,Tumor,luminal_progenitor,,Myoepithelial,"Myoepithelial(2.14), Tumor(1.687), Adipocyte(1.518)",1,17.8,0.803,0.585,Epithelial,1.687,2.14,0.358,0.882
+SFRP4,ENSG00000106483,Breast,Fibroblasts,,,,,,Adipocyte,"Adipocyte(2.814), CAF_Fibroblast(2.678), Mast(1.633)",0,23.2,1.191,1.234,Stroma,0.28,0.282,1.11,2.046
+SH3YL1,ENSG00000035115,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(1.843), Tumor(1.69), B_cell(0.522)",0,18.3,0.696,0.306,Epithelial,1.69,1.843,0.448,0.37
+SLAMF1,ENSG00000117090,Breast,B cells,,,,,,T_NK,"T_NK(1.034), Plasma(0.966), B_cell(0.76)",0,10.4,0.447,0.142,Immune,0.155,0.16,0.747,0.168
+SLAMF7,ENSG00000026751,Breast,B cells,,B/Plasma:plasma,B/Plasma,plasma,plasma,Plasma,"Plasma(2.922), Dendritic(1.455), Macrophage_Mono(1.153)",1,14.5,0.648,0.308,Immune,0.215,0.155,1.107,0.217
+SLC1A3,ENSG00000079215,IO,,Dendritic Cell,,,,,Macrophage_Mono,"Macrophage_Mono(1.1), Dendritic(0.47), Adipocyte(0.374)",0,6.3,0.255,0.09,Immune,0.169,0.183,0.345,0.172
+SLC25A37,ENSG00000147454,Breast,Breast glandular cells,,,,,,Tumor,"Tumor(1.153), Myoepithelial(1.152), Endothelial(0.6)",0,13.7,0.517,0.22,Cancer,1.153,1.152,0.281,0.444
+SLC5A6,ENSG00000138074,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.533), Tumor(2.462), Adipocyte(0.447)",0,19.8,0.801,0.624,Epithelial,2.462,2.533,0.33,0.351
+SMAP2,ENSG00000084070,Breast,T cells,,,,,,B_cell,"B_cell(3.045), Plasma(2.452), T_NK(2.357)",0,38.4,1.69,0.714,Immune,1.401,1.504,2.378,0.773
+SMS,ENSG00000102172,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(3.407), Tumor(3.373), Macrophage_Mono(1.725)",0,34.8,1.524,1.223,Epithelial,3.373,3.407,1.128,0.816
+SNAI1,ENSG00000124216,Breast,Breast cancer,,Tumor:emt; Endothelial:endmt; CAF/Adipo:emt,CAF/Adipo; Endothelial; Tumor,emt; endmt,emt; EndMT,Endothelial,"Endothelial(0.581), CAF_Fibroblast(0.193), Tumor(0.167)",3,4.2,0.161,0.055,Stroma,0.167,0.003,0.082,0.302
+SOCS3,ENSG00000184557,IO,,Cytokine Signalling,,,,,Endothelial,"Endothelial(3.41), Pericyte(2.885), Adipocyte(1.941)",0,32.1,1.471,0.833,Stroma,1.045,1.157,1.216,2.254
+SOX17,ENSG00000164736,Breast+IO,Endothelial cells,,Endothelial:arterial,Endothelial,arterial,Arterial,Endothelial,"Endothelial(0.993), Myoepithelial(0.12), Tumor(0.114)",1,4.2,0.171,0.064,Stroma,0.114,0.12,0.071,0.387
+SOX18,ENSG00000203883,Breast,Adipocytes,,,,,,Endothelial,"Endothelial(0.605), Pericyte(0.292), Myoepithelial(0.076)",0,2.6,0.102,0.032,Stroma,0.068,0.076,0.037,0.238
+SOX9,ENSG00000125398,IO,,Tumor,,,,,Myoepithelial,"Myoepithelial(4.206), Tumor(4.082), Adipocyte(0.515)",0,23.7,1.111,1.606,Epithelial,4.082,4.206,0.234,0.356
+SPIB,ENSG00000269404,Breast+IO,Dendritic cells,Dendritic Cell;Plasmacytoid,Myeloid/DC:pDC,Myeloid/DC,pDC,pDC,B_cell,"B_cell(1.332), Dendritic(0.842), Plasma(0.707)",1,7.9,0.35,0.113,Immune,0.095,0.095,0.608,0.113
+SQLE,ENSG00000104549,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.329), Tumor(2.203), Endothelial(0.511)",0,19.3,0.773,0.581,Epithelial,2.203,2.329,0.343,0.425
+SRPK1,ENSG00000096063,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.391), Tumor(2.244), Endothelial(0.717)",0,23.0,0.917,0.533,Epithelial,2.244,2.391,0.587,0.48
+SSTR2,ENSG00000180616,Breast,Smooth muscle cells,,,,,,Endothelial,"Endothelial(0.309), Pericyte(0.307), Myoepithelial(0.145)",0,2.7,0.101,0.034,Stroma,0.124,0.145,0.057,0.16
+STAT1,ENSG00000115415,IO,,Immune Signalling;Macrophage;Th1;T Cell,Myeloid/DC:ifn_response; Mast:ifn_response,Mast; Myeloid/DC,ifn_response,ifn_response,Myoepithelial,"Myoepithelial(2.949), Tumor(2.854), Macrophage_Mono(2.853)",2,48.4,2.234,1.609,Epithelial,2.854,2.949,2.376,1.57
+STAT2,ENSG00000170581,IO,,Immune Signalling,,,,,Myoepithelial,"Myoepithelial(2.047), Tumor(1.892), Macrophage_Mono(1.708)",0,34.1,1.405,0.628,Epithelial,1.892,2.047,1.262,1.302
+STAT4,ENSG00000138378,IO,,T Cell;Natural Killer Cell,,,,,T_NK,"T_NK(1.81), Macrophage_Mono(0.586), Dendritic(0.586)",0,15.0,0.654,0.226,Immune,0.28,0.285,1.04,0.296
+STAT6,ENSG00000166888,IO,,Immune Signalling;T Cell,,,,,Myoepithelial,"Myoepithelial(1.743), Tumor(1.641), B_cell(1.562)",0,31.3,1.288,0.51,Epithelial,1.641,1.743,1.269,1.076
+STC1,ENSG00000159167,Breast,Endothelial cells,,,,,,Endothelial,"Endothelial(0.763), Myoepithelial(0.543), Tumor(0.486)",0,5.8,0.226,0.136,Epithelial,0.486,0.543,0.057,0.315
+SVIL,ENSG00000197321,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.099), Tumor(1.865), Endothelial(1.558)",0,27.2,1.115,0.53,Epithelial,1.865,2.099,0.631,1.379
+TAC1,ENSG00000006128,Breast,Fibroblasts,,,,,,Adipocyte,"Adipocyte(0.385), CAF_Fibroblast(0.34), Mast(0.146)",0,3.1,0.132,0.059,Stroma,0.086,0.09,0.089,0.244
+TACSTD2,ENSG00000184292,Breast,Breast cancer,,Tumor:pan_epithelial,Tumor,pan_epithelial,,Myoepithelial,"Myoepithelial(5.708), Tumor(5.621), Macrophage_Mono(0.836)",1,30.8,1.668,4.608,Epithelial,5.621,5.708,0.479,0.705
+TBX21,ENSG00000073861,IO,,T Cell;Th1,T/NK:th1; B/Plasma:atypical_B,B/Plasma; T/NK,atypical_B; th1,th1; atypical_B,T_NK,"T_NK(0.278), B_cell(0.172), Dendritic(0.068)",2,2.6,0.107,0.029,Immune,0.05,0.05,0.172,0.042
+TCEAL7,ENSG00000182916,Breast,Fibroblasts,,,,,,Adipocyte,"Adipocyte(0.233), Myoepithelial(0.203), CAF_Fibroblast(0.169)",0,2.8,0.107,0.031,Epithelial,0.127,0.203,0.067,0.159
+TCF4,ENSG00000196628,Breast,Breast cancer,,Myeloid/DC:pDC,Myeloid/DC,pDC,pDC,Endothelial,"Endothelial(2.186), Pericyte(1.527), Adipocyte(1.257)",1,20.0,0.864,0.309,Stroma,0.237,0.231,0.792,1.484
+TCF7,ENSG00000081059,Breast+IO,T cells,T Cell;CD4+;Naive,T/NK:naive_memory,T/NK,naive_memory,naive_memory,T_NK,"T_NK(1.666), B_cell(0.705), Myoepithelial(0.498)",1,13.8,0.607,0.193,Immune,0.395,0.498,0.964,0.171
+TCIM,ENSG00000176907,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(1.916), Endothelial(1.901), Tumor(1.671)",0,22.4,0.971,0.694,Epithelial,1.671,1.916,0.462,1.312
+TCL1A,ENSG00000100721,Breast+IO,B cells,B cell;Proliferative,B/Plasma:naive_B,B/Plasma,naive_B,naive_B,B_cell,"B_cell(1.533), Plasma(0.754), Dendritic(0.424)",1,6.0,0.284,0.117,Immune,0.07,0.083,0.51,0.068
+TENT5C,ENSG00000183508,Breast,T cells,,,,,,Plasma,"Plasma(3.281), B_cell(1.294), T_NK(1.064)",0,17.9,0.761,0.362,Immune,0.686,0.821,1.072,0.3
+TFAP2A,ENSG00000137203,Breast,Adipocytes,,,,,,Myoepithelial,"Myoepithelial(2.551), Tumor(2.444), Macrophage_Mono(0.131)",0,15.5,0.599,0.454,Epithelial,2.444,2.551,0.076,0.09
+TGFB1,ENSG00000105329,IO,,Macrophage;Neutrophil;Polarization,,,,,Macrophage_Mono,"Macrophage_Mono(1.93), Dendritic(1.857), T_NK(1.661)",0,28.6,1.246,0.442,Immune,0.496,0.457,1.678,1.115
+THAP2,ENSG00000173451,Breast,Smooth muscle cells,,,,,,Myoepithelial,"Myoepithelial(0.599), Tumor(0.547), Plasma(0.28)",0,8.2,0.296,0.101,Epithelial,0.547,0.599,0.245,0.195
+TIFA,ENSG00000145365,Breast,Endothelial cells,,,,,,Myoepithelial,"Myoepithelial(1.042), Tumor(0.967), Plasma(0.837)",0,13.8,0.52,0.19,Epithelial,0.967,1.042,0.498,0.224
+TIGIT,ENSG00000181847,Breast+IO,T cells,T Cell;Exhausted,T/NK:exhausted,T/NK,exhausted,exhausted,T_NK,"T_NK(1.3), B_cell(0.365), Plasma(0.291)",1,8.8,0.395,0.127,Immune,0.084,0.072,0.711,0.105
+TIMP4,ENSG00000157150,Breast,Adipocytes,,CAF/Adipo:adipocyte,CAF/Adipo,adipocyte,adipocyte,Adipocyte,"Adipocyte(0.824), Endothelial(0.156), Pericyte(0.144)",1,2.5,0.097,0.031,Stroma,0.119,0.101,0.056,0.155
+TMEM147,ENSG00000105677,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.756), Tumor(2.585), Endothelial(1.162)",0,29.6,1.215,0.684,Epithelial,2.585,2.756,0.802,0.893
+TNF,ENSG00000232810,IO,,Macrophage;Neutrophil,Myeloid/DC:macrophage_M1; Mast:effector_activation,Mast; Myeloid/DC,effector_activation; macrophage_M1,macrophage_M1,B_cell,"B_cell(0.274), Macrophage_Mono(0.227), Mast(0.204)",2,3.4,0.135,0.047,Immune,0.147,0.14,0.182,0.048
+TNFRSF13C,ENSG00000159958,IO,,B Cell,,,,,B_cell,"B_cell(2.645), Plasma(1.683), T_NK(0.3)",0,9.7,0.451,0.162,Immune,0.101,0.137,0.839,0.065
+TNFRSF17,ENSG00000048462,Breast+IO,Plasma cells,Plasma Cell,B/Plasma:plasma,B/Plasma,plasma,plasma,Plasma,"Plasma(1.459), Dendritic(0.089), T_NK(0.071)",1,2.6,0.104,0.031,Immune,0.058,0.067,0.16,0.044
+TNFRSF1B,ENSG00000028137,IO,,,,,,,Macrophage_Mono,"Macrophage_Mono(2.549), Dendritic(2.165), T_NK(1.92)",0,27.1,1.222,0.492,Immune,0.41,0.328,1.744,0.984
+TNFRSF9,ENSG00000049249,IO,,,,,,,Mast,"Mast(0.463), T_NK(0.35), Macrophage_Mono(0.209)",0,4.1,0.171,0.06,Immune,0.086,0.084,0.265,0.079
+TOMM7,ENSG00000196683,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(3.557), Tumor(3.313), B_cell(2.803)",0,55.2,2.527,1.406,Epithelial,3.313,3.557,2.496,2.022
+TOP2A,ENSG00000131747,Breast,Breast cancer,,Tumor:proliferating; Endothelial:proliferating; Myeloid/DC:proliferating; B/Plasma:proliferating; CAF/Adipo:proliferating; Mast:proliferating,B/Plasma; CAF/Adipo; Endothelial; Mast; Myeloid/DC; Tumor,proliferating,proliferating; Proliferating,Myoepithelial,"Myoepithelial(1.63), Tumor(1.446), Macrophage_Mono(0.422)",6,12.5,0.515,0.599,Epithelial,1.446,1.63,0.285,0.196
+TOX,ENSG00000198846,IO,,T Cell;Exhausted,T/NK:exhausted,T/NK,exhausted,exhausted,T_NK,"T_NK(0.479), B_cell(0.322), Plasma(0.242)",1,4.5,0.189,0.052,Immune,0.066,0.08,0.324,0.057
+TPD52,ENSG00000076554,Breast,Breast glandular cells,,Tumor:cancer_specific,Tumor,cancer_specific,,Myoepithelial,"Myoepithelial(4.301), Tumor(4.281), Plasma(2.694)",1,34.5,1.662,2.378,Epithelial,4.281,4.301,1.194,0.494
+TPSAB1,ENSG00000172236,Breast,Mast cells,,Mast:mast_core,Mast,mast_core,mast_core,Mast,"Mast(4.368), Dendritic(0.121), Macrophage_Mono(0.109)",1,2.9,0.136,0.092,Immune,0.053,0.049,0.209,0.075
+TRAC,ENSG00000277734,Breast,T cells,,,,,,T_NK,"T_NK(4.264), B_cell(1.88), Plasma(1.412)",0,30.5,1.516,0.754,Immune,0.356,0.328,2.605,0.584
+TRAF4,ENSG00000076604,Breast,Breast myoepithelial cells,,,,,,Myoepithelial,"Myoepithelial(2.842), Tumor(2.753), Dendritic(0.539)",0,21.4,0.898,0.875,Epithelial,2.753,2.842,0.376,0.384
+TRAPPC3,ENSG00000054116,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.617), Tumor(2.488), Endothelial(1.212)",0,30.6,1.247,0.635,Epithelial,2.488,2.617,0.893,0.925
+TRAT1,ENSG00000163519,IO,,,,,,,T_NK,"T_NK(0.764), B_cell(0.182), Dendritic(0.154)",0,5.3,0.23,0.062,Immune,0.059,0.071,0.408,0.062
+TREM2,ENSG00000095970,IO,,Dendritic Cell,Myeloid/DC:macrophage_M2,Myeloid/DC,macrophage_M2,macrophage_M2,Macrophage_Mono,"Macrophage_Mono(0.783), Myoepithelial(0.256), Tumor(0.195)",1,4.0,0.157,0.062,Epithelial,0.195,0.256,0.195,0.062
+TRIB1,ENSG00000173334,Breast,B cells,,,,,,Tumor,"Tumor(2.039), Myoepithelial(2.016), Plasma(1.403)",0,25.2,1.021,0.568,Cancer,2.039,2.016,0.714,0.792
+TUBA4A,ENSG00000127824,Breast,T cells,,,,,,Myoepithelial,"Myoepithelial(0.931), Tumor(0.909), Plasma(0.749)",0,15.1,0.59,0.213,Epithelial,0.909,0.931,0.613,0.318
+TUBB2B,ENSG00000137285,Breast,Breast myoepithelial cells,,,,,,Myoepithelial,"Myoepithelial(0.876), Tumor(0.678), Adipocyte(0.338)",0,8.3,0.307,0.119,Epithelial,0.678,0.876,0.171,0.249
+UCP1,ENSG00000109424,Breast,Adipocytes,,,,,,Myoepithelial,"Myoepithelial(0.045), Tumor(0.038), Plasma(0.03)",0,0.7,0.025,0.007,Epithelial,0.038,0.045,0.022,0.021
+USP53,ENSG00000145390,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(1.921), Tumor(1.778), Adipocyte(0.923)",0,19.7,0.766,0.351,Epithelial,1.778,1.921,0.411,0.61
+VCAN,ENSG00000038427,IO,,Macrophage;M1,Myeloid/DC:monocyte; CAF/Adipo:matrix_remodel,CAF/Adipo; Myeloid/DC,matrix_remodel; monocyte,monocyte; matrix_remodel,Adipocyte,"Adipocyte(3.302), CAF_Fibroblast(3.225), Endothelial(1.653)",2,30.0,1.443,1.071,Stroma,0.731,0.757,1.097,2.611
+VOPP1,ENSG00000154978,Breast,B cells,,,,,,Plasma,"Plasma(2.038), Dendritic(1.781), Myoepithelial(1.725)",0,33.4,1.392,0.593,Epithelial,1.624,1.725,1.582,0.917
+VSIG4,ENSG00000155659,IO,,Macrophage,,,,,Macrophage_Mono,"Macrophage_Mono(1.3), Dendritic(0.903), Mast(0.204)",0,6.3,0.268,0.099,Immune,0.092,0.092,0.415,0.157
+VWF,ENSG00000110799,Breast,Endothelial cells,,Endothelial:pan_endothelial,Endothelial,pan_endothelial,,Pericyte,"Pericyte(4.369), Endothelial(3.872), T_NK(0.404)",1,14.3,0.717,0.622,Stroma,0.262,0.311,0.344,1.71
+WARS,ENSG00000140105,Breast,Endothelial cells,,,,,,Tumor,"Tumor(1.44), Myoepithelial(1.427), Endothelial(1.328)",0,24.1,0.967,0.488,Cancer,1.44,1.427,0.843,0.841
+ZEB1,ENSG00000148516,Breast,Breast cancer,,Tumor:emt; Endothelial:endmt; CAF/Adipo:emt,CAF/Adipo; Endothelial; Tumor,emt; endmt,emt; EndMT,Endothelial,"Endothelial(1.843), Adipocyte(1.045), CAF_Fibroblast(0.943)",3,17.4,0.749,0.257,Stroma,0.298,0.013,0.674,1.252
+ZEB2,ENSG00000169554,Breast,Breast cancer,,Tumor:emt; Endothelial:endmt; CAF/Adipo:emt,CAF/Adipo; Endothelial; Tumor,emt; endmt,emt; EndMT,Macrophage_Mono,"Macrophage_Mono(3.725), Dendritic(3.195), Pericyte(2.778)",3,40.4,1.902,0.931,Stroma,0.581,0.028,2.281,2.331
+ZNF562,ENSG00000171466,Breast,Breast glandular cells,,,,,,Myoepithelial,"Myoepithelial(2.129), Tumor(1.9), Endothelial(0.942)",0,23.4,0.913,0.428,Epithelial,1.9,2.129,0.613,0.681

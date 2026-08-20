@@ -1,0 +1,17 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 ihpark20 and co-authors of the DCIS vs mDCIS Xenium study
+
+Applies to the data files in this repository: 00.panel_info/, 01.data_raw/,
+02.slide_tma_core/, 03.data_processed/, 04.tables/, 11.tables_publication/ and
+the documents in docs/. The software is licensed separately under the MIT
+License; see LICENSE.
+
+You are free to share and adapt this material for any purpose, including
+commercially, provided that you give appropriate credit, provide a link to the
+license, and indicate if changes were made.
+
+Attribution should cite the accompanying publication.
+
+The full legal text is at https://creativecommons.org/licenses/by/4.0/legalcode
+and a plain-language summary at https://creativecommons.org/licenses/by/4.0/
