@@ -64,20 +64,34 @@ counts.
 
 ## QC
 
-Two of the 41 cores are left out of every analysis: **TMA1 D8**, whose cells carry a median
-of 0 transcripts, and **TMA1 D4**, in which only 0.9 % of the cells are tumor — one a
-technical failure, the other a core with nothing to contribute to a DCIS versus
-microinvasion comparison.
+Cores are judged in two steps, kept apart so that the technical filter never depends on
+knowing which cells are tumor.
 
-Only the outcome is provided here, as `02.tma_core_qc/tma_core_qc.csv`: one row
-per core with the metrics the decision rests on, an `analysis_include` flag and a one-line
-`exclude_reason`. Downstream steps read that flag rather than recomputing anything, so the
-cell set matches the published one.
+```bash
+python scripts/qc_cores_raw.py          # technical quality, from the GEO files alone
+python scripts/qc_cores_composition.py  # what the core is made of
+#    -> 02.tma_core_qc/core_qc_raw.csv, tma_core_qc.csv
+```
 
-The procedure that produced the table is not included. Part of it cannot be rerun from the
-deposit: the cell-type composition of each core came from the per-slide graph-based
-clustering that Xenium writes beside the raw bundle, and that clustering is not among the
-deposited files.
+**Stage 1 — was the core measured well?** Cell count, transcripts and genes per cell, and
+how densely cells cover the tissue, all read from `cells.parquet` and the core bounding
+boxes. A core passes with at least 50 cells, a median of 20 transcripts per cell, and 50
+cells per mm2 of occupied tissue — occupied, not total, so an empty rim does not flatter a
+torn core. Low-quality fraction, cell area and control-probe fraction are reported without
+gating.
+
+**Stage 2 — what is in it?** Composition comes from the graph-based clustering Xenium
+produces per slide, mapped to cell types through the annotation of those clusters. The GEO
+deposit carries neither, so both travel with this repository as
+`02.tma_core_qc/TMA{1,2}.clusters.csv` and `TMA{1,2}.cluster_celltype_annotation.csv`. A
+core is flagged when it holds under 3 % tumor cells or fewer than 3 cell types.
+
+Two of the 41 cores are out, one at each stage: **TMA1 D8**, whose cells carry a median of
+0 transcripts, and **TMA1 D4**, technically sound but only 0.9 % tumor — one a measurement
+failure, the other a core with nothing to contribute to a DCIS versus microinvasion
+comparison. `tma_core_qc.csv` records every metric, an `analysis_include` flag and a
+one-line `exclude_reason`; the clustering step reads that flag rather than recomputing
+anything.
 
 ## Integrated Clustering Across TMA Batches (CL0-CL14)
 
@@ -281,13 +295,12 @@ reasons, none of them avoidable here:
   either side elsewhere — and that difference carries into the pools built on top.
 * **Cluster numbering is arbitrary.** The clusters come out in a different order each time,
   which is why pools are matched by lineage score instead of by cluster number.
-* **Two steps cannot be rerun from the deposit at all.** The cell-type composition behind
-  the per-core QC, and the screening of subclusters for cells of a foreign lineage, both
-  used the per-slide annotation that Xenium writes beside the raw bundle, which is not part
-  of the GEO submission. The first is supplied as a recorded table, so the cell set still
-  matches; the second is left out rather than replaced by a marker-score proxy, which is
-  not specific enough — pericytes and myofibroblasts score like endothelium often enough
-  that real cells would be discarded.
+* **One step is left out.** The original screened each subcluster for cells of a foreign
+  lineage, using the per-slide annotation of the initial clustering. A marker-score proxy
+  is not specific enough to stand in for it — pericytes and myofibroblasts score like
+  endothelium often enough that real cells would be discarded — so the screen is omitted
+  and the scores are reported per subcluster instead. (The per-slide clustering itself,
+  which the GEO deposit does not carry, is included here for the QC step.)
 * **Versions drift.** Defaults in scanpy, leidenalg and umap change between releases; the
   versions this was run with are listed under Environment.
 

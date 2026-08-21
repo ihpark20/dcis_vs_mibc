@@ -1,0 +1,27 @@
+cluster_id,initial_celltype,note,cluster_name,top_genes,celltype_predicted,celltype_final,slide_name
+13,NA,NA,C13,"POSTN, PDGFRB, MMP1",Myofibroblast CAF,CAF,TMA2
+23,NA,NA,C23,"CD80, CCR7, CD274",Activated APC (moDC-like),cDC,TMA2
+3,NA,NA,C3,"MS4A1, CD19, CD79A",B cell,B,TMA2
+4,NA,NA,C4,"MMP1, CXCL5, TIMP4",EMT-like tumor or damaged stroma,CAF,TMA2
+9,NA,NA,C9,"TAC1, FBLN1, SFRP4",Normal fibroblast or iCAF,CAF,TMA2
+21,NA,NA,C21,"GNLY, PRF1, PDCD1, CTLA4",CD8+ cytotoxic T,CD8T,TMA2
+7,endothelial cells,NA,C7,"CLEC14A, VWF, KDR",Endothelial cells,endothelial cell,TMA2
+25,NA,NA,C25,"ADIPOQ, LPL, PPARG",Lipid-associated fibroblast (LAF),CAF,TMA2
+2,M1,NA,C2,"ITGAX, MRC1, CD163",APC-like macrophage,M1,TMA2
+26,M2,NA,C26,"CD163, MRC1, CD14, CD68",M2-like macrophage,M2,TMA2
+19,NA,NA,C19,"CPA3, TPSAB1, CD69",Mast cell,mast cell,TMA2
+22,NA,NA,C22,"CTSG, CPA3, UCP1",Mast cell subtype,mast cell,TMA2
+6,myoepithelial cells,NA,C6,"KRT5, KRT6B, MYLK, OXTR",Myoepithelial,myoepithelial cell,TMA2
+17,myoepithelial cells,NA,C17,"KRT23, KRT6B, CXCL5",Reactive epithelium or EMT-like tumor,myoepithelial cell,TMA2
+20,NA,NA,C20,"LILRA4, IL3RA, TCL1A",pDC (plasmacytoid DC),pDC,TMA2
+8,endothelial cells,NA,C8,"ANGPT2, PDGFRB, CAVIN2",Perivascular cell,endothelial cell,TMA2
+14,CD8+ memory-like T cell,ICB therapy에 반응 가능한 핵심 T cell,C14,"FOXP3, GZMA, TIGIT",Treg,Treg,TMA2
+24,CD8+ memory-like T cell,"perivascular: C7, C8과 마커겹침",C24,"PRF1, GNLY, KLRD1, VWF",NK-like cytotoxic immune,perivascular NK,TMA2
+15,NA,NA,C15,"MZB1, SLAMF7, CD27",Plasma cell,plasma cell,TMA2
+12,NA,NA,C12,"SFRP4, IGF1, FBLN1",iCAF,CAF,TMA2
+1,CD8+ memory-like T cell,ICB therapy에 반응 가능한 핵심 T cell,C1,"CTLA4, CD3G, TIGIT, GZMA",CD8+ memory T,NKT,TMA2
+10,CD8+ memory-like T cell,ICB therapy에 반응 가능한 핵심 T cell,C10,"IL7R, CD8A, TCF7",Naive or memory CD8+ T,T,TMA2
+5,cancer,NA,C5,"S100A8, S100A14, ERBB2, CEACAM6",EMT-like tumor,cancer,TMA2
+18,cancer,NA,C18,"CEACAM6, SERHL2, TOP2A, GATA3",Luminal-type tumor,cancer,TMA2
+11,NA,NA,C11,"APOC1, MMP12, CEACAM6",Tumor or foam macrophage-like,cancer,TMA2
+16,cancer,NA,C16,"FASN, AGR3, GATA3, AR",Luminal-AR+ tumor,cancer,TMA2

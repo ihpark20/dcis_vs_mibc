@@ -1,0 +1,34 @@
+cluster_id,initial_celltype,note,cluster_name,top_genes,celltype_predicted,celltype_final,slide_name
+3,B,NA,C3,"MS4A1, BANK1, CD19, CD79B, CD79A",B 세포,B,TMA1
+13,B,NA,C13,"TCL1A, CD19, CD79B, MS4A1, CD79A",B 세포,B,TMA1
+2,CAF,lipid-like,C2,"MMP2, FBLN1, SFRP4, TAC1, CCDC80",Fibroblast (CAF-like),CAF,TMA1
+11,CAF,myofibroblastic,C11,"ADIPOQ, ADH1B, POSTN, GJB2, LPL",Fibroblast or Adipocyte-like stroma,CAF,TMA1
+7,cancer,S1008A+,C7,"ERBB2, KRT7, PIGR, SCD, FASN",Epithelial (암 가능),cancer,TMA1
+16,cancer,"luminal-AR+ HER2-low (GATA3+, AR+, AGR3+)",C16,"ESR1, FLNB, AGR3, SERPINA3, DNAAF1",Luminal epithelial (암 가능),cancer,TMA1
+18,cancer,"proliferative luminal HER2-low subclone, (CEACAM6+, TOP2A+, GATA3+)",C18,"CEACAM6, PTN, CCND1, GATA3, ESR1",Breast cancer (Luminal),cancer,TMA1
+19,cancer,"AR-high, TIMP4-high, 4번보다는 생생함_ stable luminal",C19,"TIMP4, ABCC11, ANKRD30A, LYPD3, AR",암세포 / luminal marker,cancer,TMA1
+21,cancer,NA,C21,"EIF4EBP1, AKR1C1, WARS, SQLE, SRPK1",Epithelial/proliferation 관련,cancer,TMA1
+23,cancer,"AR-high, TIMP4-low",C23,"SERHL2, ABCC11, AR, DNAAF1, ERBB2",암세포 / luminal-like,cancer,TMA1
+24,cancer,"CENPF-high, proliferative",C24,"ANKRD30A, ABCC11, CENPF, AGR3, ENAH",암세포 / luminal-like,cancer,TMA1
+26,cancer,"HER2 low, ESR1+, GATA3+, CEACAM6+",C26,"CEACAM6, ESR1, GATA3, AGR3, TOP2A",암세포 / luminal-like,cancer,TMA1
+30,myoepithelial cells,reactive (immune interacting),C30,"MMP12, CD80, HAVCR2, C15orf48, FCGR3A",Myeloid / immune suppressive,myoepithelial cell,TMA1
+31,cancer,EMT-like (S100A8+),C31,"S100A8, PIGR, SERHL2, ABCC11, FASN",Myeloid/epithelial 혼재,cancer,TMA1
+33,cancer,"basal-like (CEACAM6+, KRT5/6B+, NCAM1+)",C33,"PTN, KRT23, KRT6B, TUBB2B, NCAM1",Basal-like epithelial / cancer,cancer,TMA1
+28,cancer,apoptotic cells,C28,"S100A8, PIGR, UCP1, SERPINA3, ERBB2",Myeloid-like / epithelial 혼재,cancer,TMA1
+9,resting lymphocytes,NA,C9,"GZMK, NKG7, CD247, CD3E, GZMA",T 세포 (CD8⁺ cytotoxic),CD8T,TMA1
+27,cDC1,PDL2+/PDL1+,C27,"CLEC9A, CD80, CD83, CCR7, CD274",Dendritic cells (mature),cDC,TMA1
+14,moDC,NA,C14,"ITGAX, MNDA, CLEC9A, MRC1, MMP12",Dendritic cells / Monocyte-like,moDC,TMA1
+5,endothelial cells,EMS1+,C5,"EGFL7, VWF, CLEC14A, MMRN2, HOXD9",Endothelial 세포,endothelial cell,TMA1
+10,endothelial cells,NA,C10,"AVPR1A, MYH11, PDGFRB, ANGPT2, SSTR2",Fibroblast/Smooth muscle,endothelial cell,TMA1
+6,M2,CD14+ CD163+ suppressive,C6,"APOC1, CD163, MMP12, CD68, C1QA",Macrophage,M2,TMA1
+15,M2,CX3CR1+ APC-like,C15,"FCER1A, MRC1, ITGAX, CX3CR1, MNDA",Macrophage/DC 혼합,M2,TMA1
+20,M2,CD163+ PD-L2+,C20,"GZMK, GZMA, CTLA4, CD8A, C1QA",T 세포 + 일부 macrophage signal,M2,TMA1
+25,mast cell,NA,C25,"TPSAB1, CTSG, CPA3, CAVIN2, CD69",Mast cell,mast cell,TMA1
+8,myoepithelial cells,NA,C8,"KRT5, KRT6B, MYLK, MMP1, ACTG2",Myoepithelial or Smooth muscle,myoepithelial cell,TMA1
+4,cancer,제일 죽어가는 세포들,C4,"UCP1, ADIPOQ, CXCL5, CLEC9A, MMP12",Adipocyte/NK 혼재,neutrophil,TMA1
+1,resting lymphocytes,9번보다는 activated,C1,"IL7R, TIGIT, CD247, CTLA4, TRAC",T 세포 (CD4⁺/CD8⁺/Treg),NKT,TMA1
+32,Perivascular NK cell,NA,C32,"VWF, GNLY, PRF1, NKG7, MMRN2",NK cells + endothelial proximity,perivascular NK,TMA1
+17,plasma cells,NA,C17,"MZB1, TENT5C, SLAMF7, ITM2C, PRDM1",Plasma cells,plasma cell,TMA1
+22,plasma cells,NA,C22,"MZB1, TENT5C, SLAMF7, ITM2C, PRDM1",Plasma cells,plasma cell,TMA1
+29,plasma cells,mature,C29,"LILRA4, IL3RA, PLD4, SPIB, TCL1A",Plasmacytoid DC (pDC),plasma cell,TMA1
+12,activated effector CD8+ T,NA,C12,"GZMA, KLRB1, CD8A, GZMK, CTLA4",T 세포 (CD8⁺ & Treg 혼합),T,TMA1
