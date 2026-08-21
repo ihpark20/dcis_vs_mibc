@@ -189,6 +189,36 @@ have given, and the decision should be read with that table in hand.
 Cores, not subclusters, are excluded at this step: a boundary needs the whole epithelial
 compartment of a core to be present.
 
+## Myoepithelial coverage of the boundary
+
+A duct in situ is wrapped in a myoepithelial sheath, and microinvasion is the point at
+which tumor cells get past it. Each boundary cell is therefore sorted by what covers it:
+
+| class | meaning |
+|---|---|
+| `myoep-sheath` | the boundary cell is itself myoepithelial |
+| `myoep-lined` | a tumor cell with a myoepithelial cell within 15 um |
+| `myoep-deficient` | a tumor cell facing the microenvironment with no myoepithelium |
+
+```bash
+python scripts/boundary_myoep_from_geo.py
+#    -> 03.data_processed/boundary/boundary_myoep_{cells,percore,overall,stats}.csv
+```
+
+The comparison is made across cores, not cells: each core contributes the percentage of its
+boundary falling in each class, and DCIS is compared with mDCIS by Mann-Whitney with
+Benjamini-Hochberg correction over the four measures. Treating cells as independent would
+inflate the sample from tens of cores to tens of thousands of cells and turn any difference
+significant.
+
+The result is the one the paper reports — the boundary of a microinvasive lesion is
+markedly less covered. In this rerun the median core has 53 % of its boundary myoepithelium
+deficient in DCIS against 77 % in mDCIS, with sheath and lined shifted the other way by a
+similar margin. The four raw p-values sit between 0.03 and 0.06 and do not survive
+correction here, where the published run's did; with 38 cores the effect is stable but the
+significance verdict is not, which is worth keeping in mind when rerunning any of the
+core-level comparisons.
+
 ## What the analysis leaves out
 
 Two exclusions are made downstream of the clustering, and the evidence for both is visible
