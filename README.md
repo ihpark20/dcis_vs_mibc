@@ -1,6 +1,6 @@
 # Spatial transcriptomics of DCIS and microinvasive breast carcinoma
 
-Code and source data behind the figures and supplementary tables of the manuscript.
+Code and data to reproduce the findings in '[Spatial transcriptomics reveals tumor-stroma interface remodeling in HER2-positive ductal carcinoma in situ with microinvasion]' (under review). 
 Two breast tissue microarrays (41 cores) were profiled with 10x Genomics Xenium using a
 374-gene custom panel (280-gene Human Breast panel + 94-gene immuno-oncology add-on) and
 compared between pure DCIS and microinvasive carcinoma (mDCIS).
