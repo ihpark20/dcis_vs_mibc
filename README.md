@@ -219,6 +219,39 @@ correction here, where the published run's did; with 38 cores the effect is stab
 significance verdict is not, which is worth keeping in mind when rerunning any of the
 core-level comparisons.
 
+## Ligand-receptor communication
+
+Two cells can only signal through a short-range ligand if they are close enough to share
+the same space, which spatial data can see directly. For each ligand-receptor pair with
+both partners on the panel — ten of them — the question is whether receptor-positive cells
+sit next to ligand-positive cells more often than the core's own composition would give:
+
+```
+obs = ligand-positive neighbours of receptor-positive cells / all their neighbours
+exp = ligand-positive cells / all cells in the core
+enrichment = log2((obs + 1e-4) / (exp + 1e-4))
+```
+
+```bash
+python scripts/ccc_from_geo.py
+#    -> 03.data_processed/ccc/lr_{enrich,stats,celltypes}.csv
+```
+
+Neighbours are cells within 30 um; expression is a raw count above zero. Sums are divided
+rather than per-cell fractions averaged, so a sparsely surrounded cell cannot swing the
+result, and `exp` is the core's own density, so a core full of ligand-positive cells is not
+credited for proximity that comes for free. A core contributes a pair only when it holds at
+least 15 cells positive for each partner. Cores are the replicates: each pair is tested
+against zero enrichment with a one-sample Wilcoxon corrected across pairs, and DCIS is
+compared with mDCIS by Mann-Whitney.
+
+The lymphoid chemokine axes come out strongest — CXCL13-CXCR5 and CCL19-CCR7 both above one
+doubling of enrichment — and the checkpoint pairs CD80-CTLA4 and CD274-PDCD1 are the ones
+that separate the groups, both higher in microinvasive cores.
+
+What this measures is opportunity, not activity: cells positioned to signal, not signalling
+observed.
+
 ## What the analysis leaves out
 
 Two exclusions are made downstream of the clustering, and the evidence for both is visible
