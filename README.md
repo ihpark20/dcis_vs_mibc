@@ -119,8 +119,21 @@ settings:
 | seed | 42 throughout |
 
 The written object keeps raw counts in `X`, the Harmony embedding in
-`obsm["X_pca_harmony"]`, the UMAP coordinates and the cluster labels in `obs["leiden"]`.
-Pass `--all-cores` to skip the QC filter and cluster every core instead.
+`obsm["X_pca_harmony"]`, the UMAP coordinates, Leiden's own labels in `obs["leiden"]` and
+the published numbering in `obs["cluster"]`. Pass `--all-cores` to skip the QC filter and
+cluster every core instead.
+
+**CL0-CL14 keep their meaning.** Leiden numbers clusters by size, so a rerun renumbers
+everything and CL3 would no longer be the same population it is in the paper. Each new
+cluster is therefore summarised by its mean expression across the panel, correlated against
+the reference profile of every published cluster in
+`03.data_processed/integrated_cluster_profiles.csv`, and the one-to-one assignment with the
+highest total correlation is taken. The pairing and its correlations are written to
+`03.data_processed/cluster_naming.csv`; matching this way is far more stable than the
+clustering itself, because a cluster's average profile barely moves when a few per cent of
+its boundary cells change hands. What each CL was annotated as is in
+`03.data_processed/integrated_cluster_annotation.csv` — composition, dominant prior cell
+type and top markers, one row per cluster.
 
 Expect around an hour on half a million cells; the Leiden step alone takes a good part of
 it and runs on a single core.

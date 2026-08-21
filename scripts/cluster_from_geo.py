@@ -18,8 +18,14 @@ Usage:
     python scripts/build_anndata_from_geo.py
     python scripts/cluster_from_geo.py
 
+Clusters are renamed to the paper's CL0-CL14 by matching each one's mean expression to the
+reference profiles in `03.data_processed/integrated_cluster_profiles.csv`, so the numbering
+means the same thing here as in the paper; `03.data_processed/integrated_cluster_annotation.csv`
+carries what each CL was annotated as. Leiden's own numbering is kept in `obs["leiden"]`.
+
 Output:
     03.data_processed/integrated_qc_passed_from_geo.h5ad
+    03.data_processed/cluster_naming.csv
 """
 
 import argparse
@@ -27,11 +33,14 @@ from pathlib import Path
 
 import harmonypy as hm
 import numpy as np
+import pandas as pd
 import scanpy as sc
+from scipy.optimize import linear_sum_assignment
 
 # resolved from this file, so a clone works wherever it sits
 ROOT = Path(__file__).resolve().parent.parent
 IN = ROOT / "03.data_processed/geo_slides.h5ad"
+PROFILES = ROOT / "03.data_processed/integrated_cluster_profiles.csv"
 QC = ROOT / "02.tma_core_qc/tma_core_qc.csv"
 OUT = ROOT / "03.data_processed/integrated_qc_passed_from_geo.h5ad"
 
@@ -49,6 +58,7 @@ def main():
     ap.add_argument(
         "--qc", default=QC, type=Path, help="core QC verdicts from qc_cores_composition.py"
     )
+    ap.add_argument("--profiles", default=PROFILES, type=Path, help="reference CL profiles")
     ap.add_argument("--max-cells", type=int, default=0, help="subsample, for a smoke test")
     ap.add_argument(
         "--all-cores",
@@ -78,6 +88,52 @@ def main():
     return cluster(a, args)
 
 
+def name_clusters(a, profiles_path, cluster_key="leiden"):
+    """Rename Leiden clusters to the paper's CL numbers.
+
+    Leiden numbers its clusters by size, so a rerun renumbers everything. The published
+    clusters are matched by what they express instead: each new cluster is summarised by
+    its mean expression, correlated against the reference profile of every CL, and the
+    one-to-one assignment maximising total correlation wins. That keeps CL0-CL14 meaning
+    the same population it means in the paper.
+    """
+    reference = pd.read_csv(profiles_path, index_col=0)
+    genes = [g for g in reference.columns if g in a.var_names]
+
+    lognorm = a.copy()
+    lognorm.X = lognorm.layers["counts"].copy()
+    sc.pp.normalize_total(lognorm, target_sum=1e4)
+    sc.pp.log1p(lognorm)
+    x = lognorm[:, genes].X
+    frame = pd.DataFrame(
+        x.todense() if hasattr(x, "todense") else x,
+        index=a.obs[cluster_key].astype(str).values,
+        columns=genes,
+    )
+    observed = frame.groupby(level=0).mean()
+
+    corr = pd.DataFrame(
+        np.corrcoef(observed.to_numpy(), reference[genes].to_numpy())[
+            : len(observed), len(observed) :
+        ],
+        index=observed.index,
+        columns=reference.index,
+    )
+    rows, cols = linear_sum_assignment(-corr.to_numpy())
+    mapping = {corr.index[r]: corr.columns[c] for r, c in zip(rows, cols, strict=True)}
+    table = pd.DataFrame(
+        {
+            "leiden": list(mapping),
+            "cluster": [mapping[k] for k in mapping],
+            "correlation": [round(corr.loc[k, mapping[k]], 3) for k in mapping],
+            "n_cells": [int((a.obs[cluster_key].astype(str) == k).sum()) for k in mapping],
+        }
+    ).sort_values("cluster", key=lambda c: c.str.removeprefix("CL").astype(int))
+
+    a.obs["cluster"] = a.obs[cluster_key].astype(str).map(mapping).astype("category")
+    return table
+
+
 def cluster(a, args):
     if args.max_cells and a.n_obs > args.max_cells:
         sc.pp.subsample(a, n_obs=args.max_cells, random_state=0)
@@ -102,7 +158,16 @@ def cluster(a, args):
     sc.pp.neighbors(a, n_neighbors=N_NEIGHBORS, n_pcs=N_PCS, use_rep="X_pca_harmony")
     sc.tl.umap(a, random_state=SEED)
     sc.tl.leiden(a, resolution=RESOLUTION, random_state=SEED, key_added="leiden")
-    print(a.obs["leiden"].value_counts().sort_index().to_string())
+
+    if args.profiles.exists():
+        table = name_clusters(a, args.profiles)
+        table.to_csv(args.out.parent / "cluster_naming.csv", index=False)
+        print("\nLeiden clusters matched to the published numbering:")
+        print(table.to_string(index=False))
+    else:
+        print(f"{args.profiles} not found; clusters keep their Leiden numbers")
+        a.obs["cluster"] = "CL" + a.obs["leiden"].astype(str)
+    print("\n" + a.obs["cluster"].value_counts().sort_index().to_string())
 
     a.X = a.layers["counts"].copy()
     a.write_h5ad(args.out, compression="gzip")
