@@ -79,6 +79,41 @@ deposit: the cell-type composition of each core came from the per-slide graph-ba
 clustering that Xenium writes beside the raw bundle, and that clustering is not among the
 deposited files.
 
+## Integrated Clustering Across TMA Batches (CL0-CL14)
+
+The two microarrays were imaged as separate slides, so slide is the batch to correct for.
+`cluster_from_geo.py` integrates them with Harmony and partitions the result with Leiden,
+giving the fifteen clusters (CL0-CL14) the annotation is built on.
+
+```bash
+python scripts/cluster_from_geo.py
+#    -> 03.data_processed/integrated_qc_passed_from_geo.h5ad
+```
+
+It keeps the cores flagged `analysis_include` in the QC table, then follows the published
+settings:
+
+| step | setting |
+|---|---|
+| cell filters | `min_counts=10`, `min_genes=5` |
+| normalization | counts per 10,000, `log1p` |
+| feature selection | 300 highly variable genes, `flavor="seurat"`, `batch_key="slide"` |
+| scaling, PCA | `max_value=10`, 30 components |
+| batch correction | Harmony on `slide`, `max_iter_harmony=30` |
+| graph, embedding | 15 neighbors on the Harmony components, UMAP |
+| clustering | Leiden, `resolution=0.5` |
+| seed | 42 throughout |
+
+The written object keeps raw counts in `X`, the Harmony embedding in
+`obsm["X_pca_harmony"]`, the UMAP coordinates and the cluster labels in `obs["leiden"]`.
+Pass `--all-cores` to skip the QC filter and cluster every core instead.
+
+Expect around an hour on half a million cells; the Leiden step alone takes a good part of
+it and runs on a single core. Harmony and Leiden both accumulate floating point in an
+order that depends on the machine, so a rerun reproduces the cluster structure rather than
+every individual cell label.
+
+## Subclustering of Pooled Clusters (7 Pools)
 
 ## Data not included here
 
