@@ -5,16 +5,11 @@ Two breast tissue microarrays (41 cores) were profiled with 10x Genomics Xenium 
 374-gene custom panel (280-gene Human Breast panel + 94-gene immuno-oncology add-on) and
 compared between pure DCIS and microinvasive carcinoma (mDCIS).
 
-Everything needed to regenerate a published panel or supplementary table is here: the
-preprocessing and annotation pipeline, the per-figure preparation scripts, the rendering
-scripts, and the intermediate tables the figures are drawn from. Exploratory analyses that
-did not reach the manuscript are not included.
-
 ## Environment
 
 All computation ran in a single conda environment (`py312_r44`): Python 3.12.8,
 scanpy 1.11.1, anndata 0.11.4, harmonypy 0.2.0, PyDESeq2 0.5.4, scikit-learn 1.5.2,
-SciPy 1.15.1, NumPy 2.2.6, pandas 2.2.3, statsmodels 0.14.4, PyMuPDF (figure assembly).
+SciPy 1.15.1, NumPy 2.2.6, pandas 2.2.3, statsmodels 0.14.4.
 Figures were rendered in R 4.4.3 with ggplot2, patchwork, ggalluvial and ComplexHeatmap.
 
 ## Getting the data (GEO GSE343808)
@@ -66,6 +61,23 @@ of which 333,964 (TMA1) and 210,460 (TMA2) fall inside a TMA core. Restricted to
 QC-passing cores and the cell filters of the paper (`min_counts=10`, `min_genes=5`), this
 is exactly the 520,506 cells of the published object — same cell identifiers, same raw
 counts.
+
+## QC
+
+Two of the 41 cores are left out of every analysis: **TMA1 D8**, whose cells carry a median
+of 0 transcripts, and **TMA1 D4**, in which only 0.9 % of the cells are tumor — one a
+technical failure, the other a core with nothing to contribute to a DCIS versus
+microinvasion comparison.
+
+Only the outcome is provided here, as `02.tma_core_qc/tma_core_qc.csv`: one row
+per core with the metrics the decision rests on, an `analysis_include` flag and a one-line
+`exclude_reason`. Downstream steps read that flag rather than recomputing anything, so the
+cell set matches the published one.
+
+The procedure that produced the table is not included. Part of it cannot be rerun from the
+deposit: the cell-type composition of each core came from the per-slide graph-based
+clustering that Xenium writes beside the raw bundle, and that clustering is not among the
+deposited files.
 
 
 ## Data not included here
