@@ -149,6 +149,37 @@ holding fewer than max(200, 0.5 %) of the pool's cells as `fragment`; fragments 
 label, being small rather than wrong. Subclusters are not screened for cells of a foreign
 lineage — see below.
 
+## Major cell types
+
+The pools give fine-grained states; most analyses need the coarse lineages behind them.
+
+```bash
+python scripts/major_celltypes_from_geo.py
+#    -> 03.data_processed/subclustered/major_celltypes.csv
+```
+
+Each (pool, programme) pair maps to one major type. A pool is usually one lineage, but two
+need the programme to decide: the tumor pool holds myoepithelial cells alongside tumor, and
+pericytes turn up in both the endothelial and the CAF pool. Plasma cells are split from B
+cells, and the dendritic programmes from the macrophages. That gives twelve major types.
+
+## What the analysis leaves out
+
+Two exclusions are made downstream of the clustering, and the evidence for both is visible
+in the output of this pipeline.
+
+**TMA1 D6.** Two subclusters of the tumor pool, the ones scoring highest for the
+luminal-mature programme, draw 79 % and 93 % of their cells from this single core; no other
+subcluster comes close. A cell state carried by one core cannot support a comparison
+between DCIS and microinvasive disease, so D6 is dropped from the analyses. It stays in the
+clustering itself, which is why the cell set still matches the published one.
+
+**Neutrophils.** The panel was not designed to resolve them: of the markers normally used —
+FCGR3B, CSF3R, S100A9, ELANE, MPO, CXCR2 — none is on it, and the three that are (S100A8,
+CEACAM8, ITGAM) are not specific. No pool recovers a neutrophil state, and the neutrophils
+annotated in the original run carry the lowest transcript count of any major type, about a
+quarter of the median cell. They are excluded rather than analysed as a population.
+
 ## Reproducing this analysis
 
 A rerun reproduces the shape of the published analysis — the same cells, the same lineages,
