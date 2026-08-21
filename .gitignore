@@ -3,3 +3,8 @@ __pycache__/
 .Rhistory
 .RData
 .DS_Store
+
+# expression data downloaded from GEO, not redistributed here
+01.data_raw/GSE343808/
+03.data_processed/geo_slides.h5ad
+03.data_processed/integrated_qc_passed_from_geo.h5ad
