@@ -163,6 +163,32 @@ need the programme to decide: the tumor pool holds myoepithelial cells alongside
 pericytes turn up in both the endothelial and the CAF pool. Plasma cells are split from B
 cells, and the dendritic programmes from the macrophages. That gives twelve major types.
 
+## Tumor boundary
+
+Where a duct or a tumor mass meets its surroundings is not marked in the data; it has to be
+inferred from who each cell sits next to. The epithelial pool is every cell called Tumor or
+Myoepithelial, and for each of its cells `f_env` is the fraction of its neighbours within
+30 um that fall outside the pool — stroma, immune cells, vessels.
+
+```bash
+python scripts/boundary_from_geo.py
+#    -> 03.data_processed/boundary/pool_boundary_cells.csv, tau_sensitivity.csv
+```
+
+A cell deep inside an epithelial mass touches only its own kind and has `f_env` near zero —
+38 % of the pool sits at exactly zero — while a cell at the edge touches the
+microenvironment and the value rises. Two conditions keep the fraction meaningful: at least
+3 neighbours, and membership of an epithelial component of at least 30 cells at the same
+30 um radius, so that scattered cells are not called a boundary.
+
+`f_env` is continuous and has no natural gap, so the cut is a choice rather than a
+discovery. The analysis uses **f_env >= 0.20**, which puts about a third of the pool at the
+boundary; `tau_sensitivity.csv` records what every other threshold from 0.05 to 0.50 would
+have given, and the decision should be read with that table in hand.
+
+Cores, not subclusters, are excluded at this step: a boundary needs the whole epithelial
+compartment of a core to be present.
+
 ## What the analysis leaves out
 
 Two exclusions are made downstream of the clustering, and the evidence for both is visible
