@@ -109,11 +109,67 @@ The written object keeps raw counts in `X`, the Harmony embedding in
 Pass `--all-cores` to skip the QC filter and cluster every core instead.
 
 Expect around an hour on half a million cells; the Leiden step alone takes a good part of
-it and runs on a single core. Harmony and Leiden both accumulate floating point in an
-order that depends on the machine, so a rerun reproduces the cluster structure rather than
-every individual cell label.
+it and runs on a single core.
 
-## Subclustering of Pooled Clusters (7 Pools)
+## Subclustering of Pooled Clusters
+
+One clustering of half a million cells over 374 genes separates lineages but not the states
+inside them: a small lineage, or a state that differs in a handful of genes, is absorbed by
+the dominant axis of variation. The fifteen clusters are therefore grouped into seven
+lineage pools and each pool is re-clustered on its own markers.
+
+```bash
+python scripts/subcluster_from_geo.py
+#    -> 03.data_processed/subclustered/<pool>.h5ad, subcluster_assignments.csv
+
+python scripts/merge_subclusters_from_geo.py
+#    -> 03.data_processed/subclustered/cell_states.csv
+```
+
+Clusters are assigned to pools by lineage score rather than by number — a rerun numbers its
+clusters differently — and each pool then follows the same recipe:
+
+1. **lineage filter.** A cell enters the pool only if it has a non-zero count for at least
+   one of the pool's lineage genes, which removes cells placed there on overall similarity
+   with no lineage evidence of their own.
+2. **curated feature space.** The pool's marker set becomes the feature space for PCA,
+   in place of highly variable genes. With 374 panel genes, HVG selection inside a single
+   lineage is dominated by the abundant transcripts that leak in from neighbouring cells;
+   restricting the features makes the sub-structure drive the components.
+3. **embedding and clustering.** Scale, PCA, Harmony over slide, a 15-neighbour graph,
+   UMAP, Leiden at the pool's resolution.
+4. **programme scoring.** Every cell is scored for the pool's programmes and each
+   subcluster takes the name of its highest-scoring one.
+
+Per-pool settings — which clusters, which lineage genes, which features, which programmes,
+resolution and number of components — are in `scripts/pool_config.py`, one entry per pool.
+
+`merge_subclusters_from_geo.py` then merges the subclusters by programme and marks those
+holding fewer than max(200, 0.5 %) of the pool's cells as `fragment`; fragments keep their
+label, being small rather than wrong. Subclusters are not screened for cells of a foreign
+lineage — see below.
+
+## Reproducing this analysis
+
+A rerun reproduces the shape of the published analysis — the same cells, the same lineages,
+the same cell states in the same proportions — but not every individual cell label. Four
+reasons, none of them avoidable here:
+
+* **Clustering is not portable.** Harmony and Leiden accumulate floating point in an order
+  that depends on the number of threads and on the BLAS build. Seeds are fixed, so a rerun
+  on the same machine repeats itself, but cells sitting near a cluster boundary can land on
+  either side elsewhere — and that difference carries into the pools built on top.
+* **Cluster numbering is arbitrary.** The clusters come out in a different order each time,
+  which is why pools are matched by lineage score instead of by cluster number.
+* **Two steps cannot be rerun from the deposit at all.** The cell-type composition behind
+  the per-core QC, and the screening of subclusters for cells of a foreign lineage, both
+  used the per-slide annotation that Xenium writes beside the raw bundle, which is not part
+  of the GEO submission. The first is supplied as a recorded table, so the cell set still
+  matches; the second is left out rather than replaced by a marker-score proxy, which is
+  not specific enough — pericytes and myofibroblasts score like endothelium often enough
+  that real cells would be discarded.
+* **Versions drift.** Defaults in scanpy, leidenalg and umap change between releases; the
+  versions this was run with are listed under Environment.
 
 ## Data not included here
 
