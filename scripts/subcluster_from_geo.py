@@ -20,6 +20,8 @@ For every pool:
 
 Which cluster belongs to which pool is decided beforehand by `assign_pools_from_geo.py`,
 following the paper's own grouping, and read from `03.data_processed/pool_assignment.csv`.
+The cores in `analysis_exclusions.py` are dropped here, before the pools are formed, which
+is where the published analysis drops them too.
 
 Usage:
     python scripts/cluster_from_geo.py
@@ -39,6 +41,7 @@ import harmonypy as hm
 import numpy as np
 import pandas as pd
 import scanpy as sc
+from analysis_exclusions import drop_excluded
 from pool_config import POOLS
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -73,7 +76,8 @@ def subcluster(a, name, pool):
 
     sc.pp.scale(sub, max_value=10)
     n_comps = min(pool["n_pcs"], len(features) - 1)
-    sc.tl.pca(sub, n_comps=n_comps, use_highly_variable=True, random_state=SEED)
+    # random_state=0 is scanpy's default and what the published run used
+    sc.tl.pca(sub, n_comps=n_comps, use_highly_variable=True, random_state=0)
 
     harmony = hm.run_harmony(
         sub.obsm["X_pca"], sub.obs, vars_use=["slide"], random_state=SEED, max_iter_harmony=30
@@ -112,6 +116,8 @@ def main():
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
     a = sc.read_h5ad(args.input)
+    core = a.obs["slide"].astype(str) + "_" + a.obs["core_id"].astype(str)
+    a = a[drop_excluded(core.to_frame("core"), "core").index].copy()
     print(f"{a.n_obs:,} cells x {a.n_vars} genes, {a.obs[args.cluster_key].nunique()} clusters")
 
     assignment = pd.read_csv(args.pool_assignment)

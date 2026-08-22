@@ -33,6 +33,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import scanpy as sc
+from analysis_exclusions import EXCLUDED_CORES
 from scipy.sparse.csgraph import connected_components
 from scipy.spatial import cKDTree
 from sklearn.neighbors import radius_neighbors_graph
@@ -43,7 +44,7 @@ MAJOR = ROOT / "03.data_processed/subclustered/major_celltypes.csv"
 OUT_DIR = ROOT / "03.data_processed/boundary"
 
 EPITHELIAL = {"Tumor", "Myoepithelial"}
-EXCLUDE_CORES = {"TMA1_D6"}
+
 RADIUS = 30.0
 MIN_NBR = 3
 MIN_MASS = 30
@@ -106,7 +107,7 @@ def main():
     major = pd.read_csv(args.major, usecols=["cell_id", "major_celltype"])
     cells = cells.merge(major, on="cell_id", how="left")
     cells["major_celltype"] = cells["major_celltype"].fillna("unassigned")
-    cells = cells[~cells["core"].isin(EXCLUDE_CORES)]
+    cells = cells[~cells["core"].isin(EXCLUDED_CORES)]
     print(
         f"{len(cells):,} cells in {cells['core'].nunique()} cores, "
         f"{cells['major_celltype'].isin(EPITHELIAL).sum():,} epithelial"

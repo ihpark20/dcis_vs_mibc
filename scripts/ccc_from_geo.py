@@ -39,6 +39,7 @@ import numpy as np
 import pandas as pd
 import scanpy as sc
 import scipy.sparse as sp
+from analysis_exclusions import EXCLUDED_CORES
 from scipy.spatial import cKDTree
 from scipy.stats import mannwhitneyu, wilcoxon
 from statsmodels.stats.multitest import multipletests
@@ -48,7 +49,7 @@ CLUSTERED = ROOT / "03.data_processed/integrated_qc_passed_from_geo.h5ad"
 MAJOR = ROOT / "03.data_processed/subclustered/major_celltypes.csv"
 OUT_DIR = ROOT / "03.data_processed/ccc"
 
-EXCLUDE_CORES = {"TMA1_D6"}
+
 RADIUS = 30.0
 MIN_EXPR = 15
 MIN_CORES = 5
@@ -117,7 +118,7 @@ def main():
     obs = a.obs.copy()
     obs["cell_id"] = a.obs_names
     obs["core"] = obs["slide"].astype(str) + "_" + obs["core_id"].astype(str)
-    keep = (~obs["core"].isin(EXCLUDE_CORES)).to_numpy()
+    keep = (~obs["core"].isin(EXCLUDED_CORES)).to_numpy()
 
     counts = a.layers["counts"] if "counts" in a.layers else a.X
     counts = sp.csc_matrix(counts) if not sp.issparse(counts) else counts.tocsc()

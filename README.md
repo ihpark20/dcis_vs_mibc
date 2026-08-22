@@ -220,7 +220,14 @@ not match its published counterpart cleanly and is being sent somewhere its expr
 not support — the script prints those rows rather than letting them pass. In our rerun all
 fifteen agreed.
 
-`subcluster_from_geo.py` reads that file; each pool then follows the same recipe:
+`subcluster_from_geo.py` reads that file; each pool then follows the same recipe.
+
+TMA1 D6 is dropped before the pools are formed. The clustering itself ran on every
+QC-passing core, D6 among them, and the core was set aside afterwards; the subclustering
+was then redone without it, which is the version everything downstream uses. The exclusion
+lives in `scripts/analysis_exclusions.py`, and the boundary and communication steps read it
+from there too.
+
 
 1. **lineage filter.** A cell enters the pool only if it has a non-zero count for at least
    one of the pool's lineage genes, which removes cells placed there on overall similarity
@@ -305,13 +312,12 @@ inflate the sample from tens of cores to tens of thousands of cells and turn any
 significant.
 
 The result is the one the paper reports — the boundary of a microinvasive lesion is
-markedly less covered. Starting from the published clustering, the median core has 68 % of
-its boundary myoepithelium deficient in DCIS against 88 % in mDCIS, against 66 % and 86 %
-in the paper, and sheath and lined shift the other way by a similar margin. The raw
-p-values sit near 0.05 and do not survive correction across the four measures here, where
-the published run's did. With 38 cores the effect size travels between runs but the
-significance verdict does not, which is worth remembering for any of the core-level
-comparisons.
+markedly less covered. The median core has 58 % of its boundary myoepithelium deficient in
+DCIS against 82 % in mDCIS, where the paper has 66 % and 86 %, and sheath and lined shift
+the other way by a similar margin. Three of the four measures survive correction here and
+the fourth sits just outside it, against all four in the paper. With 38 cores the effect
+size travels between runs more reliably than the significance verdict, which is worth
+remembering for any of the core-level comparisons.
 
 ## Ligand-receptor communication
 
@@ -385,13 +391,15 @@ reasons, none of them avoidable here:
   versions this was run with are listed under Environment.
 
 How far the divergence travels depends on where you start. Beginning from the published
-clustering, 97 % of cells land in the same major cell type as the paper, the boundary
-composition matches within a couple of percent, and the ligand-receptor enrichments come
-out identical to three decimals — that analysis reads only coordinates and counts, so it
-is fully determined once the cell set is. Beginning from a fresh clustering instead, the
-major cell types agree for 87 % of cells: the CAF and myeloid clusters trade members, and
-that difference is carried into every step built on top. Both runs give the same answer to
-the biological question; they differ in how many cells sit on either side of it.
+clustering, all seven pools hold exactly the cells they hold in the paper — 108,594 in the
+tumor pool, 96,841 in T/NK, and so on — 97 % of cells land in the same major cell type, and
+the ligand-receptor enrichments come out identical to three decimals, that analysis reading
+only coordinates and counts and so being fully determined once the cell set is. What still
+moves is inside the pools: Leiden splits each one a little differently, which shifts where
+the myoepithelial call lands and carries a few percent into the boundary composition.
+Beginning from a fresh clustering instead, the major cell types agree for 87 % of cells,
+the CAF and myeloid clusters trading members. Both runs give the same answer to the
+biological question; they differ in how many cells sit on either side of it.
 
 ## Data not included here
 
