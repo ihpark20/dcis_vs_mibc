@@ -190,15 +190,45 @@ overruled the prior label.
 One clustering of half a million cells over 374 genes separates lineages but not the states
 inside them: a small lineage, or a state that differs in a handful of genes, is absorbed by
 the dominant axis of variation. The fifteen clusters are therefore grouped into seven
-lineage pools and each pool is re-clustered on its own markers.
+lineage pools and each pool is re-clustered on its own markers. As with the clustering,
+there are two ways to get there.
+
+### Either: take the cell states the paper assigned
 
 ```bash
-python scripts/subcluster_from_geo.py
-#    -> 03.data_processed/subclustered/<pool>.h5ad, subcluster_assignments.csv
-
-python scripts/merge_subclusters_from_geo.py
+python scripts/use_published_subclusters.py
 #    -> 03.data_processed/subclustered/cell_states.csv
 ```
+
+The published assignment for all 477,681 cells travels with this repository as
+`03.data_processed/subcluster_labels.csv.gz` — pool, subcluster, cell state and the
+fragment flag for each cell. Seconds instead of an hour, and the cell states are exactly
+the paper's.
+
+### Or: run the paper's subclustering
+
+```bash
+python scripts/prepare_pool_input.py            # the object those scripts expect
+python scripts/paper_subcluster_cl0_tcell_only.py
+python scripts/paper_subcluster_cl1_endothelial.py
+python scripts/paper_subcluster_cl2_11_12_myeloid_dc.py
+python scripts/paper_subcluster_cl3_4_10_combined.py
+python scripts/paper_subcluster_cl5_8_bplasma.py
+python scripts/paper_subcluster_cl6_7_13_14_caf_adipo.py
+python scripts/paper_subcluster_cl9_mast.py
+python scripts/paper_merge_subclusters.py       # fragment and contamination flags, merge
+python scripts/paper_build_master_annotation.py # one row per cell
+python scripts/paper_add_celltype_level1.py     # major cell types
+```
+
+The `paper_*` scripts are the study's own code, one per pool, changed only in their path
+constants — the filters, features, parameters, seeds, programme scoring, subtype rule,
+fragment threshold and merge are as published. Around an hour for all seven pools.
+
+There is also `subcluster_from_geo.py`, a single consolidated implementation of the same
+recipe with the per-pool settings gathered into `pool_config.py`. It is easier to read and
+to modify, and it is what the rest of this README describes; the `paper_*` scripts are the
+reference it was written against.
 
 ### Which cluster goes into which pool
 
