@@ -4,7 +4,9 @@ __pycache__/
 .RData
 .DS_Store
 
-# expression data downloaded from GEO, not redistributed here
+# data downloaded from GEO and everything the pipeline generates from it;
+# only the small reference tables under 03.data_processed are tracked
 01.data_raw/GSE343808/
-03.data_processed/geo_slides.h5ad
-03.data_processed/integrated_qc_passed_from_geo.h5ad
+03.data_processed/*
+!03.data_processed/integrated_cluster_profiles.csv
+!03.data_processed/integrated_cluster_annotation_manuscript.csv

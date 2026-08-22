@@ -1,0 +1,16 @@
+cluster,initial_annotation,subclustering_group,n_cell_states,n_cells_clustering,n_cells_analysis,dominant_prev_celltype,dominant_prev_pct,pct_cancer,pct_immune,pct_stroma,pct_other,top10_markers,note
+CL0,T/NK (NKT),T/NK,18,103102,100618,NKT,56.2,0.9,97.7,1.3,0.1,"CD3E, TRAC, PTPRC, IL7R, IL2RG, CXCR4, CD247, CD3G, CD3D, FCMR",
+CL1,Endothelial,Endothelial,16,58750,56764,endothelial cell,90.4,0.2,4.5,93.8,1.5,"AQP1, PECAM1, CD93, VWF, CAV1, SOCS3, CLEC14A, MMRN2, RAMP2, ACTA2",
+CL2,Macrophage (M2),Myeloid/DC,12,55938,55241,M2,49.5,1.6,94.1,4.1,0.2,"FCER1G, LYZ, FCGR2A, CD4, ITGAX, CSF1R, CD68, AIF1, FGL2, CTSS",
+CL3,Cancer,Tumor,5,55809,55403,cancer,97.1,97.1,0.3,1.4,1.2,"ERBB2, KRT7, EPCAM, TACSTD2, FOXA1, CDH1, KRT8, MLPH, DSP, TPD52",
+CL4,Myoepithelial,Tumor,4,52806,51015,myoepithelial cell,58.2,40.4,0.4,59.1,0.1,"TACSTD2, KRT14, DST, KRT5, SOX9, KRT7, DSP, SERPINA3, MYLK, CCND1",
+CL5,B cell,B/Plasma,11,52097,50691,B,94.4,0.2,98.3,0.6,0.9,"MS4A1, BANK1, FCMR, IGHM, CXCR4, TNFRSF13C, CD79A, PTPRC, IRF8, CXCL13",
+CL6,CAF,CAF/Adipo,9,51219,50849,CAF,89.4,0.4,7.4,92.1,0.1,"LUM, VCAN, C1R, CCDC80, C1S, FN1, MMP2, FBLN1, CRISPLD2, CXCL12",
+CL7,CAF,CAF/Adipo,15,44364,33434,CAF,47.6,1.4,22.4,49.9,26.3,"FLT3LG, CCDC80, SFRP4, UCP1, IFNL1, GZMK, PDCD1, IL12B, CEACAM8, IL4",
+CL8,Plasma,B/Plasma,7,16426,16298,plasma cell,95.3,0.3,98.4,1.1,0.2,"MZB1, IGHG1, ITM2C, TENT5C, SLAMF7, SEC11C, CD38, PRDM1, CD79A, ERN1",
+CL9,Mast,Mast,9,8559,7056,mast cell,56.5,0.8,72.9,15.8,10.5,"CPA3, TPSAB1, CTSG, KIT, GATA2, FLT3LG, CSF1, CD69, ZEB2, LUM",
+CL10,Cancer,Tumor,5,8274,1049,cancer,91.8,91.8,0.3,7.2,0.7,"ESR1, FLNB, GATA3, MLPH, AGR3, KRT8, PGR, SERPINA3, TACSTD2, SDC4",
+CL11,Plasma,Myeloid/DC,12,6324,6074,plasma cell,30.3,0.4,91.6,4.0,4.0,"LILRA4, IRF8, IL3RA, PTGDS, ITM2C, CD4, PLD4, ERN1, SPIB, SELL","prior label is plasma cell but only in 30.3 % of cells; LILRA4, IRF8, IL3RA, PLD4 and SPIB identify plasmacytoid dendritic cells, so the cluster was sent to the myeloid/DC pool and resolved as pDC there"
+CL12,Macrophage (M1),Myeloid/DC,9,2693,2554,M1,20.3,0.9,85.9,7.6,5.5,"CLEC9A, IRF8, FGL2, LYZ, IDO1, SLAMF7, ITGAX, BASP1, SERPINB9, HAVCR2","prior label is M1 in only 20.3 % of cells; CLEC9A, IRF8 and IDO1 point to cDC1"
+CL13,CAF,CAF/Adipo,8,2417,2298,CAF,62.1,1.5,17.8,66.6,14.1,"ADIPOQ, ADH1B, LPL, PPARG, FLT3LG, SCD, AKR1C1, PDK4, CAV1, TIMP4","prior label is CAF, but ADIPOQ, ADH1B, LPL and PPARG are adipocyte markers; resolved as adipocyte in the CAF/adipocyte pool"
+CL14,CAF,CAF/Adipo,13,1728,1459,CAF,40.4,4.7,42.8,50.5,2.0,"CCDC80, SFRP4, IFNL1, GZMK, PDCD1, LUM, UCP1, IL12B, CEACAM8, IL13",

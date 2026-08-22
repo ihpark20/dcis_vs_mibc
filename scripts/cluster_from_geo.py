@@ -20,8 +20,8 @@ Usage:
 
 Clusters are renamed to the paper's CL0-CL14 by matching each one's mean expression to the
 reference profiles in `03.data_processed/integrated_cluster_profiles.csv`, so the numbering
-means the same thing here as in the paper; `03.data_processed/integrated_cluster_annotation.csv`
-carries what each CL was annotated as. Leiden's own numbering is kept in `obs["leiden"]`.
+means the same thing here as in the paper; `03.data_processed/integrated_cluster_annotation_manuscript.csv`
+carries what each CL was annotated as and the evidence behind it. Leiden's own numbering is kept in `obs["leiden"]`.
 
 Output:
     03.data_processed/integrated_qc_passed_from_geo.h5ad

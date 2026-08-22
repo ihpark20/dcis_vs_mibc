@@ -132,8 +132,11 @@ highest total correlation is taken. The pairing and its correlations are written
 `03.data_processed/cluster_naming.csv`; matching this way is far more stable than the
 clustering itself, because a cluster's average profile barely moves when a few per cent of
 its boundary cells change hands. What each CL was annotated as is in
-`03.data_processed/integrated_cluster_annotation.csv` — composition, dominant prior cell
-type and top markers, one row per cluster.
+`03.data_processed/integrated_cluster_annotation_manuscript.csv`, one row per cluster: the
+annotation, the pool it was sent to, and the three lines of evidence behind the call — the
+cell types those cells carried in the per-slide annotation, the compartment composition,
+and the top markers. Three clusters have a note explaining why the marker evidence
+overruled the prior label.
 
 Expect around an hour on half a million cells; the Leiden step alone takes a good part of
 it and runs on a single core.
