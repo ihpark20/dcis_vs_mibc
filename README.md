@@ -348,16 +348,15 @@ inflate the sample from tens of cores to tens of thousands of cells and turn any
 significant.
 
 The result is the one the paper reports — the boundary of a microinvasive lesion is
-markedly less covered. The median core has 58 % of its boundary myoepithelium deficient in
-DCIS against 82 % in mDCIS, where the paper has 66 % and 86 %, and sheath and lined shift
-the other way by a similar margin. Three of the four measures survive correction here and
-the fourth sits just outside it, against all four in the paper.
+markedly less covered. Running on the published cell states, the median core has 66 % of its
+boundary myoepithelium deficient in DCIS against 87 % in mDCIS, where the paper has 66 % and
+86 %; the overall split is 7.6 % sheath, 17.7 % lined and 74.7 % deficient against 7.9 %,
+18.5 % and 73.6 %. All four measures survive correction, as in the paper.
 
-Coverage comes out a few points higher throughout because this rerun calls more cells
-myoepithelial than the paper does — the one major cell type still well off, and the reason
-the deficient share is 67 % overall against 74 %. The difference between DCIS and mDCIS is
-what carries; the level does not, and with 38 cores the effect size travels between runs
-more reliably than the significance verdict.
+Rerunning the subclustering instead moves this: that partition calls more cells
+myoepithelial, and coverage rises a few points throughout. The difference between the two
+groups holds either way — it is the level that depends on where the myoepithelial call
+lands.
 
 ## Ligand-receptor communication
 
@@ -423,11 +422,11 @@ but is also more cellular, so the difference in composition does not survive bei
 per unit of tissue.
 
 None of it is significant, in this rerun or in the paper, where the same comparisons sat at
-p = 0.07 to 0.08 before correction. The closest is M2 per thousand cells, 44.5 in DCIS
-against 56.0 in mDCIS at p = 0.09, where the paper had 38.3 against 48.0 at p = 0.08. The
-balance point still sits higher than the paper's — a third of macrophages called M1 against
-a fifth — which is what remains of the subcluster labelling once the pan-macrophage
-programme is out of the running.
+p = 0.07 to 0.08 before correction. The closest is M2 per thousand cells, 43.3 in DCIS
+against 55.0 in mDCIS at p = 0.11, where the paper had 38.3 against 48.0 at p = 0.08. The
+balance point sits higher than the paper's — a third of macrophages called M1 against a
+fifth — because the M1/M2 split is read here from the polarization scores of the macrophage
+subclusters rather than from the subtype each was given.
 
 ## What the analysis leaves out
 
@@ -466,6 +465,11 @@ reasons, none of them avoidable here:
   which the GEO deposit does not carry, is included here for the QC step.)
 * **Versions drift.** Defaults in scanpy, leidenalg and umap change between releases; the
   versions this was run with are listed under Environment.
+
+The steps from the tumor boundary onward — coverage, macrophage polarization,
+ligand-receptor proximity — are run here on the published cell states, for the same reason
+the clustering is: it puts every one of them on the partition the paper reports rather than
+on a rerun's approximation of it.
 
 How far the divergence travels depends on where you start. Beginning from the published
 clustering, all seven pools hold exactly the cells they hold in the paper — 108,594 in the

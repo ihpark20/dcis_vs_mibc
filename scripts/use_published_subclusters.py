@@ -3,14 +3,15 @@
 Subclustering the seven pools takes the better part of an hour and lands close to, but not
 exactly on, the paper's partition. The assignment it produced travels with this repository,
 so an analysis that wants the published cell states can start from them directly. The
-output is the same table the subclustering path writes, and everything after it — major
-cell types, boundaries, polarization — runs the same either way.
+major cell types come with them, so this also writes the table the boundary, polarization
+and communication steps read; everything after this point runs the same either way.
 
 Usage:
     python scripts/use_published_subclusters.py
 
 Output:
     03.data_processed/subclustered/cell_states.csv
+    03.data_processed/subclustered/major_celltypes.csv
 """
 
 import argparse
@@ -42,7 +43,11 @@ def main():
         .to_string()
     )
     print(f"\nqc_status: {cells['qc_status'].value_counts().to_dict()}")
-    print(f"wrote {args.out_dir / 'cell_states.csv'}")
+    major = cells[["cell_id", "pool", "leiden_sub", "subtype_merged"]].copy()
+    major["major_celltype"] = cells["celltype_level1"]
+    major.to_csv(args.out_dir / "major_celltypes.csv", index=False)
+    print("\n" + major["major_celltype"].value_counts().to_string())
+    print(f"\nwrote {args.out_dir / 'cell_states.csv'} and major_celltypes.csv")
 
 
 if __name__ == "__main__":
