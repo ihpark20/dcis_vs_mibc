@@ -19,6 +19,7 @@ compared between pure DCIS and microinvasive carcinoma (mDCIS).
 | Fig 5A | macrophage M1/M2 by core | `macrophage_polarization_from_geo.py` | `macrophage/polarization_*.csv` |
 | Fig 5B | ligand-receptor proximity, DCIS vs mDCIS | `ccc_from_geo.py` | `ccc/lr_{enrich,stats}.csv` |
 | Fig 5C | where PD-1+ T cells engage PD-L1 | `checkpoint_engagement_from_geo.py` | `ccc/checkpoint_*.csv` |
+| — | compartment-level DEG, annotated with spillover | `compartment_deg_from_geo.py` | `compartment/compartment_deg.csv` |
 | Fig S6 | transcript spillover, by source cell type | `spillover_from_geo.py` | `spillover/spillover_by_source.csv` |
 
 Figure 2A is a map of the annotated cells, and Figure 3B an immunohistochemistry image;
@@ -260,6 +261,45 @@ boundary cells per 100 tumor cells in the median DCIS core against 32.0 in the m
 microinvasive one (p = 0.02), where the raw count does not (499 against 707, p = 0.13). A
 microinvasive lesion carries more exposed boundary for the amount of tumor it has, not
 merely more tumor.
+
+## What differs between the groups, compartment by compartment
+
+Cells are grouped into the three compartments the tissue is built from and each is compared
+on its own — a microinvasive core holds more tumor, and testing everything together would
+report that as a change in expression.
+
+| compartment | cell types |
+|---|---|
+| cancer | Tumor, Myoepithelial |
+| stroma | CAF_Fibroblast, Endothelial, Pericyte, Adipocyte |
+| immune | T_NK, B_cell, Plasma, Macrophage_Mono, Dendritic, Mast |
+
+```bash
+python scripts/spillover_from_geo.py       # needed for the annotation below
+python scripts/compartment_deg_from_geo.py
+#    -> 03.data_processed/compartment/compartment_deg.csv
+```
+
+Counts are summed per core within a compartment, cores are the replicates of a DESeq2
+model, and a core contributes a compartment when it holds at least 20 of its cells.
+
+**Read every hit against the spillover table.** Each result carries the spillover index of
+its gene alongside it, and the reason is specific rather than general: a microinvasive core
+has more tumor for stromal and immune cells to sit beside, so a gene that leaks out of tumor
+will rise in those compartments in mDCIS whether or not those cells express it. The
+compartment comparison and the artefact point the same way, which is exactly when a result
+is easy to believe and wrong.
+
+The output makes this concrete. Nine genes reach FDR < 0.05, and MUC6 is among them in both
+the immune and the stromal compartment — a gene with a spillover index of 5.4 out of tumor,
+one of the highest on the panel. It is not being expressed by immune cells in microinvasive
+lesions; it is being counted in them. MMP1 in immune cells (index 2.0) invites the same
+caution. What survives the check is CD1C, lower in immune cells in mDCIS, whose strongest
+leak is out of dendritic cells themselves — the compartment it was found in — and so cannot
+be explained away this way.
+
+The columns to read are `spillover_from_cancer` and `top_spillover_source`. A high value
+does not by itself refute a hit, but it moves the burden of proof onto it.
 
 ## What differs at the boundary (Fig 4)
 
