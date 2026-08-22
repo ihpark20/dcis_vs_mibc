@@ -5,11 +5,6 @@ Two breast tissue microarrays (41 cores) were profiled with 10x Genomics Xenium 
 374-gene custom panel (280-gene Human Breast panel + 94-gene immuno-oncology add-on) and
 compared between pure DCIS and microinvasive carcinoma (mDCIS).
 
-Contributors: Park I, Lee YS, Choi K, Bae SJ, Ahn SG, Kook YW, Jeong J, Choi YJ*.
-
-Questions about the code go to Park I, who wrote it; questions about the study to
-Choi YJ.
-
 ## Environment
 
 Python 3.12.8 with scanpy 1.11.1, anndata 0.11.4, PyDESeq2 0.5.4, scikit-learn 1.5.2,
