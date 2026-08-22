@@ -15,6 +15,7 @@ compared between pure DCIS and microinvasive carcinoma (mDCIS).
 | Fig 3D | myoepithelial coverage of the boundary, DCIS vs mDCIS | `boundary_myoep_from_geo.py` | `boundary/boundary_myoep_{percore,stats}.csv` |
 | Fig 3E | the same, mapped over two example cores | `boundary_myoep_from_geo.py` | `boundary/boundary_myoep_cells.csv` |
 | Fig 3F | deficient boundary per core, absolute and per 100 tumor cells | `boundary_myoep_from_geo.py` | `boundary/boundary_counts_{percore,stats}.csv` |
+| Fig 4 | boundary DEG by coverage class, with and without a tumor-density covariate | `boundary_deg_from_geo.py` | `boundary/boundary_deg_by_category.csv` |
 | Fig 5A | macrophage M1/M2 by core | `macrophage_polarization_from_geo.py` | `macrophage/polarization_*.csv` |
 | Fig 5B | ligand-receptor proximity, DCIS vs mDCIS | `ccc_from_geo.py` | `ccc/lr_{enrich,stats}.csv` |
 | Fig 5C | where PD-1+ T cells engage PD-L1 | `checkpoint_engagement_from_geo.py` | `ccc/checkpoint_*.csv` |
@@ -259,6 +260,37 @@ boundary cells per 100 tumor cells in the median DCIS core against 32.0 in the m
 microinvasive one (p = 0.02), where the raw count does not (499 against 707, p = 0.13). A
 microinvasive lesion carries more exposed boundary for the amount of tumor it has, not
 merely more tumor.
+
+## What differs at the boundary (Fig 4)
+
+Boundary cells of the three coverage classes are different populations, so testing them
+together would confuse a change in expression with a change in what the boundary is made
+of. Each class is compared on its own, cells summed per core and cores as the replicates of
+a DESeq2 model.
+
+```bash
+python scripts/boundary_deg_from_geo.py
+#    -> 03.data_processed/boundary/boundary_deg_by_category.csv
+```
+
+The comparison runs twice: once as `~ sample_group`, and once with the local tumor density
+around each boundary cell added as a covariate, `~ tumor_z + sample_group`. That second run
+is the point. Transcripts leak from neighbouring cells, so a gene that looks differential at
+a boundary may be reporting how much tumor sits beside it rather than anything about the
+boundary cell — and the boundary classes differ in exactly that: a deficient boundary faces
+more tumor than a sheathed one. A hit that survives the adjustment is not explained by tumor
+proximity; one that does not, was.
+
+Two hits survive: MUC6 at the sheathed boundary (FDR 0.007 before the adjustment, 0.005
+after) and NCAM1 at the lined boundary (0.034 and 0.034), both higher in microinvasive
+cores. AKR1C1 at the deficient boundary does not, at 0.17 after adjustment.
+
+The paper reports the same three genes and the same verdict on each, with one difference
+worth naming: there AKR1C1 was significant before the adjustment and lost it (0.017 to
+0.164), where in this rerun it never reaches significance to begin with (0.137 to 0.175).
+The conclusion is the same and the evidence for it is weaker: we cannot watch the hit fall.
+Across all 1,116 gene-by-category tests the adjusted fold changes correlate at r = 0.98 with
+the published ones.
 
 ## Ligand-receptor communication (Fig 5B)
 
