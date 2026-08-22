@@ -471,16 +471,31 @@ table before it is believed.
 
 ## What the analysis leaves out
 
-Two exclusions are made downstream of the clustering, and the evidence for both is visible
-in the output of this pipeline.
+Three cores and one cell type are set aside, at three different stages and for three
+different kinds of reason. The evidence for each is in the output of this pipeline.
 
-**TMA1 D6.** Two subclusters of the tumor pool, the ones scoring highest for the
+**TMA1 D8, before anything else.** The core was not measured: the median cell in it carries
+zero transcripts and three quarters of its cells fewer than ten, against a median of 116
+across the cores that pass. There is nothing to analyse, and it is dropped by the technical
+QC of stage 1, before the cells are ever clustered.
+
+**TMA1 D4, at the same point but for a different reason.** Technically the core is sound —
+8,230 cells, a median of 87 transcripts each, sixteen cell types, a normal tissue density.
+What it does not have is tumor: 0.9 % of its cells, against a minimum of 3.3 % among the
+cores that stay. A core with no tumor cannot contribute to a comparison between DCIS and
+microinvasive disease, whatever its quality. Keeping the two apart is why the QC runs in two
+stages: the technical filter never has to know which cells are tumor, and a core that fails
+one is not confused with a core that fails the other.
+
+**TMA1 D6, after the clustering.** Two subclusters of the tumor pool, the ones scoring highest for the
 luminal-mature programme, draw 79 % and 93 % of their cells from this single core; no other
-subcluster comes close. A cell state carried by one core cannot support a comparison
-between DCIS and microinvasive disease, so D6 is dropped from the analyses. It stays in the
-clustering itself, which is why the cell set still matches the published one.
+subcluster comes close. A cell state carried by one core cannot support a group comparison
+either — it would be one patient's biology reported as a difference between conditions. This
+could only be seen after the pools were formed, which is why D6 is dropped there rather than
+at QC: it stays in the clustering, which is why the cell set still matches the published
+one, and leaves before the subclustering that everything else is built on.
 
-**Neutrophils.** The panel was not designed to resolve them: of the markers normally used —
+**Neutrophils, throughout.** The panel was not designed to resolve them: of the markers normally used —
 FCGR3B, CSF3R, S100A9, ELANE, MPO, CXCR2 — none is on it, and the three that are (S100A8,
 CEACAM8, ITGAM) are not specific. No pool recovers a neutrophil state, and the neutrophils
 annotated in the original run carry the lowest transcript count of any major type, about a
