@@ -18,12 +18,12 @@ For every pool:
   4. each cell is scored for the pool's programmes and every subcluster takes the name of
      its highest-scoring one.
 
-Pools are matched to clusters by lineage score, not by cluster number: a rerun numbers its
-clusters differently, so each cluster is assigned to the pool whose lineage genes it
-expresses most strongly.
+Which cluster belongs to which pool is decided beforehand by `assign_pools_from_geo.py`,
+following the paper's own grouping, and read from `03.data_processed/pool_assignment.csv`.
 
 Usage:
     python scripts/cluster_from_geo.py
+    python scripts/assign_pools_from_geo.py
     python scripts/subcluster_from_geo.py
 
 Output:
@@ -43,34 +43,11 @@ from pool_config import POOLS
 
 ROOT = Path(__file__).resolve().parent.parent
 IN = ROOT / "03.data_processed/integrated_qc_passed_from_geo.h5ad"
+POOL_ASSIGNMENT = ROOT / "03.data_processed/pool_assignment.csv"
 OUT_DIR = ROOT / "03.data_processed/subclustered"
 
 N_NEIGHBORS = 15
 SEED = 42
-
-
-def assign_pools(a, cluster_key):
-    """Give every cluster to the pool whose lineage genes it expresses most strongly."""
-    b = a.copy()
-    b.X = b.layers["counts"].copy() if "counts" in b.layers else b.X
-    sc.pp.normalize_total(b, target_sum=1e4)
-    sc.pp.log1p(b)
-    for name, pool in POOLS.items():
-        genes = [g for g in pool["filter_genes"] if g in b.var_names]
-        sc.tl.score_genes(b, genes, score_name=f"pool_{name}", random_state=SEED)
-
-    cols = [f"pool_{n}" for n in POOLS]
-    means = b.obs.groupby(cluster_key, observed=True)[cols].mean()
-    winner = means.idxmax(axis=1).str.replace("pool_", "", regex=False)
-    table = pd.DataFrame(
-        {
-            "cluster": means.index,
-            "pool": winner.values,
-            "n_cells": a.obs[cluster_key].value_counts().reindex(means.index).values,
-            "best_score": means.max(axis=1).round(3).values,
-        }
-    )
-    return winner.to_dict(), table
 
 
 def subcluster(a, name, pool):
@@ -128,7 +105,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--input", default=IN, type=Path)
     ap.add_argument("--out-dir", default=OUT_DIR, type=Path)
-    ap.add_argument("--cluster-key", default="leiden")
+    ap.add_argument("--cluster-key", default="cluster", help="obs column holding the CL names")
+    ap.add_argument("--pool-assignment", default=POOL_ASSIGNMENT, type=Path)
     ap.add_argument("--pools", nargs="*", default=list(POOLS), help="subset of pools to run")
     args = ap.parse_args()
 
@@ -136,10 +114,10 @@ def main():
     a = sc.read_h5ad(args.input)
     print(f"{a.n_obs:,} cells x {a.n_vars} genes, {a.obs[args.cluster_key].nunique()} clusters")
 
-    pool_of, table = assign_pools(a, args.cluster_key)
-    table.to_csv(args.out_dir / "pool_of_cluster.csv", index=False)
-    print("\ncluster -> pool")
-    print(table.to_string(index=False))
+    assignment = pd.read_csv(args.pool_assignment)
+    pool_of = dict(zip(assignment["cluster"], assignment["pool"], strict=True))
+    print("\ncluster -> pool (from assign_pools_from_geo.py)")
+    print(assignment.to_string(index=False))
 
     assignments = []
     for name in args.pools:

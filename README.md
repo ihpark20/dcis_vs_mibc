@@ -96,16 +96,34 @@ anything.
 ## Integrated Clustering Across TMA Batches (CL0-CL14)
 
 The two microarrays were imaged as separate slides, so slide is the batch to correct for.
-`cluster_from_geo.py` integrates them with Harmony and partitions the result with Leiden,
-giving the fifteen clusters (CL0-CL14) the annotation is built on.
+Harmony integrates them and Leiden partitions the result into the fifteen clusters
+(CL0-CL14) the annotation is built on. There are two ways to get there.
+
+### Either: take the clustering the paper used
+
+```bash
+python scripts/cluster_from_geo.py --labels 03.data_processed/integrated_cluster_labels.csv.gz
+#    -> 03.data_processed/integrated_qc_passed_from_geo.h5ad
+```
+
+The published assignment for all 520,506 cells of the analysis travels with this repository
+as `03.data_processed/integrated_cluster_labels.csv.gz`. This attaches it and computes
+nothing, so it takes seconds instead of an hour and every downstream step starts from
+exactly the partition the paper reports. **This is the path the rest of this repository
+uses.** Clustering is worth rerunning to check that it reproduces, but not as the routine
+entry point to everything else.
+
+### Or: cluster it yourself
 
 ```bash
 python scripts/cluster_from_geo.py
 #    -> 03.data_processed/integrated_qc_passed_from_geo.h5ad
+#    -> 03.data_processed/cluster_naming.csv
 ```
 
-It keeps the cores flagged `analysis_include` in the QC table, then follows the published
-settings:
+Around an hour on half a million cells, the Leiden step alone taking a good part of it on a
+single core. It keeps the cores flagged `analysis_include` in the QC table, then follows the
+published settings:
 
 | step | setting |
 |---|---|
@@ -123,13 +141,21 @@ The written object keeps raw counts in `X`, the Harmony embedding in
 the published numbering in `obs["cluster"]`. Pass `--all-cores` to skip the QC filter and
 cluster every core instead.
 
+Expect a partition close to the published one but not identical to it. In our rerun the
+same 520,506 cells came out in fifteen clusters that matched one-to-one, with 92 % of cells
+landing in the same one; the epithelial clusters differed by well under a percent, while
+cells moved between the three CAF clusters and between the three myeloid ones, which look
+alike and share a pool anyway. That is what makes the numbering step below necessary.
+
 ### Your cluster numbers will not be the manuscript's
 
 Leiden numbers clusters by size, so a rerun renumbers everything: in our own rerun Leiden's
 cluster 1 was the manuscript's CL6, and its cluster 2 was CL1. Read a figure by the raw
 Leiden number and you are looking at the wrong population. The numbers therefore have to be
-matched to the manuscript rather than trusted, and `cluster_from_geo.py` does that for you
-before writing its output.
+matched to the manuscript rather than trusted. **If you cluster yourself, that matching is
+a step you have to run** — `cluster_from_geo.py` does it before writing its output and
+records the result in `03.data_processed/cluster_naming.csv`, which everything downstream
+depends on. Taking the published labels skips the problem, since they arrive already named.
 
 Each cluster is summarised by its mean expression across the panel and correlated against
 the reference profile of every published cluster in
@@ -159,9 +185,6 @@ cell types those cells carried in the per-slide annotation, the compartment comp
 and the top markers. Three clusters have a note explaining why the marker evidence
 overruled the prior label.
 
-Expect around an hour on half a million cells; the Leiden step alone takes a good part of
-it and runs on a single core.
-
 ## Subclustering of Pooled Clusters
 
 One clustering of half a million cells over 374 genes separates lineages but not the states
@@ -177,8 +200,27 @@ python scripts/merge_subclusters_from_geo.py
 #    -> 03.data_processed/subclustered/cell_states.csv
 ```
 
-Clusters are assigned to pools by lineage score rather than by number — a rerun numbers its
-clusters differently — and each pool then follows the same recipe:
+### Which cluster goes into which pool
+
+The paper groups its clusters by hand: CL3, CL4 and CL10 make the tumor pool, CL2, CL11 and
+CL12 the myeloid one, and so on. Those groupings are in `scripts/pool_config.py`, and
+because the clusters have already been matched to the published numbering they can be
+applied as they stand — which is what makes these the paper's pools rather than something
+rederived.
+
+```bash
+python scripts/assign_pools_from_geo.py
+#    -> 03.data_processed/pool_assignment.csv
+```
+
+The assignment is also rederived from the data as a check: each cluster is scored against
+the lineage genes of all seven pools, and the best-scoring pool is recorded next to the
+assigned one. Agreement means the cluster matching held. Disagreement means a cluster did
+not match its published counterpart cleanly and is being sent somewhere its expression does
+not support — the script prints those rows rather than letting them pass. In our rerun all
+fifteen agreed.
+
+`subcluster_from_geo.py` reads that file; each pool then follows the same recipe:
 
 1. **lineage filter.** A cell enters the pool only if it has a non-zero count for at least
    one of the pool's lineage genes, which removes cells placed there on overall similarity

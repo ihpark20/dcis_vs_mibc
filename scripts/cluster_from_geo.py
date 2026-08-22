@@ -18,6 +18,11 @@ Usage:
     python scripts/build_anndata_from_geo.py
     python scripts/cluster_from_geo.py
 
+Reclustering takes about an hour and does not land on exactly the paper's partition; pass
+--labels to skip it and take the published assignment from
+`03.data_processed/integrated_cluster_labels.csv.gz`, which covers all 520,506 cells of the
+analysis. Everything downstream works the same either way.
+
 Clusters are renamed to the paper's CL0-CL14 by matching each one's mean expression to the
 reference profiles in `03.data_processed/integrated_cluster_profiles.csv`, so the numbering
 means the same thing here as in the paper; `03.data_processed/integrated_cluster_annotation_manuscript.csv`
@@ -41,6 +46,7 @@ from scipy.optimize import linear_sum_assignment
 ROOT = Path(__file__).resolve().parent.parent
 IN = ROOT / "03.data_processed/geo_slides.h5ad"
 PROFILES = ROOT / "03.data_processed/integrated_cluster_profiles.csv"
+LABELS = ROOT / "03.data_processed/integrated_cluster_labels.csv.gz"
 QC = ROOT / "02.tma_core_qc/tma_core_qc.csv"
 OUT = ROOT / "03.data_processed/integrated_qc_passed_from_geo.h5ad"
 
@@ -59,6 +65,11 @@ def main():
         "--qc", default=QC, type=Path, help="core QC verdicts from qc_cores_composition.py"
     )
     ap.add_argument("--profiles", default=PROFILES, type=Path, help="reference CL profiles")
+    ap.add_argument(
+        "--labels",
+        type=Path,
+        help="skip clustering and take the published labels from this file",
+    )
     ap.add_argument("--max-cells", type=int, default=0, help="subsample, for a smoke test")
     ap.add_argument(
         "--all-cores",
@@ -134,7 +145,25 @@ def name_clusters(a, profiles_path, cluster_key="leiden"):
     return table
 
 
+def attach_published(a, labels_path):
+    """Take the manuscript's cluster labels instead of clustering again."""
+    labels = pd.read_csv(labels_path).set_index("cell_id")["cluster"]
+    known = a.obs_names.intersection(labels.index)
+    print(f"{len(known):,} of {a.n_obs:,} cells carry a published label")
+    a = a[known].copy()
+    a.obs["cluster"] = labels.reindex(a.obs_names).astype("category")
+    a.obs["leiden"] = a.obs["cluster"].astype(str).str.removeprefix("CL").astype("category")
+    print(a.obs["cluster"].value_counts().sort_index().to_string())
+    return a
+
+
 def cluster(a, args):
+    if args.labels:
+        a = attach_published(a, args.labels)
+        a.write_h5ad(args.out, compression="gzip")
+        print(f"wrote {args.out} (published clustering, nothing recomputed)")
+        return None
+
     if args.max_cells and a.n_obs > args.max_cells:
         sc.pp.subsample(a, n_obs=args.max_cells, random_state=0)
         print(f"subsampled to {a.n_obs:,} cells")
@@ -148,7 +177,8 @@ def cluster(a, args):
     sc.pp.log1p(a)
     sc.pp.highly_variable_genes(a, n_top_genes=N_HVG, batch_key="slide", flavor="seurat")
     sc.pp.scale(a, max_value=10)
-    sc.tl.pca(a, n_comps=N_PCS, use_highly_variable=True, random_state=SEED)
+    # random_state=0 is scanpy's default and what the published run used
+    sc.tl.pca(a, n_comps=N_PCS, use_highly_variable=True, random_state=0)
 
     ho = hm.run_harmony(
         a.obsm["X_pca"], a.obs, vars_use=["slide"], random_state=SEED, max_iter_harmony=30
