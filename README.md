@@ -305,12 +305,13 @@ inflate the sample from tens of cores to tens of thousands of cells and turn any
 significant.
 
 The result is the one the paper reports — the boundary of a microinvasive lesion is
-markedly less covered. In this rerun the median core has 53 % of its boundary myoepithelium
-deficient in DCIS against 77 % in mDCIS, with sheath and lined shifted the other way by a
-similar margin. The four raw p-values sit between 0.03 and 0.06 and do not survive
-correction here, where the published run's did; with 38 cores the effect is stable but the
-significance verdict is not, which is worth keeping in mind when rerunning any of the
-core-level comparisons.
+markedly less covered. Starting from the published clustering, the median core has 68 % of
+its boundary myoepithelium deficient in DCIS against 88 % in mDCIS, against 66 % and 86 %
+in the paper, and sheath and lined shift the other way by a similar margin. The raw
+p-values sit near 0.05 and do not survive correction across the four measures here, where
+the published run's did. With 38 cores the effect size travels between runs but the
+significance verdict does not, which is worth remembering for any of the core-level
+comparisons.
 
 ## Ligand-receptor communication
 
@@ -382,6 +383,15 @@ reasons, none of them avoidable here:
   which the GEO deposit does not carry, is included here for the QC step.)
 * **Versions drift.** Defaults in scanpy, leidenalg and umap change between releases; the
   versions this was run with are listed under Environment.
+
+How far the divergence travels depends on where you start. Beginning from the published
+clustering, 97 % of cells land in the same major cell type as the paper, the boundary
+composition matches within a couple of percent, and the ligand-receptor enrichments come
+out identical to three decimals — that analysis reads only coordinates and counts, so it
+is fully determined once the cell set is. Beginning from a fresh clustering instead, the
+major cell types agree for 87 % of cells: the CAF and myeloid clusters trade members, and
+that difference is carried into every step built on top. Both runs give the same answer to
+the biological question; they differ in how many cells sit on either side of it.
 
 ## Data not included here
 
