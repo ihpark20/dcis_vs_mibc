@@ -16,7 +16,9 @@ For every pool:
   3. scale, PCA, Harmony over slide, a 15-neighbour graph, UMAP, Leiden at the pool's
      resolution;
   4. each cell is scored for the pool's programmes and every subcluster takes the name of
-     its highest-scoring one.
+     its highest-scoring one, chosen among the lineage programmes only — `pool_config.py`
+     keeps a pan-lineage or interferon signature out of the running, since it describes
+     something every subcluster of the pool carries.
 
 Which cluster belongs to which pool is decided beforehand by `assign_pools_from_geo.py`,
 following the paper's own grouping, and read from `03.data_processed/pool_assignment.csv`.
@@ -94,7 +96,11 @@ def subcluster(a, name, pool):
         if present:
             sc.tl.score_genes(sub, present, score_name=f"score_{programme}", random_state=SEED)
 
-    score_cols = [c for c in sub.obs.columns if c.startswith("score_")]
+    # only the pool's lineage programmes may name a subcluster; a pan-lineage or
+    # interferon signature describes a state they all share and would claim subclusters
+    # that a specific programme should name
+    candidates = pool["subtype_programs"] or list(pool["programs"])
+    score_cols = [f"score_{p}" for p in candidates if f"score_{p}" in sub.obs.columns]
     means = sub.obs.groupby("leiden_sub", observed=True)[score_cols].mean()
     dominant = means.idxmax(axis=1).str.replace("score_", "", regex=False)
     sub.obs["program"] = sub.obs["leiden_sub"].map(dominant).astype(str)

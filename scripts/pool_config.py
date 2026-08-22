@@ -4,11 +4,16 @@ Each pool is a group of initial Leiden clusters that share a lineage. `filter_ge
 decides which cells may enter the pool (a cell needs a non-zero count for at least one
 of them); `feature_genes` replaces the usual highly-variable selection, so the
 subclustering splits on lineage biology rather than on the dominant axis of variance;
-`programs` names each resulting subcluster after its highest-scoring signature.
+`programs` names each resulting subcluster after its highest-scoring signature, and
+`subtype_programs` limits which of them may supply that name: a pan-lineage or interferon
+signature describes a state every subcluster of the pool shares to some degree, so letting
+it compete would have it claim subclusters that a specific programme should name. None
+means every programme is a candidate.
 """
 
 POOLS = {
     "tnk": {
+        "subtype_programs": None,  # every programme is a candidate
         "label": "T/NK",
         "source": "subcluster_cl0_tcell_only.py",
         "clusters": ["0"],
@@ -72,6 +77,7 @@ POOLS = {
         },
     },
     "endothelial": {
+        "subtype_programs": None,  # every programme is a candidate
         "label": "Endothelial/pericyte",
         "source": "subcluster_cl1_endothelial.py",
         "clusters": ["1"],
@@ -115,6 +121,17 @@ POOLS = {
         },
     },
     "myeloid": {
+        "subtype_programs": [
+            "macrophage_M1",
+            "macrophage_M2",
+            "monocyte",
+            "pDC",
+            "cDC1",
+            "cDC2",
+            "mregDC",
+            "langerhans",
+            "proliferating",
+        ],
         "label": "Myeloid/DC",
         "source": "subcluster_cl2_11_12_myeloid_dc.py",
         "clusters": ["2", "11", "12"],
@@ -216,6 +233,15 @@ POOLS = {
         },
     },
     "tumor": {
+        "subtype_programs": [
+            "luminal_mature",
+            "luminal_progenitor",
+            "her2",
+            "basal_triple_neg",
+            "myoepithelial",
+            "emt",
+            "proliferating",
+        ],
         "label": "Tumor/myoepithelial",
         "source": "subcluster_cl3_4_10_combined.py",
         "clusters": ["3", "4", "10"],
@@ -301,6 +327,14 @@ POOLS = {
         },
     },
     "bplasma": {
+        "subtype_programs": [
+            "naive_B",
+            "memory_B",
+            "germinal_center",
+            "atypical_B",
+            "plasma",
+            "proliferating",
+        ],
         "label": "B/plasma",
         "source": "subcluster_cl5_8_bplasma.py",
         "clusters": ["5", "8"],
@@ -377,6 +411,17 @@ POOLS = {
         },
     },
     "caf": {
+        "subtype_programs": [
+            "myCAF",
+            "iCAF",
+            "complement_caf",
+            "pericyte_mural",
+            "matrix_remodel",
+            "emt",
+            "adipocyte",
+            "preadipo",
+            "proliferating",
+        ],
         "label": "CAF/adipocyte",
         "source": "subcluster_cl6_7_13_14_caf_adipo.py",
         "clusters": ["6", "7", "13", "14"],
@@ -460,6 +505,7 @@ POOLS = {
         },
     },
     "mast": {
+        "subtype_programs": ["mast_core", "effector_activation", "ifn_response", "proliferating"],
         "label": "Mast",
         "source": "subcluster_cl9_mast.py",
         "clusters": ["9"],

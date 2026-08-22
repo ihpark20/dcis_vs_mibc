@@ -239,7 +239,13 @@ from there too.
 3. **embedding and clustering.** Scale, PCA, Harmony over slide, a 15-neighbour graph,
    UMAP, Leiden at the pool's resolution.
 4. **programme scoring.** Every cell is scored for the pool's programmes and each
-   subcluster takes the name of its highest-scoring one.
+   subcluster takes the name of its highest-scoring one — chosen among the pool's lineage
+   programmes only. A pan-lineage or interferon signature describes something every
+   subcluster of the pool carries to some degree, so letting it compete lets it claim
+   subclusters a specific programme should name; `pool_config.py` keeps those out of the
+   running, as the original analysis does. It matters: with `core_macrophage` in the
+   running the macrophage subclusters stop being M1 or M2, and with `stress_g1arrest` in it
+   a quarter of the tumor pool is named after a single cell-cycle gene.
 
 Per-pool settings — which clusters, which lineage genes, which features, which programmes,
 resolution and number of components — are in `scripts/pool_config.py`, one entry per pool.
@@ -315,9 +321,13 @@ The result is the one the paper reports — the boundary of a microinvasive lesi
 markedly less covered. The median core has 58 % of its boundary myoepithelium deficient in
 DCIS against 82 % in mDCIS, where the paper has 66 % and 86 %, and sheath and lined shift
 the other way by a similar margin. Three of the four measures survive correction here and
-the fourth sits just outside it, against all four in the paper. With 38 cores the effect
-size travels between runs more reliably than the significance verdict, which is worth
-remembering for any of the core-level comparisons.
+the fourth sits just outside it, against all four in the paper.
+
+Coverage comes out a few points higher throughout because this rerun calls more cells
+myoepithelial than the paper does — the one major cell type still well off, and the reason
+the deficient share is 67 % overall against 74 %. The difference between DCIS and mDCIS is
+what carries; the level does not, and with 38 cores the effect size travels between runs
+more reliably than the significance verdict.
 
 ## Ligand-receptor communication
 
@@ -383,11 +393,11 @@ but is also more cellular, so the difference in composition does not survive bei
 per unit of tissue.
 
 None of it is significant, in this rerun or in the paper, where the same comparisons sat at
-p = 0.07 to 0.08 before correction. The M1 share also differs in level: 44 % of macrophages
-here against 19 % in the paper, because a macrophage subcluster's dominant programme is
-decided against all of the pool's programmes and in this rerun several subclusters that the
-paper called M2 are claimed by the generic macrophage programme instead. The lean is the
-reproducible part; the balance point is not.
+p = 0.07 to 0.08 before correction. The closest is M2 per thousand cells, 44.5 in DCIS
+against 56.0 in mDCIS at p = 0.09, where the paper had 38.3 against 48.0 at p = 0.08. The
+balance point still sits higher than the paper's — a third of macrophages called M1 against
+a fifth — which is what remains of the subcluster labelling once the pan-macrophage
+programme is out of the running.
 
 ## What the analysis leaves out
 
@@ -429,7 +439,7 @@ reasons, none of them avoidable here:
 
 How far the divergence travels depends on where you start. Beginning from the published
 clustering, all seven pools hold exactly the cells they hold in the paper — 108,594 in the
-tumor pool, 96,841 in T/NK, and so on — 97 % of cells land in the same major cell type, and
+tumor pool, 96,841 in T/NK, and so on — 98 % of cells land in the same major cell type, and
 the ligand-receptor enrichments come out identical to three decimals, that analysis reading
 only coordinates and counts and so being fully determined once the cell set is. What still
 moves is inside the pools: Leiden splits each one a little differently, which shifts where
