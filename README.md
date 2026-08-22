@@ -391,6 +391,33 @@ that separate the groups, both higher in microinvasive cores.
 What this measures is opportunity, not activity: cells positioned to signal, not signalling
 observed.
 
+### Where PD-1 meets PD-L1
+
+That the checkpoint pairs come out enriched says the cells are close enough to engage; it
+does not say where. A PD-1+ T cell held off inside a tumor mass or at its edge is being
+stopped at the point of invasion, one engaged out in the stroma is not, so each T cell is
+placed as well as classified:
+
+```bash
+python scripts/checkpoint_engagement_from_geo.py
+#    -> 03.data_processed/ccc/checkpoint_{tcells,percore,stats}.csv
+```
+
+A T cell counts as engaged when it carries PDCD1 and a CD274-positive cell lies within
+30 um; the position comes from its own surroundings — at least 60 % epithelial neighbours is
+inside, 20 to 60 % the boundary, less than that outside.
+
+The engagement moves inward in microinvasive cores. Pooled over all cores, 3.5 % of PD-1+
+T cells are engaged inside the tumor and 6.4 % at its boundary in mDCIS, against 1.6 % and
+3.5 % in DCIS, with the stromal share falling from 72 % to 65 %.
+
+Cores are still the unit of comparison, and only those with at least 20 PD-1+ T cells take
+part: below that the share moves in steps too coarse to compare, a core with five such cells
+returning 0, 20 or 40 % and nothing between. That leaves 11 DCIS and 15 microinvasive cores,
+where the median share engaged inside or at the boundary is 0 % against 5 % (p = 0.03).
+Pooling the cells instead of the cores would make this look far more decisive than it is —
+a handful of large cores would carry the result.
+
 ## Macrophage polarization
 
 Macrophages run between an inflammatory M1 state and a tissue-remodelling, immunosuppressive
