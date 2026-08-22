@@ -18,6 +18,7 @@ compared between pure DCIS and microinvasive carcinoma (mDCIS).
 | Fig 5A | macrophage M1/M2 by core | `macrophage_polarization_from_geo.py` | `macrophage/polarization_*.csv` |
 | Fig 5B | ligand-receptor proximity, DCIS vs mDCIS | `ccc_from_geo.py` | `ccc/lr_{enrich,stats}.csv` |
 | Fig 5C | where PD-1+ T cells engage PD-L1 | `checkpoint_engagement_from_geo.py` | `ccc/checkpoint_*.csv` |
+| Fig S6 | transcript spillover, by source cell type | `spillover_from_geo.py` | `spillover/spillover_by_source.csv` |
 
 Figure 2A is a map of the annotated cells, and Figure 3B an immunohistochemistry image;
 neither is an analysis. Figure 3A rests on a myoepithelial marker comparison that is not
@@ -355,6 +356,42 @@ Density per square millimetre, which the paper did not report, separates the gro
 all: 131 M2 macrophages per mm2 in DCIS against 156 in mDCIS at p = 0.76. A microinvasive
 core holds more macrophages but is also more cellular, and the difference in composition
 does not survive being expressed per unit of tissue.
+
+## Transcript spillover (Fig S6)
+
+Xenium assigns a transcript to whichever segmented cell it falls in, and segmentation is not
+perfect: a transcript from a tumor cell can end up counted in the fibroblast beside it. The
+error is not random — it follows whatever the neighbour happens to be — so a gene one cell
+type expresses strongly appears in the cells around it and can be read as a real signal
+there. This measures how far each cell type's transcripts leak.
+
+```bash
+python scripts/spillover_from_geo.py
+#    -> 03.data_processed/spillover/spillover_by_source.csv
+```
+
+Two things have to hold at once for spillover to be the explanation, so the index is their
+geometric mean:
+
+```
+source_spec(S, g) = log2( mean of g in S / mean of g outside S )
+prox_fc(S, g)     = log2( mean of g in non-S cells surrounded by S
+                          / mean of g in non-S cells away from S )
+spillover(S, g)   = sqrt(source_spec x prox_fc), when both are positive
+```
+
+A gene the source barely expresses cannot leak, however it behaves near the source; a gene
+that does not rise near the source is not leaking, however specific it is. Requiring both
+keeps genuine expression in neighbouring cells from being mistaken for leakage. A cell
+counts as near S when at least half its neighbours within 30 um are S, and as far when
+fewer than a tenth are.
+
+What comes out is each lineage's own signature turning up in its neighbours: TPSAB1, CTSG
+and CPA3 around mast cells, IGHG1 and MZB1 around plasma cells, OXTR around myoepithelium,
+CD3E and IL7R around T cells. The strongest of all are the epithelial genes around tumor —
+FOXA1, ABCC11, CEACAM6, ERBB2 — which is why a differential expression result in
+non-epithelial cells that reads as an epithelial gene deserves to be checked against this
+table before it is believed.
 
 ## What the analysis leaves out
 
