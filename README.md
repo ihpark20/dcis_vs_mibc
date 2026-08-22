@@ -126,8 +126,7 @@ What each CL was annotated as is in
 `03.data_processed/integrated_cluster_annotation_manuscript.csv`, one row per cluster: the
 annotation, the pool it was sent to, and the three lines of evidence behind the call — the
 cell types those cells carried in the per-slide annotation, the compartment composition,
-and the top markers. Three clusters have a note explaining why the marker evidence
-overruled the prior label.
+and the top markers.
 
 ## Subclustering of Pooled Clusters
 
