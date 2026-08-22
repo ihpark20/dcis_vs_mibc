@@ -12,6 +12,11 @@ Cores are the unit of comparison, not cells: each core contributes the percentag
 boundary in each class, and DCIS is compared with mDCIS by Mann-Whitney with
 Benjamini-Hochberg correction over the four measures.
 
+Shares alone can mislead — a core with twice the tumor can hold twice the deficient
+boundary at the same percentage — so the counts are reported too, both absolute and per 100
+tumor cells, which is what asks whether a lesion carries more exposed boundary for the
+amount of tumor it has.
+
 Usage:
     python scripts/boundary_from_geo.py
     python scripts/boundary_myoep_from_geo.py
@@ -20,7 +25,9 @@ Output:
     03.data_processed/boundary/boundary_myoep_cells.csv     per boundary cell
     03.data_processed/boundary/boundary_myoep_percore.csv   per core
     03.data_processed/boundary/boundary_myoep_overall.csv
-    03.data_processed/boundary/boundary_myoep_stats.csv     DCIS vs mDCIS
+    03.data_processed/boundary/boundary_myoep_stats.csv     DCIS vs mDCIS, shares
+    03.data_processed/boundary/boundary_counts_percore.csv  counts, absolute and per tumor
+    03.data_processed/boundary/boundary_counts_stats.csv    DCIS vs mDCIS, counts
 """
 
 import argparse
@@ -120,6 +127,49 @@ def main():
         rows.append(rec)
     per_core = pd.DataFrame(rows)
     per_core.to_csv(args.boundary_dir / "boundary_myoep_percore.csv", index=False)
+
+    tumor_per_core = cells[cells["major_celltype"] == "Tumor"].groupby("core", observed=True).size()
+    count_rows = []
+    for core, sub in per_cell.groupby("core", observed=True):
+        n_tumor = int(tumor_per_core.get(core, 0))
+        for category in [*TYPES, "all"]:
+            n = len(sub) if category == "all" else int((sub["boundary_type"] == category).sum())
+            count_rows.append(
+                {
+                    "core": core,
+                    "sample_group": sub["sample_group"].iloc[0],
+                    "category": category,
+                    "count": n,
+                    "per100tumor": round(n / n_tumor * 100, 3) if n_tumor else float("nan"),
+                    "n_tumor": n_tumor,
+                }
+            )
+    counts = pd.DataFrame(count_rows)
+    counts.to_csv(args.boundary_dir / "boundary_counts_percore.csv", index=False)
+
+    count_stats = []
+    for (category, measure), g in counts.melt(
+        id_vars=["core", "sample_group", "category"],
+        value_vars=["count", "per100tumor"],
+        var_name="measure",
+    ).groupby(["category", "measure"], observed=True):
+        dcis = g.loc[g["sample_group"] == "dcis", "value"].dropna()
+        mibc = g.loc[g["sample_group"] == "mibc", "value"].dropna()
+        count_stats.append(
+            {
+                "category": category,
+                "measure": measure,
+                "dcis_median": round(dcis.median(), 2),
+                "mibc_median": round(mibc.median(), 2),
+                "direction": "mDCIS higher" if mibc.median() > dcis.median() else "DCIS higher",
+                "p": mannwhitneyu(dcis, mibc).pvalue,
+            }
+        )
+    count_stats = pd.DataFrame(count_stats)
+    count_stats["fdr"] = multipletests(count_stats["p"], method="fdr_bh")[1]
+    count_stats.to_csv(args.boundary_dir / "boundary_counts_stats.csv", index=False)
+    print("\ncounts per core, absolute and per 100 tumor cells")
+    print(count_stats.round(4).to_string(index=False))
 
     stats = []
     for measure in [*TYPES, "lined_total"]:

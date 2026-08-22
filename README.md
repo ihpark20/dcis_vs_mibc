@@ -5,6 +5,24 @@ Two breast tissue microarrays (41 cores) were profiled with 10x Genomics Xenium 
 374-gene custom panel (280-gene Human Breast panel + 94-gene immuno-oncology add-on) and
 compared between pure DCIS and microinvasive carcinoma (mDCIS).
 
+## Which figure each analysis is
+
+| panel | what it shows | script | output |
+|---|---|---|---|
+| Fig 2B | microenvironment composition, DCIS vs mDCIS, by CoDA | `tme_composition_from_geo.py` | `tme/composition_*.csv` |
+| Fig 2C | cell-state density per unit of microenvironment tissue | `tme_composition_from_geo.py` | `tme/density_cellstate.csv` |
+| Fig 3C | how much microenvironment each epithelial cell touches (`f_env`) | `boundary_from_geo.py` | `boundary/pool_boundary_cells.csv`, `tau_sensitivity.csv` |
+| Fig 3D | myoepithelial coverage of the boundary, DCIS vs mDCIS | `boundary_myoep_from_geo.py` | `boundary/boundary_myoep_{percore,stats}.csv` |
+| Fig 3E | the same, mapped over two example cores | `boundary_myoep_from_geo.py` | `boundary/boundary_myoep_cells.csv` |
+| Fig 3F | deficient boundary per core, absolute and per 100 tumor cells | `boundary_myoep_from_geo.py` | `boundary/boundary_counts_{percore,stats}.csv` |
+| Fig 5A | macrophage M1/M2 by core | `macrophage_polarization_from_geo.py` | `macrophage/polarization_*.csv` |
+| Fig 5B | ligand-receptor proximity, DCIS vs mDCIS | `ccc_from_geo.py` | `ccc/lr_{enrich,stats}.csv` |
+| Fig 5C | where PD-1+ T cells engage PD-L1 | `checkpoint_engagement_from_geo.py` | `ccc/checkpoint_*.csv` |
+
+Figure 2A is a map of the annotated cells, and Figure 3B an immunohistochemistry image;
+neither is an analysis. Figure 3A rests on a myoepithelial marker comparison that is not
+reproduced here.
+
 ## Environment
 
 All computation ran in a single conda environment (`py312_r44`): Python 3.12.8,
@@ -144,7 +162,7 @@ The published assignment for all 477,681 cells travels with this repository as
 and major cell type for each cell. As with the clustering, it is attached rather than
 recomputed, for the same reason.
 
-## What the microenvironment is made of
+## What the microenvironment is made of (Fig 2B, 2C)
 
 Two questions about the same cells, kept apart because they can disagree: does the mix of
 cell types differ between DCIS and microinvasive cores, and is any type packed more densely
@@ -179,7 +197,7 @@ than the area of the core, so a core with open stroma is not counted as sparser.
 cells fall there too, and by cell state it is cDC2 (261 to 137 per mm2), mregDC (207 to 168)
 and pDC (148 to 92) that thin out in microinvasive cores.
 
-## Tumor boundary
+## Tumor boundary (Fig 3C)
 
 Where a duct or a tumor mass meets its surroundings is not marked in the data; it has to be
 inferred from who each cell sits next to. The epithelial pool is every cell called Tumor or
@@ -205,7 +223,7 @@ have given, and the decision should be read with that table in hand.
 Cores, not subclusters, are excluded at this step: a boundary needs the whole epithelial
 compartment of a core to be present.
 
-## Myoepithelial coverage of the boundary
+## Myoepithelial coverage of the boundary (Fig 3D-F)
 
 A duct in situ is wrapped in a myoepithelial sheath, and microinvasion is the point at
 which tumor cells get past it. Each boundary cell is therefore sorted by what covers it:
@@ -233,12 +251,15 @@ boundary myoepithelium deficient in DCIS against 87 % in mDCIS, where the paper 
 86 %; the overall split is 7.6 % sheath, 17.7 % lined and 74.7 % deficient against 7.9 %,
 18.5 % and 73.6 %. All four measures survive correction, as in the paper.
 
-Rerunning the subclustering instead moves this: that partition calls more cells
-myoepithelial, and coverage rises a few points throughout. The difference between the two
-groups holds either way — it is the level that depends on where the myoepithelial call
-lands.
+Shares alone can mislead: a core with twice the tumor can hold twice the deficient boundary
+at the same percentage. The counts are therefore reported as well, absolute and per 100
+tumor cells, and it is the normalised one that separates the groups — 17.1 deficient
+boundary cells per 100 tumor cells in the median DCIS core against 32.0 in the median
+microinvasive one (p = 0.02), where the raw count does not (499 against 707, p = 0.13). A
+microinvasive lesion carries more exposed boundary for the amount of tumor it has, not
+merely more tumor.
 
-## Ligand-receptor communication
+## Ligand-receptor communication (Fig 5B)
 
 Two cells can only signal through a short-range ligand if they are close enough to share
 the same space, which spatial data can see directly. For each ligand-receptor pair with
@@ -271,7 +292,7 @@ that separate the groups, both higher in microinvasive cores.
 What this measures is opportunity, not activity: cells positioned to signal, not signalling
 observed.
 
-### Where PD-1 meets PD-L1
+### Where PD-1 meets PD-L1 (Fig 5C)
 
 That the checkpoint pairs come out enriched says the cells are close enough to engage; it
 does not say where. A PD-1+ T cell held off inside a tumor mass or at its edge is being
@@ -298,7 +319,7 @@ where the median share engaged inside or at the boundary is 0 % against 5 % (p =
 Pooling the cells instead of the cores would make this look far more decisive than it is —
 a handful of large cores would carry the result.
 
-## Macrophage polarization
+## Macrophage polarization (Fig 5A)
 
 Macrophages run between an inflammatory M1 state and a tissue-remodelling, immunosuppressive
 M2 one, and which way a lesion's macrophages lean says something about the environment it is
