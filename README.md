@@ -123,15 +123,36 @@ The written object keeps raw counts in `X`, the Harmony embedding in
 the published numbering in `obs["cluster"]`. Pass `--all-cores` to skip the QC filter and
 cluster every core instead.
 
-**CL0-CL14 keep their meaning.** Leiden numbers clusters by size, so a rerun renumbers
-everything and CL3 would no longer be the same population it is in the paper. Each new
-cluster is therefore summarised by its mean expression across the panel, correlated against
+### Your cluster numbers will not be the manuscript's
+
+Leiden numbers clusters by size, so a rerun renumbers everything: in our own rerun Leiden's
+cluster 1 was the manuscript's CL6, and its cluster 2 was CL1. Read a figure by the raw
+Leiden number and you are looking at the wrong population. The numbers therefore have to be
+matched to the manuscript rather than trusted, and `cluster_from_geo.py` does that for you
+before writing its output.
+
+Each cluster is summarised by its mean expression across the panel and correlated against
 the reference profile of every published cluster in
-`03.data_processed/integrated_cluster_profiles.csv`, and the one-to-one assignment with the
-highest total correlation is taken. The pairing and its correlations are written to
-`03.data_processed/cluster_naming.csv`; matching this way is far more stable than the
-clustering itself, because a cluster's average profile barely moves when a few per cent of
-its boundary cells change hands. What each CL was annotated as is in
+`03.data_processed/integrated_cluster_profiles.csv`; the one-to-one assignment with the
+highest total correlation wins. The result goes to `03.data_processed/cluster_naming.csv`,
+one row per cluster:
+
+| leiden | cluster | correlation | n_cells |
+|---|---|---|---|
+| 1 | CL6 | 1.000 | 57867 |
+| 2 | CL1 | 1.000 | 57012 |
+
+`obs["cluster"]` then carries the manuscript's names and `obs["leiden"]` keeps the raw ones,
+so anything downstream can speak in CL numbers. If you cluster some other way — a different
+resolution, another tool — match your clusters to the same reference profiles and you can
+still speak in CL numbers. Check the correlation column: ours ran above 0.98 for fourteen of
+the fifteen clusters, and a low value means the cluster you found does not correspond
+cleanly to any published one and should not borrow its name.
+
+Matching this way is far steadier than the clustering itself, because a cluster's average
+profile barely moves when a few per cent of its boundary cells change hands.
+
+What each CL was annotated as is in
 `03.data_processed/integrated_cluster_annotation_manuscript.csv`, one row per cluster: the
 annotation, the pool it was sent to, and the three lines of evidence behind the call — the
 cell types those cells carried in the per-slide annotation, the compartment composition,
