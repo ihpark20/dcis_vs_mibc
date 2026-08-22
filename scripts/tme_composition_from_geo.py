@@ -22,7 +22,7 @@ being the summed area of the microenvironment cells themselves rather than the a
 core, so that a core with more open stroma is not counted as sparser.
 
 Usage:
-    python scripts/major_celltypes_from_geo.py
+    python scripts/use_published_subclusters.py
     python scripts/tme_composition_from_geo.py
 
 Output:
@@ -44,7 +44,7 @@ from scipy.stats import mannwhitneyu
 from statsmodels.stats.multitest import multipletests
 
 ROOT = Path(__file__).resolve().parent.parent
-CLUSTERED = ROOT / "03.data_processed/integrated_qc_passed_from_geo.h5ad"
+CLUSTERED = ROOT / "03.data_processed/integrated_clusters.h5ad"
 MAJOR = ROOT / "03.data_processed/subclustered/major_celltypes.csv"
 OUT_DIR = ROOT / "03.data_processed/tme"
 

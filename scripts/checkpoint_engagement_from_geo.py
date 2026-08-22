@@ -19,7 +19,7 @@ Pooling the cells of all cores instead would make the comparison significant on 
 strength of a few large cores, so the core is the unit.
 
 Usage:
-    python scripts/major_celltypes_from_geo.py
+    python scripts/use_published_subclusters.py
     python scripts/checkpoint_engagement_from_geo.py
 
 Output:
@@ -40,7 +40,7 @@ from scipy.spatial import cKDTree
 from scipy.stats import mannwhitneyu
 
 ROOT = Path(__file__).resolve().parent.parent
-CLUSTERED = ROOT / "03.data_processed/integrated_qc_passed_from_geo.h5ad"
+CLUSTERED = ROOT / "03.data_processed/integrated_clusters.h5ad"
 MAJOR = ROOT / "03.data_processed/subclustered/major_celltypes.csv"
 OUT_DIR = ROOT / "03.data_processed/ccc"
 

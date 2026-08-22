@@ -21,7 +21,7 @@ area being what the core QC measured as actually covered by cells. DCIS is compa
 mDCIS by Mann-Whitney over cores, with Benjamini-Hochberg across the measures.
 
 Usage:
-    python scripts/major_celltypes_from_geo.py
+    python scripts/use_published_subclusters.py
     python scripts/macrophage_polarization_from_geo.py
 
 Output:
@@ -40,8 +40,7 @@ from scipy.stats import mannwhitneyu
 from statsmodels.stats.multitest import multipletests
 
 ROOT = Path(__file__).resolve().parent.parent
-MYELOID_POOL = ROOT / "03.data_processed/subclustered/myeloid.h5ad"
-CLUSTERED = ROOT / "03.data_processed/integrated_qc_passed_from_geo.h5ad"
+CLUSTERED = ROOT / "03.data_processed/integrated_clusters.h5ad"
 MAJOR = ROOT / "03.data_processed/subclustered/major_celltypes.csv"
 CORE_QC = ROOT / "02.tma_core_qc/core_qc_raw.csv"
 OUT_DIR = ROOT / "03.data_processed/macrophage"
@@ -76,14 +75,13 @@ def polarize(a, cell_ids):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--myeloid-pool", default=MYELOID_POOL, type=Path)
     ap.add_argument("--clustered", default=CLUSTERED, type=Path)
     ap.add_argument("--major", default=MAJOR, type=Path)
     ap.add_argument("--core-qc", default=CORE_QC, type=Path)
     ap.add_argument("--out-dir", default=OUT_DIR, type=Path)
     args = ap.parse_args()
 
-    major = pd.read_csv(args.major)
+    major = pd.read_csv(args.major)  # cell_id, pool, leiden_sub, subtype_merged, major_celltype
     macrophage_rows = major[major["major_celltype"] == "Macrophage_Mono"]
     macrophages = set(macrophage_rows["cell_id"])
     state_of = dict(
@@ -96,12 +94,15 @@ def main():
     print(f"{len(macrophages):,} macrophage/monocyte cells")
     print(macrophage_rows["subtype_merged"].value_counts().to_string())
 
-    a = sc.read_h5ad(args.myeloid_pool)
+    a = sc.read_h5ad(args.clustered)
     b = polarize(a, macrophages)
 
     obs = b.obs.copy()
     obs["cell_id"] = b.obs_names
     obs["state"] = obs["cell_id"].map(state_of)
+    obs["leiden_sub"] = obs["cell_id"].map(
+        dict(zip(macrophage_rows["cell_id"], macrophage_rows["leiden_sub"], strict=True))
+    )
     obs["core"] = obs["slide"].astype(str) + "_" + obs["core_id"].astype(str)
     args.out_dir.mkdir(parents=True, exist_ok=True)
     obs[

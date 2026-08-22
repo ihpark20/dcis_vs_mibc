@@ -19,7 +19,7 @@ own (see the README), and boundaries need the whole epithelial compartment of a 
 no subcluster-level exclusion is applied.
 
 Usage:
-    python scripts/major_celltypes_from_geo.py
+    python scripts/use_published_subclusters.py
     python scripts/boundary_from_geo.py
 
 Output:
@@ -39,7 +39,7 @@ from scipy.spatial import cKDTree
 from sklearn.neighbors import radius_neighbors_graph
 
 ROOT = Path(__file__).resolve().parent.parent
-CLUSTERED = ROOT / "03.data_processed/integrated_qc_passed_from_geo.h5ad"
+CLUSTERED = ROOT / "03.data_processed/integrated_clusters.h5ad"
 MAJOR = ROOT / "03.data_processed/subclustered/major_celltypes.csv"
 OUT_DIR = ROOT / "03.data_processed/boundary"
 

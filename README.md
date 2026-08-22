@@ -99,84 +99,24 @@ The two microarrays were imaged as separate slides, so slide is the batch to cor
 Harmony integrates them and Leiden partitions the result into the fifteen clusters
 (CL0-CL14) the annotation is built on. There are two ways to get there.
 
-### Either: take the clustering the paper used
-
 ```bash
-python scripts/cluster_from_geo.py --labels 03.data_processed/integrated_cluster_labels.csv.gz
-#    -> 03.data_processed/integrated_qc_passed_from_geo.h5ad
+python scripts/attach_published_clusters.py
+#    -> 03.data_processed/integrated_clusters.h5ad
 ```
 
-The published assignment for all 520,506 cells of the analysis travels with this repository
-as `03.data_processed/integrated_cluster_labels.csv.gz`. This attaches it and computes
-nothing, so it takes seconds instead of an hour and every downstream step starts from
-exactly the partition the paper reports. **This is the path the rest of this repository
-uses.** Clustering is worth rerunning to check that it reproduces, but not as the routine
-entry point to everything else.
+The assignment for all 520,506 cells of the analysis travels with this repository as
+`03.data_processed/integrated_cluster_labels.csv.gz`, and this attaches it to the cells
+built from GEO. Nothing is recomputed.
 
-### Or: cluster it yourself
-
-```bash
-python scripts/cluster_from_geo.py
-#    -> 03.data_processed/integrated_qc_passed_from_geo.h5ad
-#    -> 03.data_processed/cluster_naming.csv
-```
-
-Around an hour on half a million cells, the Leiden step alone taking a good part of it on a
-single core. It keeps the cores flagged `analysis_include` in the QC table, then follows the
-published settings:
-
-| step | setting |
-|---|---|
-| cell filters | `min_counts=10`, `min_genes=5` |
-| normalization | counts per 10,000, `log1p` |
-| feature selection | 300 highly variable genes, `flavor="seurat"`, `batch_key="slide"` |
-| scaling, PCA | `max_value=10`, 30 components |
-| batch correction | Harmony on `slide`, `max_iter_harmony=30` |
-| graph, embedding | 15 neighbors on the Harmony components, UMAP |
-| clustering | Leiden, `resolution=0.5` |
-| seed | 42 throughout |
-
-The written object keeps raw counts in `X`, the Harmony embedding in
-`obsm["X_pca_harmony"]`, the UMAP coordinates, Leiden's own labels in `obs["leiden"]` and
-the published numbering in `obs["cluster"]`. Pass `--all-cores` to skip the QC filter and
-cluster every core instead.
-
-Expect a partition close to the published one but not identical to it. In our rerun the
-same 520,506 cells came out in fifteen clusters that matched one-to-one, with 92 % of cells
-landing in the same one; the epithelial clusters differed by well under a percent, while
-cells moved between the three CAF clusters and between the three myeloid ones, which look
-alike and share a pool anyway. That is what makes the numbering step below necessary.
-
-### Your cluster numbers will not be the manuscript's
-
-Leiden numbers clusters by size, so a rerun renumbers everything: in our own rerun Leiden's
-cluster 1 was the manuscript's CL6, and its cluster 2 was CL1. Read a figure by the raw
-Leiden number and you are looking at the wrong population. The numbers therefore have to be
-matched to the manuscript rather than trusted. **If you cluster yourself, that matching is
-a step you have to run** — `cluster_from_geo.py` does it before writing its output and
-records the result in `03.data_processed/cluster_naming.csv`, which everything downstream
-depends on. Taking the published labels skips the problem, since they arrive already named.
-
-Each cluster is summarised by its mean expression across the panel and correlated against
-the reference profile of every published cluster in
-`03.data_processed/integrated_cluster_profiles.csv`; the one-to-one assignment with the
-highest total correlation wins. The result goes to `03.data_processed/cluster_naming.csv`,
-one row per cluster:
-
-| leiden | cluster | correlation | n_cells |
-|---|---|---|---|
-| 1 | CL6 | 1.000 | 57867 |
-| 2 | CL1 | 1.000 | 57012 |
-
-`obs["cluster"]` then carries the manuscript's names and `obs["leiden"]` keeps the raw ones,
-so anything downstream can speak in CL numbers. If you cluster some other way — a different
-resolution, another tool — match your clusters to the same reference profiles and you can
-still speak in CL numbers. Check the correlation column: ours ran above 0.98 for fourteen of
-the fifteen clusters, and a low value means the cluster you found does not correspond
-cleanly to any published one and should not borrow its name.
-
-Matching this way is far steadier than the clustering itself, because a cluster's average
-profile barely moves when a few per cent of its boundary cells change hands.
+That is deliberate. Reclustering takes about an hour and does not land on the published
+partition: Harmony and Leiden accumulate floating point in an order that depends on the
+number of threads and the BLAS build, so cells near a cluster boundary fall either way, and
+Leiden renumbers its clusters by size, so CL3 would no longer name the population it names
+in the paper. Every step downstream would then rest on an approximation of the paper rather
+than on the paper. The settings that produced the clustering were: cells filtered at
+`min_counts=10` and `min_genes=5`, counts normalised to 10,000 and log1p-transformed, 300
+highly variable genes selected per slide, 30 principal components, Harmony over slide, a
+15-neighbour graph and Leiden at resolution 0.5, all seeded at 42.
 
 What each CL was annotated as is in
 `03.data_processed/integrated_cluster_annotation_manuscript.csv`, one row per cluster: the
@@ -190,114 +130,19 @@ overruled the prior label.
 One clustering of half a million cells over 374 genes separates lineages but not the states
 inside them: a small lineage, or a state that differs in a handful of genes, is absorbed by
 the dominant axis of variation. The fifteen clusters are therefore grouped into seven
-lineage pools and each pool is re-clustered on its own markers. As with the clustering,
-there are two ways to get there.
-
-### Either: take the cell states the paper assigned
+lineage pools — CL3, CL4 and CL10 make the tumor pool, CL2, CL11 and CL12 the myeloid one,
+and so on — and each pool was re-clustered on its own lineage markers, in place of the
+highly variable genes that a single lineage's variation is dominated by.
 
 ```bash
 python scripts/use_published_subclusters.py
-#    -> 03.data_processed/subclustered/cell_states.csv
+#    -> 03.data_processed/subclustered/cell_states.csv, major_celltypes.csv
 ```
 
 The published assignment for all 477,681 cells travels with this repository as
-`03.data_processed/subcluster_labels.csv.gz` — pool, subcluster, cell state and the
-fragment flag for each cell. Seconds instead of an hour, and the cell states are exactly
-the paper's.
-
-### Or: run the paper's subclustering
-
-```bash
-python scripts/prepare_pool_input.py            # the object those scripts expect
-python scripts/paper_subcluster_cl0_tcell_only.py
-python scripts/paper_subcluster_cl1_endothelial.py
-python scripts/paper_subcluster_cl2_11_12_myeloid_dc.py
-python scripts/paper_subcluster_cl3_4_10_combined.py
-python scripts/paper_subcluster_cl5_8_bplasma.py
-python scripts/paper_subcluster_cl6_7_13_14_caf_adipo.py
-python scripts/paper_subcluster_cl9_mast.py
-python scripts/paper_merge_subclusters.py       # fragment and contamination flags, merge
-python scripts/paper_build_master_annotation.py # one row per cell
-python scripts/paper_add_celltype_level1.py     # major cell types
-```
-
-The `paper_*` scripts are the study's own code, one per pool, changed only in their path
-constants — the filters, features, parameters, seeds, programme scoring, subtype rule,
-fragment threshold and merge are as published. Around an hour for all seven pools.
-
-There is also `subcluster_from_geo.py`, a single consolidated implementation of the same
-recipe with the per-pool settings gathered into `pool_config.py`. It is easier to read and
-to modify, and it is what the rest of this README describes; the `paper_*` scripts are the
-reference it was written against.
-
-### Which cluster goes into which pool
-
-The paper groups its clusters by hand: CL3, CL4 and CL10 make the tumor pool, CL2, CL11 and
-CL12 the myeloid one, and so on. Those groupings are in `scripts/pool_config.py`, and
-because the clusters have already been matched to the published numbering they can be
-applied as they stand — which is what makes these the paper's pools rather than something
-rederived.
-
-```bash
-python scripts/assign_pools_from_geo.py
-#    -> 03.data_processed/pool_assignment.csv
-```
-
-The assignment is also rederived from the data as a check: each cluster is scored against
-the lineage genes of all seven pools, and the best-scoring pool is recorded next to the
-assigned one. Agreement means the cluster matching held. Disagreement means a cluster did
-not match its published counterpart cleanly and is being sent somewhere its expression does
-not support — the script prints those rows rather than letting them pass. In our rerun all
-fifteen agreed.
-
-`subcluster_from_geo.py` reads that file; each pool then follows the same recipe.
-
-TMA1 D6 is dropped before the pools are formed. The clustering itself ran on every
-QC-passing core, D6 among them, and the core was set aside afterwards; the subclustering
-was then redone without it, which is the version everything downstream uses. The exclusion
-lives in `scripts/analysis_exclusions.py`, and the boundary and communication steps read it
-from there too.
-
-
-1. **lineage filter.** A cell enters the pool only if it has a non-zero count for at least
-   one of the pool's lineage genes, which removes cells placed there on overall similarity
-   with no lineage evidence of their own.
-2. **curated feature space.** The pool's marker set becomes the feature space for PCA,
-   in place of highly variable genes. With 374 panel genes, HVG selection inside a single
-   lineage is dominated by the abundant transcripts that leak in from neighbouring cells;
-   restricting the features makes the sub-structure drive the components.
-3. **embedding and clustering.** Scale, PCA, Harmony over slide, a 15-neighbour graph,
-   UMAP, Leiden at the pool's resolution.
-4. **programme scoring.** Every cell is scored for the pool's programmes and each
-   subcluster takes the name of its highest-scoring one — chosen among the pool's lineage
-   programmes only. A pan-lineage or interferon signature describes something every
-   subcluster of the pool carries to some degree, so letting it compete lets it claim
-   subclusters a specific programme should name; `pool_config.py` keeps those out of the
-   running, as the original analysis does. It matters: with `core_macrophage` in the
-   running the macrophage subclusters stop being M1 or M2, and with `stress_g1arrest` in it
-   a quarter of the tumor pool is named after a single cell-cycle gene.
-
-Per-pool settings — which clusters, which lineage genes, which features, which programmes,
-resolution and number of components — are in `scripts/pool_config.py`, one entry per pool.
-
-`merge_subclusters_from_geo.py` then merges the subclusters by programme and marks those
-holding fewer than max(200, 0.5 %) of the pool's cells as `fragment`; fragments keep their
-label, being small rather than wrong. Subclusters are not screened for cells of a foreign
-lineage — see below.
-
-## Major cell types
-
-The pools give fine-grained states; most analyses need the coarse lineages behind them.
-
-```bash
-python scripts/major_celltypes_from_geo.py
-#    -> 03.data_processed/subclustered/major_celltypes.csv
-```
-
-Each (pool, programme) pair maps to one major type. A pool is usually one lineage, but two
-need the programme to decide: the tumor pool holds myoepithelial cells alongside tumor, and
-pericytes turn up in both the endothelial and the CAF pool. Plasma cells are split from B
-cells, and the dendritic programmes from the macrophages. That gives twelve major types.
+`03.data_processed/subcluster_labels.csv.gz` — pool, subcluster, cell state, fragment flag
+and major cell type for each cell. As with the clustering, it is attached rather than
+recomputed, for the same reason.
 
 ## What the microenvironment is made of
 
@@ -509,40 +354,30 @@ quarter of the median cell. They are excluded rather than analysed as a populati
 
 ## Reproducing this analysis
 
-A rerun reproduces the shape of the published analysis — the same cells, the same lineages,
-the same cell states in the same proportions — but not every individual cell label. Four
-reasons, none of them avoidable here:
+Everything from the tumor boundary onward is computed here. What is not recomputed is the
+clustering and the subclustering: those are taken from the paper, so that every result rests
+on the partition it reports rather than on an approximation of it.
 
-* **Clustering is not portable.** Harmony and Leiden accumulate floating point in an order
-  that depends on the number of threads and on the BLAS build. Seeds are fixed, so a rerun
-  on the same machine repeats itself, but cells sitting near a cluster boundary can land on
-  either side elsewhere — and that difference carries into the pools built on top.
-* **Cluster numbering is arbitrary.** The clusters come out in a different order each time,
-  which is why pools are matched by lineage score instead of by cluster number.
-* **One step is left out.** The original screened each subcluster for cells of a foreign
-  lineage, using the per-slide annotation of the initial clustering. A marker-score proxy
-  is not specific enough to stand in for it — pericytes and myofibroblasts score like
-  endothelium often enough that real cells would be discarded — so the screen is omitted
-  and the scores are reported per subcluster instead. (The per-slide clustering itself,
-  which the GEO deposit does not carry, is included here for the QC step.)
-* **Versions drift.** Defaults in scanpy, leidenalg and umap change between releases; the
-  versions this was run with are listed under Environment.
+The reason is that clustering does not travel. Harmony and Leiden accumulate floating point
+in an order that depends on the number of threads and on the BLAS build, so cells sitting
+near a cluster boundary fall either way on another machine, and Leiden numbers its clusters
+by size, so a rerun renames them. We did rerun both to see how far that goes: the same
+520,506 cells came out in fifteen clusters matching the published ones one to one, with 92 %
+of cells in the same one, and the pools built on them agreed on 87 % of major cell type
+calls — close, but close is not the paper, and the difference compounds through every step
+downstream.
 
-The steps from the tumor boundary onward — coverage, macrophage polarization,
-ligand-receptor proximity — are run here on the published cell states, for the same reason
-the clustering is: it puts every one of them on the partition the paper reports rather than
-on a rerun's approximation of it.
+Taking the published assignment instead, what remains is arithmetic on the deposited counts
+and coordinates, and it reproduces: the boundary composition lands within a point of the
+published one, the macrophage M1/M2 comparison and the ligand-receptor enrichments match to
+three decimals.
 
-How far the divergence travels depends on where you start. Beginning from the published
-clustering, all seven pools hold exactly the cells they hold in the paper — 108,594 in the
-tumor pool, 96,841 in T/NK, and so on — 98 % of cells land in the same major cell type, and
-the ligand-receptor enrichments come out identical to three decimals, that analysis reading
-only coordinates and counts and so being fully determined once the cell set is. What still
-moves is inside the pools: Leiden splits each one a little differently, which shifts where
-the myoepithelial call lands and carries a few percent into the boundary composition.
-Beginning from a fresh clustering instead, the major cell types agree for 87 % of cells,
-the CAF and myeloid clusters trading members. Both runs give the same answer to the
-biological question; they differ in how many cells sit on either side of it.
+One step of the original is not reproduced at all. The subclustering screened each subcluster
+for cells of a foreign lineage against the per-slide annotation; that judgement is carried in
+the published cell states rather than remade here.
+
+Package versions matter for anything that is recomputed — defaults in scanpy and its
+dependencies change between releases — and the versions used are listed under Environment.
 
 ## Data not included here
 

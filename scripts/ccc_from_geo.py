@@ -23,7 +23,7 @@ Cores are the replicates. Each pair is tested against zero enrichment with a one
 Wilcoxon corrected across pairs, and DCIS is compared with mDCIS by Mann-Whitney.
 
 Usage:
-    python scripts/major_celltypes_from_geo.py
+    python scripts/use_published_subclusters.py
     python scripts/ccc_from_geo.py
 
 Output:
@@ -45,7 +45,7 @@ from scipy.stats import mannwhitneyu, wilcoxon
 from statsmodels.stats.multitest import multipletests
 
 ROOT = Path(__file__).resolve().parent.parent
-CLUSTERED = ROOT / "03.data_processed/integrated_qc_passed_from_geo.h5ad"
+CLUSTERED = ROOT / "03.data_processed/integrated_clusters.h5ad"
 MAJOR = ROOT / "03.data_processed/subclustered/major_celltypes.csv"
 OUT_DIR = ROOT / "03.data_processed/ccc"
 

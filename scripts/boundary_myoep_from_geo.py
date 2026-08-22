@@ -33,7 +33,7 @@ from scipy.stats import mannwhitneyu
 from statsmodels.stats.multitest import multipletests
 
 ROOT = Path(__file__).resolve().parent.parent
-CLUSTERED = ROOT / "03.data_processed/integrated_qc_passed_from_geo.h5ad"
+CLUSTERED = ROOT / "03.data_processed/integrated_clusters.h5ad"
 MAJOR = ROOT / "03.data_processed/subclustered/major_celltypes.csv"
 BOUNDARY_DIR = ROOT / "03.data_processed/boundary"
 
