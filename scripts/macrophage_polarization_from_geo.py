@@ -2,18 +2,18 @@
 
 Macrophages sit on a continuum between an inflammatory M1 state and a
 tissue-remodelling, immunosuppressive M2 one, and which way a tumor's macrophages lean
-says something about the environment it is building. Each macrophage is scored for both
-programmes and takes the higher one:
+says something about the environment it is building. The split comes from the cell states
+themselves: a macrophage is M1 or M2 because the subclustering named its subcluster
+`macrophage_M1` or `macrophage_M2`, scoring these programmes against the rest of the myeloid
+pool's:
 
     M1   CD86, CD80, IL1B, TNF
     M2   CD163, MRC1, MARCO, ARG1, IL10, TREM2
 
-Polarization is settled per subcluster, as the annotation does: a subcluster is a group of
-cells the clustering found coherent, and averaging over it is steadier than scoring a single
-cell with a handful of sparse markers. The two programme scores are compared with each other
-only — the pool's other programmes decide what a subcluster is, this decides which way its
-macrophages lean. Per-cell scores stay in the output for anyone who wants the continuum
-rather than the split.
+Macrophages the subclustering placed elsewhere — proliferating, monocyte — carry no
+polarization call: they count towards `n_mac` but towards neither side. Both programme
+scores are still written per cell, for anyone who wants the continuum rather than the
+split.
 
 Each core then contributes the share of its macrophages on each side, their ratio, and how
 many of each it holds — per thousand cells, and per square millimetre of tissue, tissue
@@ -71,12 +71,6 @@ def polarize(a, cell_ids):
         print(f"  {name}: {len(present)}/{len(markers)} markers on the panel — {present}")
     b.obs["polarization"] = b.obs["score_M1"] - b.obs["score_M2"]
 
-    by_sub = b.obs.groupby("leiden_sub", observed=True)[["score_M1", "score_M2"]].mean()
-    by_sub["state"] = np.where(by_sub["score_M1"] > by_sub["score_M2"], "M1", "M2")
-    by_sub["n_cells"] = b.obs["leiden_sub"].value_counts()
-    print("\nsubcluster polarization")
-    print(by_sub.round(3).sort_values("n_cells", ascending=False).to_string())
-    b.obs["state"] = b.obs["leiden_sub"].map(by_sub["state"]).astype(str)
     return b
 
 
@@ -90,14 +84,24 @@ def main():
     args = ap.parse_args()
 
     major = pd.read_csv(args.major)
-    macrophages = set(major.loc[major["major_celltype"] == "Macrophage_Mono", "cell_id"])
+    macrophage_rows = major[major["major_celltype"] == "Macrophage_Mono"]
+    macrophages = set(macrophage_rows["cell_id"])
+    state_of = dict(
+        zip(
+            macrophage_rows["cell_id"],
+            macrophage_rows["subtype_merged"].map({"macrophage_M1": "M1", "macrophage_M2": "M2"}),
+            strict=True,
+        )
+    )
     print(f"{len(macrophages):,} macrophage/monocyte cells")
+    print(macrophage_rows["subtype_merged"].value_counts().to_string())
 
     a = sc.read_h5ad(args.myeloid_pool)
     b = polarize(a, macrophages)
 
     obs = b.obs.copy()
     obs["cell_id"] = b.obs_names
+    obs["state"] = obs["cell_id"].map(state_of)
     obs["core"] = obs["slide"].astype(str) + "_" + obs["core_id"].astype(str)
     args.out_dir.mkdir(parents=True, exist_ok=True)
     obs[
@@ -112,7 +116,10 @@ def main():
             "state",
         ]
     ].to_csv(args.out_dir / "polarization_cells.csv", index=False)
-    print(f"\n{(obs.state == 'M1').sum():,} M1 | {(obs.state == 'M2').sum():,} M2")
+    print(
+        f"\n{(obs.state == 'M1').sum():,} M1 | {(obs.state == 'M2').sum():,} M2 | "
+        f"{obs.state.isna().sum():,} without a polarization call"
+    )
 
     # cells per core, and the tissue area the QC measured
     everything = sc.read_h5ad(args.clustered, backed="r").obs
@@ -126,6 +133,9 @@ def main():
     for core, g in obs.groupby("core", observed=True):
         n_m1 = int((g["state"] == "M1").sum())
         n_m2 = int((g["state"] == "M2").sum())
+        polarized = n_m1 + n_m2
+        if polarized == 0:
+            continue
         total = int(n_cells.get(core, len(g)))
         area = tissue_mm2.get(core, np.nan)
         rows.append(
@@ -135,8 +145,9 @@ def main():
                 "n_mac": len(g),
                 "n_M1": n_m1,
                 "n_M2": n_m2,
-                "M1_pct_of_mac": round(n_m1 / len(g) * 100, 2),
-                "M2_pct_of_mac": round(n_m2 / len(g) * 100, 2),
+                "n_polarized": polarized,
+                "M1_pct_of_mac": round(n_m1 / polarized * 100, 2),
+                "M2_pct_of_mac": round(n_m2 / polarized * 100, 2),
                 "M1_M2_ratio": round(n_m1 / max(n_m2, 1), 4),
                 "M1_per1k": round(n_m1 / total * 1000, 3),
                 "M2_per1k": round(n_m2 / total * 1000, 3),

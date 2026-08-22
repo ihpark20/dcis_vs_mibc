@@ -395,15 +395,18 @@ observed.
 
 Macrophages run between an inflammatory M1 state and a tissue-remodelling, immunosuppressive
 M2 one, and which way a lesion's macrophages lean says something about the environment it is
-building. Each macrophage subcluster is scored for both programmes and takes the higher one;
-the assignment is made per subcluster rather than per cell, a subcluster being a group the
-clustering already found coherent and an average over it steadier than a handful of sparse
-markers read off one cell.
+building. The split is the cell state itself: a macrophage is M1 or M2 because the
+subclustering named its subcluster `macrophage_M1` or `macrophage_M2`, scoring these
+programmes against the rest of the myeloid pool's.
 
 | programme | markers |
 |---|---|
 | M1 | CD86, CD80, IL1B, TNF |
 | M2 | CD163, MRC1, MARCO, ARG1, IL10, TREM2 |
+
+Macrophages the subclustering placed elsewhere — proliferating, monocyte, about a quarter of
+them — carry no polarization call. They count towards the macrophage total but towards
+neither side, so the shares are of the polarized macrophages.
 
 ```bash
 python scripts/macrophage_polarization_from_geo.py
@@ -415,18 +418,15 @@ of each it holds — per thousand cells and per square millimetre of tissue, are
 the core QC measured as actually covered by cells rather than the whole core. Cores are
 compared by Mann-Whitney with Benjamini-Hochberg across the measures.
 
-The directions reproduce: DCIS cores lean more M1, microinvasive cores more M2, and
-microinvasive cores carry more M2 macrophages per thousand cells. Densities per square
-millimetre separate the groups least of all — a microinvasive core holds more macrophages
-but is also more cellular, so the difference in composition does not survive being expressed
-per unit of tissue.
+Read this way the comparison reproduces exactly: 18.7 % of polarized macrophages are M1 in
+the median DCIS core against 15.0 % in the median microinvasive one, at p = 0.074, and M2
+macrophages per thousand cells go 38.3 against 48.0 at p = 0.084 — the paper's numbers to
+three decimals. Neither is significant, there or here.
 
-None of it is significant, in this rerun or in the paper, where the same comparisons sat at
-p = 0.07 to 0.08 before correction. The closest is M2 per thousand cells, 43.3 in DCIS
-against 55.0 in mDCIS at p = 0.11, where the paper had 38.3 against 48.0 at p = 0.08. The
-balance point sits higher than the paper's — a third of macrophages called M1 against a
-fifth — because the M1/M2 split is read here from the polarization scores of the macrophage
-subclusters rather than from the subtype each was given.
+Density per square millimetre, which the paper did not report, separates the groups least of
+all: 131 M2 macrophages per mm2 in DCIS against 156 in mDCIS at p = 0.76. A microinvasive
+core holds more macrophages but is also more cellular, and the difference in composition
+does not survive being expressed per unit of tissue.
 
 ## What the analysis leaves out
 
