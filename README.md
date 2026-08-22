@@ -5,28 +5,6 @@ Two breast tissue microarrays (41 cores) were profiled with 10x Genomics Xenium 
 374-gene custom panel (280-gene Human Breast panel + 94-gene immuno-oncology add-on) and
 compared between pure DCIS and microinvasive carcinoma (mDCIS).
 
-## Which figure each analysis is
-
-| panel | what it shows | script | output |
-|---|---|---|---|
-| Fig 2B | microenvironment composition, DCIS vs mDCIS, by CoDA | `tme_composition_from_geo.py` | `tme/composition_*.csv` |
-| Fig 2C | cell-state density per unit of microenvironment tissue | `tme_composition_from_geo.py` | `tme/density_cellstate.csv` |
-| Fig 3C | how much microenvironment each epithelial cell touches (`f_env`) | `boundary_from_geo.py` | `boundary/pool_boundary_cells.csv`, `tau_sensitivity.csv` |
-| Fig 3D | myoepithelial coverage of the boundary, DCIS vs mDCIS | `boundary_myoep_from_geo.py` | `boundary/boundary_myoep_{percore,stats}.csv` |
-| Fig 3E | the same, mapped over two example cores | `boundary_myoep_from_geo.py` | `boundary/boundary_myoep_cells.csv` |
-| Fig 3F | deficient boundary per core, absolute and per 100 tumor cells | `boundary_myoep_from_geo.py` | `boundary/boundary_counts_{percore,stats}.csv` |
-| Fig 4 | boundary DEG by coverage class, with and without a tumor-density covariate | `boundary_deg_from_geo.py` | `boundary/boundary_deg_by_category.csv` |
-| Fig 5A | macrophage M1/M2 by core | `macrophage_polarization_from_geo.py` | `macrophage/polarization_*.csv` |
-| Fig 5B | ligand-receptor proximity, DCIS vs mDCIS | `ccc_from_geo.py` | `ccc/lr_{enrich,stats}.csv` |
-| Fig 5C | where PD-1+ T cells engage PD-L1 | `checkpoint_engagement_from_geo.py` | `ccc/checkpoint_*.csv` |
-| — | compartment-level DEG, annotated with spillover | `compartment_deg_from_geo.py` | `compartment/compartment_deg.csv` |
-| — | the same within each major cell type | `celltype_deg_from_geo.py` | `compartment/celltype_deg.csv` |
-| Fig S6 | transcript spillover, by source cell type | `spillover_from_geo.py` | `spillover/spillover_by_source.csv` |
-
-Figure 2A is a map of the annotated cells, and Figure 3B an immunohistochemistry image;
-neither is an analysis. Figure 3A rests on a myoepithelial marker comparison that is not
-reproduced here.
-
 ## Environment
 
 All computation ran in a single conda environment (`py312_r44`): Python 3.12.8,
