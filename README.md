@@ -299,6 +299,41 @@ need the programme to decide: the tumor pool holds myoepithelial cells alongside
 pericytes turn up in both the endothelial and the CAF pool. Plasma cells are split from B
 cells, and the dendritic programmes from the macrophages. That gives twelve major types.
 
+## What the microenvironment is made of
+
+Two questions about the same cells, kept apart because they can disagree: does the mix of
+cell types differ between DCIS and microinvasive cores, and is any type packed more densely
+in the tissue?
+
+```bash
+python scripts/tme_composition_from_geo.py
+#    -> 03.data_processed/tme/composition_{global,pertype,percore}.csv
+#    -> 03.data_processed/tme/density_{pertype,cellstate}.csv
+```
+
+Tumor and myoepithelial cells are set aside and the composition renormalised within the ten
+immune and stromal types, so the question is about the microenvironment and not about how
+much tumor a core happens to contain. Neutrophils are out as well, the panel being unable to
+resolve them.
+
+Proportions are compositional: they sum to one, so a rise in any one type forces the others
+down, and testing them as independent percentages invents differences that are only the
+constraint. Counts are therefore centre-log-ratio transformed against the geometric mean of
+the ten, with a pseudocount of 0.5 for the zeros, which frees them; the groups are then
+compared as a whole by PERMANOVA on the Aitchison distance over 999 permutations, and type
+by type on the CLR coordinates with Benjamini-Hochberg correction.
+
+The composition as a whole does not separate the groups — PERMANOVA gives F = 2.02 at
+p = 0.11 — and one type survives correction on its own: dendritic cells, lower in
+microinvasive cores at an FDR of 0.005. Reading the ten as raw percentages would have turned
+several of the others significant.
+
+Density asks the other question: cells of a type per square millimetre of microenvironment
+tissue, where the tissue is the summed area of the microenvironment cells themselves rather
+than the area of the core, so a core with open stroma is not counted as sparser. Dendritic
+cells fall there too, and by cell state it is cDC2 (261 to 137 per mm2), mregDC (207 to 168)
+and pDC (148 to 92) that thin out in microinvasive cores.
+
 ## Tumor boundary
 
 Where a duct or a tumor mass meets its surroundings is not marked in the data; it has to be
