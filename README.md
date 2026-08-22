@@ -20,6 +20,7 @@ compared between pure DCIS and microinvasive carcinoma (mDCIS).
 | Fig 5B | ligand-receptor proximity, DCIS vs mDCIS | `ccc_from_geo.py` | `ccc/lr_{enrich,stats}.csv` |
 | Fig 5C | where PD-1+ T cells engage PD-L1 | `checkpoint_engagement_from_geo.py` | `ccc/checkpoint_*.csv` |
 | — | compartment-level DEG, annotated with spillover | `compartment_deg_from_geo.py` | `compartment/compartment_deg.csv` |
+| — | the same within each major cell type | `celltype_deg_from_geo.py` | `compartment/celltype_deg.csv` |
 | Fig S6 | transcript spillover, by source cell type | `spillover_from_geo.py` | `spillover/spillover_by_source.csv` |
 
 Figure 2A is a map of the annotated cells, and Figure 3B an immunohistochemistry image;
@@ -300,6 +301,31 @@ be explained away this way.
 
 The columns to read are `spillover_from_cancer` and `top_spillover_source`. A high value
 does not by itself refute a hit, but it moves the burden of proof onto it.
+
+### The same, cell type by cell type
+
+```bash
+python scripts/celltype_deg_from_geo.py
+#    -> 03.data_processed/compartment/celltype_deg.csv
+```
+
+The same test run within each major cell type instead of each compartment, which is where a
+change confined to one lineage would show. Twelve comparisons on smaller populations, so
+fewer genes clear correction; a cell type is tested when at least three cores per group hold
+20 or more of its cells.
+
+This is where the spillover annotation earns its place. Nineteen genes reach FDR < 0.05, and
+MUC6 is seven of them — higher in microinvasive cores in B cells, CAFs, dendritic cells,
+endothelium, myoepithelium, plasma cells and T cells alike. A gene rising in seven unrelated
+lineages at once is not seven biological findings; it is one artefact, and its spillover
+index of 5.4 out of tumor says which. Reading these results without that column would produce
+a list of cell types that "upregulate MUC6 in microinvasion".
+
+What survives the check is narrower and more interesting: CD1C, lower in microinvasive cores
+in macrophages, T cells and endothelium, whose strongest leak is out of dendritic cells —
+the same population it marks — so its absence elsewhere is not a spillover artefact. In the
+tumor compartment AKR1C1, MLPH, SEC24A and LYPD3 come up; those leak out of tumor itself,
+which is the compartment they were found in, so spillover does not explain them either.
 
 ## What differs at the boundary (Fig 4)
 
