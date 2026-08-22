@@ -352,6 +352,43 @@ that separate the groups, both higher in microinvasive cores.
 What this measures is opportunity, not activity: cells positioned to signal, not signalling
 observed.
 
+## Macrophage polarization
+
+Macrophages run between an inflammatory M1 state and a tissue-remodelling, immunosuppressive
+M2 one, and which way a lesion's macrophages lean says something about the environment it is
+building. Each macrophage subcluster is scored for both programmes and takes the higher one;
+the assignment is made per subcluster rather than per cell, a subcluster being a group the
+clustering already found coherent and an average over it steadier than a handful of sparse
+markers read off one cell.
+
+| programme | markers |
+|---|---|
+| M1 | CD86, CD80, IL1B, TNF |
+| M2 | CD163, MRC1, MARCO, ARG1, IL10, TREM2 |
+
+```bash
+python scripts/macrophage_polarization_from_geo.py
+#    -> 03.data_processed/macrophage/polarization_{cells,percore,stats}.csv
+```
+
+Each core contributes the share of its macrophages on each side, their ratio, and how many
+of each it holds — per thousand cells and per square millimetre of tissue, area being what
+the core QC measured as actually covered by cells rather than the whole core. Cores are
+compared by Mann-Whitney with Benjamini-Hochberg across the measures.
+
+The directions reproduce: DCIS cores lean more M1, microinvasive cores more M2, and
+microinvasive cores carry more M2 macrophages per thousand cells. Densities per square
+millimetre separate the groups least of all — a microinvasive core holds more macrophages
+but is also more cellular, so the difference in composition does not survive being expressed
+per unit of tissue.
+
+None of it is significant, in this rerun or in the paper, where the same comparisons sat at
+p = 0.07 to 0.08 before correction. The M1 share also differs in level: 44 % of macrophages
+here against 19 % in the paper, because a macrophage subcluster's dominant programme is
+decided against all of the pool's programmes and in this rerun several subclusters that the
+paper called M2 are claimed by the generic macrophage programme instead. The lean is the
+reproducible part; the balance point is not.
+
 ## What the analysis leaves out
 
 Two exclusions are made downstream of the clustering, and the evidence for both is visible
