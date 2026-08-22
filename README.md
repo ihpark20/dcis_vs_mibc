@@ -6,7 +6,8 @@ Two breast tissue microarrays (41 cores) were profiled with 10x Genomics Xenium 
 compared between pure DCIS and microinvasive carcinoma (mDCIS).
 
 Park I, Lee YS, Choi K, Bae SJ, Ahn SG, Kook YW, Jeong J, Choi YJ.
-Correspondence: Choi YJ.
+Correspondence: Choi YJ, Department of Pathology, Gangnam Severance Hospital,
+Yonsei University College of Medicine.
 
 ## Environment
 

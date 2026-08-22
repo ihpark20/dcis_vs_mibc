@@ -1,10 +1,11 @@
 MIT License
 
 Copyright (c) 2026 Park I, Lee YS, Choi K, Bae SJ, Ahn SG, Kook YW, Jeong J, Choi YJ
-Correspondence: Choi YJ
+Correspondence: Choi YJ, Department of Pathology, Gangnam Severance Hospital,
+Yonsei University College of Medicine
 
-Applies to the software in this repository (scripts/, 21.figures_hires_scripts/,
-scripts_r/). The data files are licensed separately under CC BY 4.0; see LICENSE-DATA.
+Applies to the software in this repository, the analysis scripts under scripts/. The
+data files are licensed separately under CC BY 4.0; see LICENSE-DATA.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,12 +1,12 @@
 Creative Commons Attribution 4.0 International (CC BY 4.0)
 
 Copyright (c) 2026 Park I, Lee YS, Choi K, Bae SJ, Ahn SG, Kook YW, Jeong J, Choi YJ
-Correspondence: Choi YJ
+Correspondence: Choi YJ, Department of Pathology, Gangnam Severance Hospital,
+Yonsei University College of Medicine
 
-Applies to the data files in this repository: 00.panel_info/, 01.data_raw/,
-02.slide_tma_core/, 03.data_processed/, 04.tables/, 11.tables_publication/ and
-the documents in docs/. The software is licensed separately under the MIT
-License; see LICENSE.
+Applies to the data files in this repository: 00.panel_info/, 02.tma_core_qc/ and
+03.data_processed/. The software is licensed separately under the MIT License;
+see LICENSE.
 
 You are free to share and adapt this material for any purpose, including
 commercially, provided that you give appropriate credit, provide a link to the
