@@ -16,10 +16,10 @@ Choi YJ.
 
 ## Environment
 
-All computation ran in a single conda environment (`py312_r44`): Python 3.12.8,
-scanpy 1.11.1, anndata 0.11.4, harmonypy 0.2.0, PyDESeq2 0.5.4, scikit-learn 1.5.2,
-SciPy 1.15.1, NumPy 2.2.6, pandas 2.2.3, statsmodels 0.14.4.
-Figures were rendered in R 4.4.3 with ggplot2, patchwork, ggalluvial and ComplexHeatmap.
+Python 3.12.8 with scanpy 1.11.1, anndata 0.11.4, PyDESeq2 0.5.4, scikit-learn 1.5.2,
+SciPy 1.15.1, NumPy 2.2.6, pandas 2.2.3 and statsmodels 0.14.4. Nothing here depends on a
+version being exact, but the differential expression and the compositional test are the
+places where a change in defaults would show first.
 
 ## Getting the data (GEO GSE343808)
 
