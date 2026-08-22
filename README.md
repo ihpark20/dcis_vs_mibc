@@ -105,8 +105,8 @@ anything.
 ## Integrated Clustering Across TMA Batches (CL0-CL14)
 
 The two microarrays were imaged as separate slides, so slide is the batch to correct for.
-Harmony integrates them and Leiden partitions the result into the fifteen clusters
-(CL0-CL14) the annotation is built on. There are two ways to get there.
+Harmony (harmonypy 0.2.0) integrates them and Leiden partitions the result into the fifteen
+clusters (CL0-CL14) the annotation is built on.
 
 ```bash
 python scripts/attach_published_clusters.py
@@ -117,15 +117,10 @@ The assignment for all 520,506 cells of the analysis travels with this repositor
 `03.data_processed/integrated_cluster_labels.csv.gz`, and this attaches it to the cells
 built from GEO. Nothing is recomputed.
 
-That is deliberate. Reclustering takes about an hour and does not land on the published
-partition: Harmony and Leiden accumulate floating point in an order that depends on the
-number of threads and the BLAS build, so cells near a cluster boundary fall either way, and
-Leiden renumbers its clusters by size, so CL3 would no longer name the population it names
-in the paper. Every step downstream would then rest on an approximation of the paper rather
-than on the paper. The settings that produced the clustering were: cells filtered at
-`min_counts=10` and `min_genes=5`, counts normalised to 10,000 and log1p-transformed, 300
-highly variable genes selected per slide, 30 principal components, Harmony over slide, a
-15-neighbour graph and Leiden at resolution 0.5, all seeded at 42.
+The settings that produced it were: cells filtered at `min_counts=10` and `min_genes=5`,
+counts normalised to 10,000 and log1p-transformed, 300 highly variable genes selected per
+slide, 30 principal components, Harmony over slide, a 15-neighbour graph and Leiden at
+resolution 0.5, all seeded at 42.
 
 What each CL was annotated as is in
 `03.data_processed/integrated_cluster_annotation_manuscript.csv`, one row per cluster: the
