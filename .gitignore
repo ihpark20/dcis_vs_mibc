@@ -4,9 +4,11 @@ __pycache__/
 .RData
 .DS_Store
 
-# data downloaded from GEO and everything the pipeline generates from it;
-# only the small reference tables under 03.data_processed are tracked
+# data downloaded from GEO and everything the pipeline generates from it.
+# The published assignments and the annotation of the clusters are inputs, not
+# outputs, and are tracked; everything else under 03.data_processed is generated.
 01.data_raw/GSE343808/
 03.data_processed/*
-!03.data_processed/integrated_cluster_profiles.csv
+!03.data_processed/integrated_cluster_labels.csv.gz
+!03.data_processed/subcluster_labels.csv.gz
 !03.data_processed/integrated_cluster_annotation_manuscript.csv
