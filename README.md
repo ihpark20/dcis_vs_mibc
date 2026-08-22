@@ -482,33 +482,6 @@ CEACAM8, ITGAM) are not specific. No pool recovers a neutrophil state, and the n
 annotated in the original run carry the lowest transcript count of any major type, about a
 quarter of the median cell. They are excluded rather than analysed as a population.
 
-## Reproducing this analysis
-
-Everything from the tumor boundary onward is computed here. What is not recomputed is the
-clustering and the subclustering: those are taken from the paper, so that every result rests
-on the partition it reports rather than on an approximation of it.
-
-The reason is that clustering does not travel. Harmony and Leiden accumulate floating point
-in an order that depends on the number of threads and on the BLAS build, so cells sitting
-near a cluster boundary fall either way on another machine, and Leiden numbers its clusters
-by size, so a rerun renames them. We did rerun both to see how far that goes: the same
-520,506 cells came out in fifteen clusters matching the published ones one to one, with 92 %
-of cells in the same one, and the pools built on them agreed on 87 % of major cell type
-calls — close, but close is not the paper, and the difference compounds through every step
-downstream.
-
-Taking the published assignment instead, what remains is arithmetic on the deposited counts
-and coordinates, and it reproduces: the boundary composition lands within a point of the
-published one, the macrophage M1/M2 comparison and the ligand-receptor enrichments match to
-three decimals.
-
-One step of the original is not reproduced at all. The subclustering screened each subcluster
-for cells of a foreign lineage against the per-slide annotation; that judgement is carried in
-the published cell states rather than remade here.
-
-Package versions matter for anything that is recomputed — defaults in scanpy and its
-dependencies change between releases — and the versions used are listed under Environment.
-
 ## Data not included here
 
 * The cell-level count matrix and the raw Xenium output are at GEO (GSE343808), as above.
